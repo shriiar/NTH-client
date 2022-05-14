@@ -1,0 +1,19 @@
+.nav-bg{
+    background-color: #cf0a2c;
+}
+.navLink, .navLink-header{
+    font-size: 20px;
+}
+
+.navLink-header{
+    color: #cf0a2c;
+    text-decoration: none;
+}
+
+.navbar-toggler-icon, .navbar-toggler, .collapsed{
+    background-color: #cf0a2c;
+}
+
+.user-name{
+    color: rgb(44, 44, 44);
+}
