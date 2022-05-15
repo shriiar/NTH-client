@@ -7,10 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import useAdmin from '../../../Hooks/useAdmin';
 
 
 const Header = () => {
     const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
     const userSignOut = () => {
         localStorage.removeItem("studentObj");
         localStorage.removeItem("studentObj1");
@@ -22,7 +24,7 @@ const Header = () => {
         <Navbar collapseOnSelect expand="lg" bg="" className='nav-bg mb-4' sticky='top' variant="dark">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    
+
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,8 +33,11 @@ const Header = () => {
                         {
                             user && <>
                                 <CustomLink className="me-4 navLink" to="/subjects">My Subjects</CustomLink>
-                                <CustomLink className="me-4 navLink" to="/manage">Manage NTH</CustomLink>
+                                <CustomLink className="me-4 navLink" to="/myNotice">My Notice</CustomLink>
                             </>
+                        }
+                        {
+                            admin && <CustomLink className="me-4 navLink" to="/manage">Manage NTH</CustomLink>
                         }
                         {
                             !user ? <>

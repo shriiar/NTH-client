@@ -13,7 +13,7 @@ const Manage = () => {
         navigate('/addTasks');
     }
     const toNotice = () => {
-        navigate('/addNotice');
+        navigate('/Notice');
     }
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>

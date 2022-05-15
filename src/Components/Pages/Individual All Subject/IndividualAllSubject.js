@@ -19,7 +19,8 @@ const IndividualAllSubject = (props) => {
 
     return (
         <div>
-            <div className='card border-0'>
+            <div className='card border-0 mb-3'>
+                <img src='https://images5.alphacoders.com/585/thumbbig-585645.webp' class="card__image" alt="" />
                 <div class="card__overlay">
                     <div class="card__header">
                         <div class="card__header-text fs-1">
