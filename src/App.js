@@ -25,6 +25,7 @@ import MyIndividualNotice from './Components/Pages/My Individual Notice/MyIndivi
 import AddNotice from './Components/Pages/Add Notice/AddNotice';
 import ManageNotice from './Components/Pages/Manage Notice/ManageNotice';
 import ManageIndividualNotice from './Components/Pages/Manage Individual Notice/ManageIndividualNotice';
+import UpdateStudent from './Components/Pages/Update Student/UpdateStudent';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -67,6 +68,9 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/manageIndividualNotice' element={<RequireAdmin>
           <ManageIndividualNotice></ManageIndividualNotice>
+        </RequireAdmin>}></Route>
+        <Route path='/updateStudent' element={<RequireAdmin>
+          <UpdateStudent></UpdateStudent>
         </RequireAdmin>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

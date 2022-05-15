@@ -28,7 +28,7 @@ const ManageInvididualClass = () => {
     return (
         <div className='row row-cols-1 row-cols-md-1 row-cols-lg-1'>
             {
-                allStudents.map(student => <SingleStudent key={student._id} student={student}></SingleStudent>)
+                allStudents.map(student => <SingleStudent key={student._id} student={student} allStudents={allStudents} setAllStudents={setAllStudents}></SingleStudent>)
             }
         </div>
     );
