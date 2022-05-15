@@ -8,6 +8,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import Loading from '../../Shared/Loading/Loading';
 import signUpSvg from '../../../img/undraw_Login_re_4vu2.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
+import useToken from '../../../Hooks/useToken';
 
 const Signup = () => {
 
@@ -28,7 +29,7 @@ const Signup = () => {
     const [updateProfile, updating] = useUpdateProfile(auth);
     const [email, setEmail] = useState("");
 
-    // const [token] = useToken(user);
+    const [token] = useToken(user);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -43,8 +44,8 @@ const Signup = () => {
         return <Loading></Loading>
     }
 
-    if (user) {
-        // navigate(from, { replace: true });
+    if (token) {
+        navigate(from, { replace: true });
     }
 
     const eventSubmit = async (event) => {
@@ -66,6 +67,7 @@ const Signup = () => {
             group: event.target.group.value,
             batch: event.target.batch.value
         }]
+        localStorage.removeItem('studentObj');
         localStorage.setItem('studentObj', JSON.stringify(studentObj));
 
         setErrorMessage("");

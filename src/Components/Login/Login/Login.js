@@ -6,6 +6,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../Hooks/useToken';
 import carPng from '../../../img/undraw_electric_car_b7hl.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 
@@ -26,7 +27,7 @@ const Login = () => {
 
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
-    // const [token] = useToken(user);
+    const [token] = useToken(user);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
@@ -34,7 +35,7 @@ const Login = () => {
         return <Loading></Loading>
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

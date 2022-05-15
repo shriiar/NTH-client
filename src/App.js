@@ -14,6 +14,7 @@ import SingleSubjectVideo from './Components/Pages/Single Subject Video/SingleSu
 import ManageUsersByClass from './Components/Pages/Manage Users By Class/ManageUsersByClass';
 import ManageInvididualClass from './Components/Pages/Manage Invididual Class/ManageInvididualClass';
 import SingleStudent from './Components/Pages/Single Student/SingleStudent';
+import Home from './Components/Shared/Home/Home';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path='/subjectVideos' element={<SingleSubjectVideos></SingleSubjectVideos>}></Route>
         <Route path='/singleSubjectVideo' element={<SingleSubjectVideo></SingleSubjectVideo>}></Route>
         <Route path='/addTasks' element={<AddTasks></AddTasks>}></Route>
+        <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>

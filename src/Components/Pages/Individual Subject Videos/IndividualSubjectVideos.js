@@ -16,7 +16,12 @@ const IndividualSubjectVideos = () => {
     // console.log(subjectName.subjectName, studentObj[0]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/subWAcc?className=${studentObj[0]?.className}&batch=${studentObj[0]?.batch}&group=${studentObj[0]?.group}&subject=${subjectName.subjectName}`)
+        fetch(`http://localhost:5000/subWAcc?className=${studentObj[0]?.className}&batch=${studentObj[0]?.batch}&group=${studentObj[0]?.group}&subject=${subjectName.subjectName}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setSubjectsVid(data))
     }, [])

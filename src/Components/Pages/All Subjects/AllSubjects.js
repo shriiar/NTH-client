@@ -7,20 +7,41 @@ import IndividualAllSubject from '../Individual All Subject/IndividualAllSubject
 const AllSubjects = () => {
 
     const [allSubjects, setAllSubjects] = useState([]);
-
-    let studentObj = [];
-    const storedStudentObj = localStorage.getItem('studentObj');
-    if (storedStudentObj) {
-        studentObj = JSON.parse(storedStudentObj);
-    }
+    const [student, setStudent] = useState([]);
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/subjects?className=${studentObj[0]?.className}&batch=${studentObj[0]?.batch}&group=${studentObj[0]?.group}`)
+        fetch(`http://localhost:5000/students?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setStudent(data))
+    }, [user])
+
+    console.log(student);
+    let studentObj = [{
+        className: student[0]?.className,
+        group: student[0]?.group,
+        batch: student[0]?.batch
+    }]
+    localStorage.removeItem('studentObj');
+    localStorage.setItem('studentObj', JSON.stringify(studentObj));
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/subjects?className=${studentObj[0]?.className}&batch=${studentObj[0]?.batch}&group=${studentObj[0]?.group}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setAllSubjects(data))
-    }, [])
+    }, [student])
 
-    console.log(allSubjects);
+    console.log(studentObj[0]?.className, studentObj[0]?.batch, studentObj[0]?.group);
     let subjects = allSubjects[0]?.subjects;
 
     console.log(subjects);

@@ -13,6 +13,9 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const userSignOut = () => {
         localStorage.removeItem("studentObj");
+        localStorage.removeItem("studentObj1");
+        localStorage.removeItem("singleClass");
+        localStorage.removeItem("accessToken");
         signOut(auth);
     }
     return (

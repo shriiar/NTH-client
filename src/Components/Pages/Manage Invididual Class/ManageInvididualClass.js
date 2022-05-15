@@ -13,7 +13,12 @@ const ManageInvididualClass = () => {
 
     const [allStudents, setAllStudents] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/students?className=${className}&batch=${batch}&group=${group}`)
+        fetch(`http://localhost:5000/students?className=${className}&batch=${batch}&group=${group}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setAllStudents(data))
     }, [])
