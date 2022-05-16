@@ -36,6 +36,7 @@ import AddResultAllClass from './Components/Pages/Add Result All Class/AddResult
 import AddResultIndividualClass from './Components/Pages/Add Result Individual Class/AddResultIndividualClass';
 import AddStudentResult from './Components/Pages/Add Student Result/AddStudentResult';
 import MyResults from './Components/Pages/My Results/MyResults';
+import AllSubjectsResults from './Components/Pages/All Subjects Results/AllSubjectsResults';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -111,6 +112,9 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/addStudentResult/:email' element={<RequireAdmin>
           <AddStudentResult></AddStudentResult>
+        </RequireAdmin>}></Route>
+        <Route path='/manageResultsAllSubjects' element={<RequireAdmin>
+          <AllSubjectsResults></AllSubjectsResults>
         </RequireAdmin>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
