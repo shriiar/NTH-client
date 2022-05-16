@@ -43,10 +43,16 @@ const AllSubjectsResults = () => {
 
     console.log(subjects);
 
+    const details = {
+        className: student[0]?.className,
+        batch: student[0]?.batch,
+        group: student[0]?.group
+    }
+
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
             {
-                allSubjects[0]?.subjects.map(subject => <IndividualSubjectREsults key={subject._id} subject={subject}></IndividualSubjectREsults>)
+                allSubjects[0]?.subjects.map(subject => <IndividualSubjectREsults key={subject._id} subject={subject} details={details}></IndividualSubjectREsults>)
             }
         </div>
     );

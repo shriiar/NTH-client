@@ -14,7 +14,7 @@ const AddStudentResult = () => {
     const [student, setStudent] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/students/ain?email=${email}`, {
+        fetch(`http://localhost:5000/students/admin?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

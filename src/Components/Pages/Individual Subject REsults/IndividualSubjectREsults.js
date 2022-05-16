@@ -2,16 +2,26 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const IndividualSubjectREsults = (props) => {
-    let subjectNameCapital = props.subject;
+    const { details } = props;
+    let subjectNameCapital = (props.subject).toLowerCase();
     const myArray = subjectNameCapital.split(" ");
     let subjectName = '';
     for (let i = 0; i < myArray.length; i++) {
         subjectName += myArray[i];
     }
+    console.log(details)
 
     const navigate = useNavigate();
     const goToSubject = () => {
-        navigate(`/individualSubject/${subjectName}`)
+        let resultObj = [{
+            className: details?.className,
+            batch: details?.batch,
+            group: details?.group,
+            subject: subjectNameCapital
+        }]
+        localStorage.removeItem('resultObj');
+        localStorage.setItem('resultObj', JSON.stringify(resultObj));
+        navigate(`/individualAllSubjectResults`)
     }
 
     return (
