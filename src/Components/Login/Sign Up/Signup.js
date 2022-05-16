@@ -62,14 +62,6 @@ const Signup = () => {
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
 
-        let studentObj = [{
-            className: event.target.class.value,
-            group: event.target.group.value,
-            batch: event.target.batch.value
-        }]
-        localStorage.removeItem('studentObj');
-        localStorage.setItem('studentObj', JSON.stringify(studentObj));
-
         setErrorMessage("");
 
         const student = {

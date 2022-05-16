@@ -26,6 +26,16 @@ import AddNotice from './Components/Pages/Add Notice/AddNotice';
 import ManageNotice from './Components/Pages/Manage Notice/ManageNotice';
 import ManageIndividualNotice from './Components/Pages/Manage Individual Notice/ManageIndividualNotice';
 import UpdateStudent from './Components/Pages/Update Student/UpdateStudent';
+import ExamsResults from './Components/Pages/Exams Results/ExamsResults';
+import SetExams from './Components/Pages/Set Exams/SetExams';
+import Exams from './Components/Pages/Exams/Exams';
+import MyQuiz from './Components/Pages/My Quiz/MyQuiz';
+import MAllExams from './Components/Pages/MAllExams/MAllExams';
+import ResultsForClass from './Components/Pages/Results For Class/ResultsForClass';
+import AddResultAllClass from './Components/Pages/Add Result All Class/AddResultAllClass';
+import AddResultIndividualClass from './Components/Pages/Add Result Individual Class/AddResultIndividualClass';
+import AddStudentResult from './Components/Pages/Add Student Result/AddStudentResult';
+import MyResults from './Components/Pages/My Results/MyResults';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -39,6 +49,12 @@ function App() {
         </RequireAuth>}></Route>
         <Route path='/myNotice' element={<RequireAuth>
           <MyNotice></MyNotice>
+        </RequireAuth>}></Route>
+        <Route path='/myQuiz' element={<RequireAuth>
+          <MyQuiz></MyQuiz>
+        </RequireAuth>}></Route>
+        <Route path='/myResults' element={<RequireAuth>
+          <MyResults></MyResults>
         </RequireAuth>}></Route>
         <Route path='/myIndividualNotice' element={<RequireAuth>
           <MyIndividualNotice></MyIndividualNotice>
@@ -71,6 +87,30 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/updateStudent' element={<RequireAdmin>
           <UpdateStudent></UpdateStudent>
+        </RequireAdmin>}></Route>
+        <Route path='/examsResults' element={<RequireAdmin>
+          <ExamsResults></ExamsResults>
+        </RequireAdmin>}></Route>
+        <Route path='/exams' element={<RequireAdmin>
+          <Exams></Exams>
+        </RequireAdmin>}></Route>
+        <Route path='/setExams' element={<RequireAdmin>
+          <SetExams></SetExams>
+        </RequireAdmin>}></Route>
+        <Route path='/ManageExams' element={<RequireAdmin>
+          <MAllExams></MAllExams>
+        </RequireAdmin>}></Route>
+        <Route path='/results' element={<RequireAdmin>
+          <ResultsForClass></ResultsForClass>
+        </RequireAdmin>}></Route>
+        <Route path='/addResultAllClass' element={<RequireAdmin>
+          <AddResultAllClass></AddResultAllClass>
+        </RequireAdmin>}></Route>
+        <Route path='/addResultIndividualClass' element={<RequireAdmin>
+          <AddResultIndividualClass></AddResultIndividualClass>
+        </RequireAdmin>}></Route>
+        <Route path='/addStudentResult/:email' element={<RequireAdmin>
+          <AddStudentResult></AddStudentResult>
         </RequireAdmin>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

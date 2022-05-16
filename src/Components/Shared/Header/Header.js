@@ -18,6 +18,7 @@ const Header = () => {
         localStorage.removeItem("studentObj1");
         localStorage.removeItem("singleClass");
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("updateStudent");
         signOut(auth);
     }
     return (
@@ -33,6 +34,8 @@ const Header = () => {
                         {
                             user && <>
                                 <CustomLink className="me-4 navLink" to="/subjects">My Subjects</CustomLink>
+                                <CustomLink className="me-4 navLink" to="/myQuiz">My Quiz</CustomLink>
+                                <CustomLink className="me-4 navLink" to="/myResults">My Results</CustomLink>
                                 <CustomLink className="me-4 navLink" to="/myNotice">My Notice</CustomLink>
                             </>
                         }

@@ -23,9 +23,14 @@ const AllSubjects = () => {
 
     console.log(student);
     let studentObj = [{
+        name: student[0]?.name,
+        email: student[0]?.email,
+        father: student[0]?.father,
+        mother: student[0]?.mother,
         className: student[0]?.className,
         group: student[0]?.group,
-        batch: student[0]?.batch
+        batch: student[0]?.batch,
+        id: student[0]?._id
     }]
     localStorage.removeItem('studentObj');
     localStorage.setItem('studentObj', JSON.stringify(studentObj));

@@ -36,7 +36,7 @@ const Login = () => {
     }
 
     if (token) {
-        navigate(from, { replace: true });
+        navigate('/subjects');
     }
 
     const EventSubmit = async (event) => {

@@ -15,6 +15,9 @@ const Manage = () => {
     const toNotice = () => {
         navigate('/Notice');
     }
+    const toExamsResults = () => {
+        navigate('/examsResults');
+    }
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
             <div className='p-3'>
@@ -23,11 +26,15 @@ const Manage = () => {
             </div>
             <div className='p-3'>
                 <h2>Task & Record</h2>
-                <Button onClick={() => toAddTask()}>Add Home Works</Button>
+                <Button onClick={() => toAddTask()}>Home Works</Button>
             </div>
             <div className='p-3'>
                 <h2>Notice</h2>
-                <Button onClick={() => toNotice()}>Add Notice</Button>
+                <Button onClick={() => toNotice()}>Notice</Button>
+            </div>
+            <div className='p-3'>
+                <h2>Exams & Results</h2>
+                <Button onClick={() => toExamsResults()}>Add Or Manage</Button>
             </div>
         </div>
     );
