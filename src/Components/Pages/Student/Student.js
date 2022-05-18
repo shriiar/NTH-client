@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Student = () => {
+const Student = ({student}) => {
     const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
     const formData = new FormData();
     const onFileChange = (e) => {
@@ -19,16 +19,14 @@ const Student = () => {
                     const img = result.data.url;
                     console.log(img);
 
-                    const studentObj = JSON.parse(localStorage.getItem('studentObj'));
-                    console.log(studentObj);
                     const updateProfile = {
-                        name: studentObj[0]?.name,
-                        father: studentObj[0]?.father,
-                        mother: studentObj[0]?.mother,
-                        className: studentObj[0]?.className,
-                        batch: studentObj[0]?.batch,
-                        group: studentObj[0]?.group,
-                        email: studentObj[0]?.email,
+                        name: student[0]?.name,
+                        father: student[0]?.father,
+                        mother: student[0]?.mother,
+                        className: student[0]?.className,
+                        batch: student[0]?.batch,
+                        group: student[0]?.group,
+                        email: student[0]?.email,
                         img: img
                     }
                     localStorage.removeItem('studentObj');

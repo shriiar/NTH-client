@@ -37,23 +37,41 @@ import IndividualSubjectAllResults from './Components/Pages/Individual Subject A
 import TaskRecords from './Components/Pages/Task Records/TaskRecords';
 import MyResultsSingleSubject from './Components/Pages/My Results Single Subject/MyResultsSingleSubject';
 import Student from './Components/Pages/Student/Student';
+import { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './firebase.init';
 
 function App() {
+
+  const [student, setStudent] = useState([]);
+  const [user] = useAuthState(auth);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/students?email=${user?.email}`, {
+      method: 'GET',
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => setStudent(data))
+  }, [user])
+
   return (
     <div className="App">
       <Header></Header>
       <Routes>
         <Route path='/subjects' element={<RequireAuth>
-          <AllSubjects></AllSubjects>
+          <AllSubjects student={student}></AllSubjects>
         </RequireAuth>}></Route>
         <Route path='/myNotice' element={<RequireAuth>
           <MyNotice></MyNotice>
         </RequireAuth>}></Route>
         <Route path='/myQuiz' element={<RequireAuth>
-          <MyQuiz></MyQuiz>
+          <MyQuiz student={student}></MyQuiz>
         </RequireAuth>}></Route>
         <Route path='/myResults/:subject' element={<RequireAuth>
-          <MyResultsSingleSubject></MyResultsSingleSubject>
+          <MyResultsSingleSubject student={student}></MyResultsSingleSubject>
         </RequireAuth>}></Route>
         <Route path='/myIndividualNotice' element={<RequireAuth>
           <MyIndividualNotice></MyIndividualNotice>
@@ -69,7 +87,7 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/manageIndividualClass/:className/:batch/:group' element={<ManageInvididualClass></ManageInvididualClass>}></Route>
         <Route path='/managesingleStudent' element={<SingleStudent></SingleStudent>}></Route>
-        <Route path='/individualSubject/:subjectName' element={<IndividualSubjectVideos></IndividualSubjectVideos>}></Route>
+        <Route path='/individualSubject/:subjectName' element={<IndividualSubjectVideos student={student}></IndividualSubjectVideos>}></Route>
         <Route path='/subjectVideos' element={<SingleSubjectVideos></SingleSubjectVideos>}></Route>
         <Route path='/singleSubjectVideo' element={<SingleSubjectVideo></SingleSubjectVideo>}></Route>
         <Route path='/taskRecords' element={<RequireAdmin>
