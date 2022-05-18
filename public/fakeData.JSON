@@ -1,0 +1,38 @@
+[
+  {
+    "className": "5",
+    "batch": "bangla",
+    "subjects": [
+      "bangla",
+      "english",
+      "science",
+      "mathematics",
+      "bgs",
+      "religion"
+    ]
+  },
+  {
+    "className": "5",
+    "batch": "english",
+    "subjects": [
+      "bangla",
+      "english",
+      "science",
+      "mathematics",
+      "bgs",
+      "religion"
+    ]
+  },
+  {
+    "className": "5",
+    "batch": "english",
+    "subjects": [
+      "bangla",
+      "english",
+      "science",
+      "mathematics",
+      "bgs",
+      "religion"
+    ]
+  }
+]

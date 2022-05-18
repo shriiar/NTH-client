@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import SingleAllSubjectResults from '../Single All Subject Results/SingleAllSubjectResults';
 
 const IndividualSubjectAllResults = () => {
-    let resultObj = [{}];
-    const storedResultObj = localStorage.getItem('resultObj');
-    if (storedResultObj) {
-        resultObj = JSON.parse(storedResultObj);
-    }
-    console.log(resultObj);
-
+    
+    const {className, batch, group, subject} = useParams()
     const [allResult, setAllResult] = useState([]);;
     useEffect(() => {
-        fetch(`http://localhost:5000/results/admin?className=${resultObj[0]?.className}&batch=${resultObj[0]?.batch}&group=${resultObj[0]?.group}&subject=${resultObj[0]?.subject}`, {
+        fetch(`http://localhost:5000/results/admin?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -13,15 +13,11 @@ const IndividualSubjectREsults = (props) => {
 
     const navigate = useNavigate();
     const goToSubject = () => {
-        let resultObj = [{
-            className: details?.className,
-            batch: details?.batch,
-            group: details?.group,
-            subject: subjectNameCapital
-        }]
-        localStorage.removeItem('resultObj');
-        localStorage.setItem('resultObj', JSON.stringify(resultObj));
-        navigate(`/individualAllSubjectResults`)
+        const className = details?.className;
+        const batch = details?.batch;
+        const group = details?.group;
+        const subject = subjectNameCapital;
+        navigate(`/individualAllSubjectResults/${className}/${batch}/${group}/${subjectName}`)
     }
 
     return (

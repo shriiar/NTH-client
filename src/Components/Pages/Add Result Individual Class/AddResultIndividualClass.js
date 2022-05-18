@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import AddIndividualResult from '../Add Individual Result/AddIndividualResult';
 
 const AddResultIndividualClass = () => {
 
-    let subjectObj = [];
-    const storedSubjectObj = localStorage.getItem('singleClass');
-    if (storedSubjectObj) {
-        subjectObj = JSON.parse(storedSubjectObj);
-    }
-
-    const { className, batch, group } = subjectObj[0];
+    const { className, batch, group } = useParams();
 
     const [allStudents, setAllStudents] = useState([]);
     useEffect(() => {

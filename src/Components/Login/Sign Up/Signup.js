@@ -45,7 +45,7 @@ const Signup = () => {
     }
 
     if (token) {
-        navigate(from, { replace: true });
+        navigate('/subjects');
     }
 
     const eventSubmit = async (event) => {

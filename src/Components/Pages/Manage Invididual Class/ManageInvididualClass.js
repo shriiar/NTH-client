@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import SingleStudent from '../Single Student/SingleStudent';
 
 const ManageInvididualClass = () => {
 
-    let subjectObj = [];
-    const storedSubjectObj = localStorage.getItem('singleClass');
-    if (storedSubjectObj) {
-        subjectObj = JSON.parse(storedSubjectObj);
-    }
+    const { className, batch, group } = useParams();
 
-    const { className, batch, group } = subjectObj[0];
+    console.log(className, batch, group);
 
     const [allStudents, setAllStudents] = useState([]);
     useEffect(() => {

@@ -13,8 +13,9 @@ const IndividualAllSubject = (props) => {
     }
 
     const navigate = useNavigate();
-    const goToSubject = () => {
-        navigate(`/individualSubject/${subjectName}`)
+    const goTo = (path) => {
+        console.log(path);
+        navigate(path);
     }
 
     return (
@@ -28,7 +29,14 @@ const IndividualAllSubject = (props) => {
                         </div>
                     </div>
                     <p className="card__description pb-2 fs-5">{subjectNameCapital}</p>
-                    <button onClick={() => goToSubject()}>Classes of {subjectNameCapital}</button>
+                    <div className="row">
+                        <div className="col-12">
+                            <button onClick={() => goTo(`/individualSubject/${subjectName}`)}className='mb-3'>Classes of {subjectNameCapital}</button>
+                        </div>
+                        <div className="col-12">
+                            <button onClick={() => goTo(`/myResults/${subjectName}`)}>All Results Of {subjectNameCapital}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

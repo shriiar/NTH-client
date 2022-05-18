@@ -1,25 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 const SingleStudent = (props) => {
+
     const navigate = useNavigate();
+    const [modalShow, setModalShow] = useState(false);
+
     const { allStudents, setAllStudents } = props;
-    const { name, father, mother, className, batch, group, email, _id } = props.student;
+    const { name, father, mother, className, batch, group, email, _id, img } = props.student;
     const updateStudent = () => {
-        let studentObj = [{
-            className: className,
-            group: group,
-            batch: batch,
-            name: name,
-            father: father,
-            mother: mother,
-            email: email,
-            id: _id
-        }]
-        localStorage.removeItem('updateStudent');
-        localStorage.setItem('updateStudent', JSON.stringify(studentObj));
-        navigate('/updateStudent');
+        navigate(`/updateStudent/${email}/${_id}`);
     }
 
     const deleteStudent = () => {
@@ -31,14 +23,44 @@ const SingleStudent = (props) => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     const remaining = allStudents.filter(item => item._id !== _id);
-                    toast('Successfully Deleted');
+                    toast.success('Successfully Deleted');
                     setAllStudents(remaining);
                 }
             })
     }
+    function MyVerticallyCenteredModal(props) {
+        return (
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Modal heading
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h4>Centered Modal</h4>
+                    <p>
+                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                        consectetur ac, vestibulum at eros.
+                    </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button onClick={() => deleteStudent()}>Delete {name}'s Profile</button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
     return (
         <div className='row'>
             <div className='col-6 card d-flex justify-content-center'>
+                {
+                    img && <img src={img} className='w-50 mx-auto my-2' alt="Student Image" />
+                }
                 <h1>{name}</h1>
                 <h2>Father's Name: {father}</h2>
                 <h2>Mothers's Name: {mother}</h2>
@@ -49,10 +71,17 @@ const SingleStudent = (props) => {
             </div>
             <div className='col-6 card d-flex justify-content-center'>
                 <button onClick={() => updateStudent()} className='mb-5'>Update {name}'s Profile</button>
-                <button onClick={() => deleteStudent()}>Delete {name}'s Profile</button>
+                <Button variant="primary" onClick={() => setModalShow(true)}>
+                    Delete {name}'s Profile
+                </Button>
             </div>
             <ToastContainer></ToastContainer>
-        </div>
+
+            <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+        </div >
     );
 };
 

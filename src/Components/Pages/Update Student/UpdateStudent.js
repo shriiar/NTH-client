@@ -1,14 +1,11 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import { useParams } from 'react-router-dom';
 
 const UpdateStudent = () => {
-    let studentObj = [{}];
-    const storedStudentObj = localStorage.getItem('updateStudent');
-    if (storedStudentObj) {
-        studentObj = JSON.parse(storedStudentObj);
-    }
+    const { email, id } = useParams();
     const EventSubmit = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -24,7 +21,7 @@ const UpdateStudent = () => {
         console.log(updatedUser);
 
         // send data to the server
-        fetch(`http://localhost:5000/students/${studentObj[0].email}`, {
+        fetch(`http://localhost:5000/students/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -34,6 +31,7 @@ const UpdateStudent = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                toast.success(`${name} your info is update`)
             })
     }
     return (

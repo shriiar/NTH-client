@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import IndividualSubjectREsults from '../Individual Subject REsults/IndividualSubjectREsults';
 
@@ -20,15 +21,11 @@ const AllSubjectsResults = () => {
     }, [user])
 
     console.log(student);
-    let studentObj = [{}];
-    const storedStudentObj = localStorage.getItem('singleClass');
-    if (storedStudentObj) {
-        studentObj = JSON.parse(storedStudentObj);
-    }
-    console.log(studentObj);
+
+    const { className, batch, group } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/subjects?className=${studentObj[0]?.className}&batch=${studentObj[0]?.batch}&group=${studentObj[0]?.group}`, {
+        fetch(`http://localhost:5000/subjects?className=${className}&batch=${batch}&group=${group}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -38,7 +35,6 @@ const AllSubjectsResults = () => {
             .then(data => setAllSubjects(data))
     }, [student])
 
-    console.log(studentObj[0]?.className, studentObj[0]?.batch, studentObj[0]?.group);
     let subjects = allSubjects[0]?.subjects;
 
     console.log(subjects);

@@ -5,30 +5,19 @@ import { useNavigate } from 'react-router-dom';
 const AddResultAllClass = () => {
     const navigate = useNavigate();
 
-    localStorage.removeItem("singleClass");
     const goToClass = (obj) => {
         let subjectObj = [{
             className: obj.className, batch: obj.batch, group: obj.group
         }];
         console.log(subjectObj);
-        const storedSubjectObj = localStorage.getItem('singleClass');
-        if (storedSubjectObj) {
-            subjectObj = JSON.parse(storedSubjectObj);
-        }
-        localStorage.setItem('singleClass', JSON.stringify(subjectObj));
-        navigate('/addResultIndividualClass');
+        navigate(`/addResultIndividualClass/${subjectObj[0].className}/${subjectObj[0].batch}/${subjectObj[0].group}`);
     }
     const goTomanage = (obj) => {
         let subjectObj = [{
             className: obj.className, batch: obj.batch, group: obj.group
         }];
         console.log(subjectObj);
-        const storedSubjectObj = localStorage.getItem('singleClass');
-        if (storedSubjectObj) {
-            subjectObj = JSON.parse(storedSubjectObj);
-        }
-        localStorage.setItem('singleClass', JSON.stringify(subjectObj));
-        navigate('/manageResultsAllSubjects');
+        navigate(`/manageResultsAllSubjects/${subjectObj[0].className}/${subjectObj[0].batch}/${subjectObj[0].group}`);
     }
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
@@ -41,7 +30,7 @@ const AddResultAllClass = () => {
                     <div className="col-12 mb-2">
                         <Button onClick={() => goTomanage({ className: "5", batch: "bangla", group: "under9" })}>Manage Result For Class 5</Button>
                     </div>
-                    
+
                 </div>
             </div>
             <div className='p-3'>

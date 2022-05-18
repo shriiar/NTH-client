@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomLink from '../Customlink/CustomLink';
 import './Header.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,13 +13,14 @@ import useAdmin from '../../../Hooks/useAdmin';
 const Header = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
+    const navigate = useNavigate();
     const userSignOut = () => {
         localStorage.removeItem("studentObj");
-        localStorage.removeItem("studentObj1");
         localStorage.removeItem("singleClass");
         localStorage.removeItem("accessToken");
         localStorage.removeItem("updateStudent");
         signOut(auth);
+        navigate('/login');
     }
     return (
         <Navbar collapseOnSelect expand="lg" bg="" className='nav-bg mb-4' sticky='top' variant="dark">
@@ -35,8 +36,8 @@ const Header = () => {
                             user && <>
                                 <CustomLink className="me-4 navLink" to="/subjects">My Subjects</CustomLink>
                                 <CustomLink className="me-4 navLink" to="/myQuiz">My Quiz</CustomLink>
-                                <CustomLink className="me-4 navLink" to="/myResults">My Results</CustomLink>
                                 <CustomLink className="me-4 navLink" to="/myNotice">My Notice</CustomLink>
+                                {/* <CustomLink className="me-4 navLink" to="/bkashIntegration">Payment</CustomLink> */}
                             </>
                         }
                         {
@@ -48,7 +49,7 @@ const Header = () => {
                                 <CustomLink className="me-4 navLink" to="/login">Login</CustomLink></>
                                 :
                                 <>
-                                    <CustomLink className="me-4 navLink" to="/user">{user?.displayName}</CustomLink>
+                                    <CustomLink className="me-4 navLink" to="/student">{user?.displayName}</CustomLink>
                                     <button className="navLink border-0 text-center bg-transparent text-start p-0" onClick={userSignOut}>Sign Out</button></>
                         }
                     </Nav>

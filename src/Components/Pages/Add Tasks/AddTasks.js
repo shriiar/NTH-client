@@ -1,11 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import addImg from '../../../img/undraw_Add_files_re_v09g.png';
 import './AddTasks.css'
 
 const AddTasks = () => {
-
 
     const EventSubmit = (event) => {
         event.preventDefault();
@@ -35,7 +34,7 @@ const AddTasks = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.success) {
-                    toast(`Topic Has Been Added`)
+                    toast.success(`Topic Has Been Added`)
                 }
                 else {
                     toast.error(`This Video already exist`);
@@ -94,7 +93,6 @@ const AddTasks = () => {
                                 </select>
                             </div>
                             <input className='form-submit button-33 w-75 mx-auto mt-4' type="submit" required value="Submit" />
-                            <ToastContainer></ToastContainer>
                         </form>
                     </div>
                     <ToastContainer />

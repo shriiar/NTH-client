@@ -5,18 +5,11 @@ import { useNavigate } from 'react-router-dom';
 const ManageUsersByClass = () => {
     const navigate = useNavigate();
 
-    localStorage.removeItem("singleClass");
     const goToClass = (obj) => {
         let subjectObj = [{
             className: obj.className, batch: obj.batch, group: obj.group
         }];
-        console.log(subjectObj);
-        const storedSubjectObj = localStorage.getItem('singleClass');
-        if (storedSubjectObj) {
-            subjectObj = JSON.parse(storedSubjectObj);
-        }
-        localStorage.setItem('singleClass', JSON.stringify(subjectObj));
-        navigate('/manageIndividualClass');
+        navigate(`/manageIndividualClass/${subjectObj[0]?.className}/${subjectObj[0]?.batch}/${subjectObj[0]?.group}`);
     }
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
