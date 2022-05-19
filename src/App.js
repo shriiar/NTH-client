@@ -40,6 +40,10 @@ import Student from './Components/Pages/Student/Student';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
+import ManageTasks from './Components/Pages/Manage Tasks/ManageTasks';
+import ManageIndividualClassByTask from './Components/Pages/Manage Individual Class By Task/ManageIndividualClassByTask';
+import SingleAllSubjectResults from './Components/Pages/Single All Subject Results/SingleAllSubjectResults';
+import SingleSubjectTasks from './Components/Pages/Single Subject Tasks/SingleSubjectTasks';
 
 function App() {
 
@@ -62,10 +66,10 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/subjects' element={<RequireAuth>
-          <AllSubjects student={student}></AllSubjects>
+          <AllSubjects></AllSubjects>
         </RequireAuth>}></Route>
         <Route path='/myNotice' element={<RequireAuth>
-          <MyNotice></MyNotice>
+          <MyNotice student={student}></MyNotice>
         </RequireAuth>}></Route>
         <Route path='/myQuiz' element={<RequireAuth>
           <MyQuiz student={student}></MyQuiz>
@@ -77,7 +81,7 @@ function App() {
           <MyIndividualNotice></MyIndividualNotice>
         </RequireAuth>}></Route>
         <Route path='/student' element={<RequireAuth>
-          <Student></Student>
+          <Student student={student}></Student>
         </RequireAuth>}></Route>
         <Route path='/manage' element={<RequireAdmin>
           <Manage></Manage>
@@ -95,6 +99,15 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/addTasks' element={<RequireAdmin>
           <AddTasks></AddTasks>
+        </RequireAdmin>}></Route>
+        <Route path='/manageTask' element={<RequireAdmin>
+          <ManageTasks></ManageTasks>
+        </RequireAdmin>}></Route>
+        <Route path='/manageIndividualClassByTask/:className/:batch/:group' element={<RequireAdmin>
+          <ManageIndividualClassByTask></ManageIndividualClassByTask>
+        </RequireAdmin>}></Route>
+        <Route path='/subjectTasks/:className/:batch/:group/:subject' element={<RequireAdmin>
+          <SingleSubjectTasks></SingleSubjectTasks>
         </RequireAdmin>}></Route>
         <Route path='/Notice' element={<RequireAdmin>
           <Notice></Notice>

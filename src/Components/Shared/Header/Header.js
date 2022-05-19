@@ -15,10 +15,8 @@ const Header = () => {
     const [admin] = useAdmin(user);
     const navigate = useNavigate();
     const userSignOut = () => {
-        localStorage.removeItem("studentObj");
-        localStorage.removeItem("singleClass");
         localStorage.removeItem("accessToken");
-        localStorage.removeItem("updateStudent");
+        localStorage.removeItem("singleSubjectVideo");
         signOut(auth);
         navigate('/login');
     }

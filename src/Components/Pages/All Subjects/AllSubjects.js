@@ -4,9 +4,22 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import IndividualAllSubject from '../Individual All Subject/IndividualAllSubject';
 
-const AllSubjects = ({student}) => {
+const AllSubjects = () => {
 
     const [allSubjects, setAllSubjects] = useState([]);
+    const [student, setStudent] = useState([]);
+    const [user] = useAuthState(auth);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/students?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setStudent(data))
+    }, [user])
 
     console.log(student);
 

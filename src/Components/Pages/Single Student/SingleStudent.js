@@ -59,7 +59,7 @@ const SingleStudent = (props) => {
         <div className='row'>
             <div className='col-6 card d-flex justify-content-center'>
                 {
-                    img && <img src={img} className='w-50 mx-auto my-2' alt="Student Image" />
+                    img && <img src={img} className='w-25 mx-auto my-2' alt="Student Image" />
                 }
                 <h1>{name}</h1>
                 <h2>Father's Name: {father}</h2>

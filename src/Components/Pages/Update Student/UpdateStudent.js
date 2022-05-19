@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import addImg from '../../../img/undraw_Add_files_re_v09g.png';
 import { useParams } from 'react-router-dom';
 
 const UpdateStudent = () => {
+
     const { email, id } = useParams();
+    const [student, setStudent] = useState([]);
+
+    // Getting User Data
+    useEffect(() => {
+        fetch(`http://localhost:5000/students?email=${email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setStudent(data))
+    }, [])
+
+    console.log(student);
+
     const EventSubmit = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -17,10 +34,10 @@ const UpdateStudent = () => {
 
         // console.log(name, father, mother, className, batch, group);
 
-        const updatedUser = { name, father, mother, className, batch, group };
+        const updatedUser = { name, father, mother, className, batch, group, img: student[0]?.img };
         console.log(updatedUser);
 
-        // send data to the server
+        // Send updated data to the server for student info update
         fetch(`http://localhost:5000/students/${email}`, {
             method: 'PUT',
             headers: {

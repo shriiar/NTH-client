@@ -6,6 +6,7 @@ const Student = ({student}) => {
     const onFileChange = (e) => {
         const image = e.target.files[0];
         console.log(image);
+        console.log(student);
         formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
         fetch(url, {
@@ -29,8 +30,6 @@ const Student = ({student}) => {
                         email: student[0]?.email,
                         img: img
                     }
-                    localStorage.removeItem('studentObj');
-                    localStorage.setItem('studentObj', JSON.stringify(updateProfile));
                     fetch(`http://localhost:5000/students/${updateProfile.email}`, {
                         method: 'PUT',
                         headers: {

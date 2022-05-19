@@ -2,12 +2,13 @@ import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 
 const MyQuiz = ({student}) => {
+    console.log(student);
     const [exam, setExam] = useState([]);
     const [date, setDate] = useState(new Date());
     const formattedDate = format(date, 'PP');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/exams?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&date=${formattedDate}`, {
+        fetch(`http://localhost:5000/exams?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&date=${formattedDate}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

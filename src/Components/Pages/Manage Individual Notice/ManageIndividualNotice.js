@@ -14,6 +14,7 @@ const ManageIndividualNotice = (props) => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (data.deletedCount > 0) {
                     const remaining = notice.filter(item => item._id !== _id);
                     toast.success('Successfully Deleted');
