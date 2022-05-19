@@ -14,7 +14,7 @@ const SingleStudentPayment = (props) => {
     let myArray = formattedDate.split(' ');
     console.log(myArray);
 
-    let newDate = myArray[1][0];
+    let newDate = myArray[1][0], payYear = parseInt(myArray[2]);
     if (myArray[1].length > 2) {
         newDate += myArray[1][1];
     }
@@ -26,10 +26,10 @@ const SingleStudentPayment = (props) => {
     const paid = (paid) => {
         let updatedUser;
         if (paid === 'paid') {
-            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: true, lastPaid: formattedDate, due: null, payMonth: null };
+            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: true, lastPaid: formattedDate, due: null, payMonth: null, payYear: payYear };
         }
         else {
-            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: false, lastPaid: null, due: null, payMonth: myArray[1] };
+            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: false, lastPaid: null, due: null, payMonth: myArray[0], payYear: payYear };
         }
         console.log(updatedUser);
         fetch(`http://localhost:5000/students/${email}`, {

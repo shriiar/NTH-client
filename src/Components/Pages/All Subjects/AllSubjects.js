@@ -18,9 +18,9 @@ const AllSubjects = () => {
     const navigate = useNavigate();
 
     let myArray = formattedDate.split(' ');
-    // console.log(myArray);
+    console.log(myArray);
 
-    let newDate = myArray[1][0], newMonth = myArray[0];
+    let newDate = myArray[1][0], newMonth = myArray[0], newYear = parseInt(myArray[2]);
     if (myArray[1].length > 2) {
         newDate += myArray[1][1];
     }
@@ -38,14 +38,14 @@ const AllSubjects = () => {
             .then(data => setStudent(data))
     }, [user])
 
-    if (student[0]?.due === 2 && ((newDate >= 15 && student[0]?.payMonth === myArray[1])) || (student[0]?.payMonth !== myArray[1])) {
+    if (student[0]?.due === 2 && ((newDate >= 15 && student[0]?.payMonth === myArray[0]) || (student[0]?.payMonth !== myArray[0]) || (student[0]?.payYear !== newYear))) {
         signOut(auth);
         navigate('/login');
     }
 
     if ((student[0]?.paid === false && student[0]?.due === null && newDate >= 1 && student[0]?.role !== 'admin')) {
         const updatedUser =
-            { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: false, lastPaid: student[0]?.lastPaid, due: 1, payMonth: myArray[0] }
+            { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: false, lastPaid: student[0]?.lastPaid, due: 1, payMonth: myArray[0], payYear: newYear }
 
         console.log(updatedUser);
 
@@ -65,7 +65,7 @@ const AllSubjects = () => {
 
     if (student[0]?.paid === false && student[0]?.due === 1 && student[0]?.payMonth !== myArray[0] && newDate >= 1) {
         const updatedUser =
-            { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0] }
+            { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0], payYear: newYear }
 
         console.log(updatedUser);
 

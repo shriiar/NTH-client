@@ -50,7 +50,8 @@ const Student = () => {
                         paid: student[0]?.paid,
                         lastPaid: student[0]?.lastPaid,
                         due: student[0]?.due,
-                        payMonth: student[0]?.payMonth
+                        payMonth: student[0]?.payMonth,
+                        payYear: student[0]?.payYear
                     }
                     fetch(`http://localhost:5000/students/${updateProfile.email}`, {
                         method: 'PUT',

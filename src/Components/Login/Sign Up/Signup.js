@@ -9,6 +9,7 @@ import Loading from '../../Shared/Loading/Loading';
 import signUpSvg from '../../../img/undraw_Login_re_4vu2.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import useToken from '../../../Hooks/useToken';
+import { format } from 'date-fns';
 
 const Signup = () => {
 
@@ -23,6 +24,13 @@ const Signup = () => {
     const confirmPasswordRef = useRef("");
     const [errorMessage, setErrorMessage] = useState("");
     const [agree, setAgree] = useState(false);
+    const [date, setDate] = useState(new Date());
+    const formattedDate = format(date, 'PP');
+
+    let myArray = formattedDate.split(' ');
+    console.log(myArray);
+
+    let newYear = parseInt(myArray[2]);
 
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
@@ -77,7 +85,8 @@ const Signup = () => {
             paid: false,
             lastPaid: null,
             due: null,
-            payMonth: null
+            payMonth: null,
+            payYear: newYear
         }
 
         fetch('http://localhost:5000/students', {
