@@ -7,7 +7,7 @@ const IndividualAllSubject = (props) => {
 
     const { student } = props;
 
-    console.log(student);
+    // console.log(student);
 
     const className = student[0].className;
     const batch = student[0].batch;
@@ -22,7 +22,7 @@ const IndividualAllSubject = (props) => {
 
     const navigate = useNavigate();
     const goTo = (path) => {
-        console.log(path);
+        // console.log(path);
         navigate(path);
     }
 

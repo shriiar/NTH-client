@@ -16,6 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [email, setEmail] = useState('');
+    const [student, setStudent] = useState([]);
 
 
     let from = location.state?.from?.pathname || "/";
@@ -27,6 +28,18 @@ const Login = () => {
 
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/students?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setStudent(data))
+    }, [user])
+
+
     const [token] = useToken(user);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
@@ -36,7 +49,9 @@ const Login = () => {
     }
 
     if (token) {
-        navigate('/subjects');
+        if (student[0]?.due !== 2) {
+            navigate('/subjects');
+        }
     }
 
     const EventSubmit = async (event) => {

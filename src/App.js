@@ -46,6 +46,7 @@ import SingleAllSubjectResults from './Components/Pages/Single All Subject Resul
 import SingleSubjectTasks from './Components/Pages/Single Subject Tasks/SingleSubjectTasks';
 import CheckPayment from './Components/Pages/Check Payment/CheckPayment';
 import ManageIndividualClassPayment from './Components/Pages/Manage Individual Class Payment/ManageIndividualClassPayment';
+import DueMessage from './Components/Shared/Due Message/DueMessage';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
+      <DueMessage></DueMessage>
       <Routes>
         <Route path='/subjects' element={<RequireAuth>
           <AllSubjects></AllSubjects>
@@ -83,7 +85,7 @@ function App() {
           <MyIndividualNotice></MyIndividualNotice>
         </RequireAuth>}></Route>
         <Route path='/student' element={<RequireAuth>
-          <Student student={student}></Student>
+          <Student></Student>
         </RequireAuth>}></Route>
         <Route path='/manage' element={<RequireAdmin>
           <Manage></Manage>

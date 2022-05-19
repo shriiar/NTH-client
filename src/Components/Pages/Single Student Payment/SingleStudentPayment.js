@@ -1,21 +1,35 @@
 import { format } from 'date-fns';
+import fi from 'date-fns/esm/locale/fi/index.js';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 
 const SingleStudentPayment = (props) => {
     const { allStudents, setAllStudents } = props;
     const { student } = props;
+    console.log(student);
     const { name, father, mother, className, batch, group, email, img } = student;
     const [date, setDate] = useState(new Date());
     const formattedDate = format(date, 'PP');
 
+    let myArray = formattedDate.split(' ');
+    console.log(myArray);
+
+    let newDate = myArray[1][0];
+    if (myArray[1].length > 2) {
+        newDate += myArray[1][1];
+    }
+
+    console.log(newDate);
+
+    console.log(formattedDate);
+
     const paid = (paid) => {
         let updatedUser;
         if (paid === 'paid') {
-            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: true, lastPaid: formattedDate };
+            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: true, lastPaid: formattedDate, due: null, payMonth: null };
         }
         else {
-            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: false, lastPaid: null };
+            updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: false, lastPaid: null, due: null, payMonth: myArray[1] };
         }
         console.log(updatedUser);
         fetch(`http://localhost:5000/students/${email}`, {
@@ -29,13 +43,15 @@ const SingleStudentPayment = (props) => {
             .then(data => {
                 console.log(data);
                 toast.success(`Payment Updated`);
-                for(let i = 0; i < allStudents.length; i++){
-                    if(allStudents[i]._id === student._id){
-                        allStudents[i].paid = updatedUser.paid;
-                        allStudents[i].paid = updatedUser.paid;
+
+                fetch(`http://localhost:5000/students?className=${className}&batch=${batch}&group=${group}`, {
+                    method: 'GET',
+                    headers: {
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
-                }
-                setAllStudents(allStudents);
+                })
+                    .then(res => res.json())
+                    .then(data => setAllStudents(data))
             })
     }
     return (
@@ -44,23 +60,21 @@ const SingleStudentPayment = (props) => {
             <h2>Class: {student.className}</h2>
             <h2>Batch: {student.batch}</h2>
             <h3>Group: {student.group}</h3>
-            <h2>
-                {
-                    student.paid ? <>
+            {
+                student.paid ? <>
+                    <h2>
+                        Paid: <span className='text-success'>Paid</span>
+                    </h2>
+                    <button onClick={() => paid('not paid')}>Not Paid</button>
+                </>
+                    :
+                    <>
                         <h2>
-                            Paid: <span className='text-success'>Paid</span>
+                            Paid: <span className='text-danger'>Not Paid</span>
                         </h2>
-                        <button onClick={() => paid('not paid')}>Not Paid</button>
+                        <button onClick={() => paid('paid')}>Paid</button>
                     </>
-                        :
-                        <>
-                            <h2>
-                                Paid: <span className='text-danger'>Not Paid</span>
-                            </h2>
-                            <button onClick={() => paid('paid')}>Paid</button>
-                        </>
-                }
-            </h2>
+            }
             <ToastContainer></ToastContainer>
         </div>
     );

@@ -74,7 +74,10 @@ const Signup = () => {
             group: group,
             email: email,
             password: password,
-            paid: false
+            paid: false,
+            lastPaid: null,
+            due: null,
+            payMonth: null
         }
 
         fetch('http://localhost:5000/students', {

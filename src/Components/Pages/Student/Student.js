@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
-const Student = ({student}) => {
+const Student = () => {
+
+    const [student, setStudent] = useState([]);
+    const [user] = useAuthState(auth);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/students?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setStudent(data))
+    }, [user])
+
     const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
     const formData = new FormData();
+    console.log(student);
     const onFileChange = (e) => {
         const image = e.target.files[0];
         console.log(image);
@@ -28,7 +46,11 @@ const Student = ({student}) => {
                         batch: student[0]?.batch,
                         group: student[0]?.group,
                         email: student[0]?.email,
-                        img: img
+                        img: img,
+                        paid: student[0]?.paid,
+                        lastPaid: student[0]?.lastPaid,
+                        due: student[0]?.due,
+                        payMonth: student[0]?.payMonth
                     }
                     fetch(`http://localhost:5000/students/${updateProfile.email}`, {
                         method: 'PUT',
