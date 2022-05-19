@@ -34,7 +34,7 @@ const UpdateStudent = () => {
 
         // console.log(name, father, mother, className, batch, group);
 
-        const updatedUser = { name, father, mother, className, batch, group, img: student[0]?.img };
+        const updatedUser = { name, father, mother, className, batch, group, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid };
         console.log(updatedUser);
 
         // Send updated data to the server for student info update

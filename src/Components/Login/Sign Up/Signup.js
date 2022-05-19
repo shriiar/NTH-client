@@ -73,7 +73,8 @@ const Signup = () => {
             batch: batch,
             group: group,
             email: email,
-            password: password
+            password: password,
+            paid: false
         }
 
         fetch('http://localhost:5000/students', {

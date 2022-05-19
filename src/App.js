@@ -44,6 +44,8 @@ import ManageTasks from './Components/Pages/Manage Tasks/ManageTasks';
 import ManageIndividualClassByTask from './Components/Pages/Manage Individual Class By Task/ManageIndividualClassByTask';
 import SingleAllSubjectResults from './Components/Pages/Single All Subject Results/SingleAllSubjectResults';
 import SingleSubjectTasks from './Components/Pages/Single Subject Tasks/SingleSubjectTasks';
+import CheckPayment from './Components/Pages/Check Payment/CheckPayment';
+import ManageIndividualClassPayment from './Components/Pages/Manage Individual Class Payment/ManageIndividualClassPayment';
 
 function App() {
 
@@ -153,6 +155,12 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/individualAllSubjectResults/:className/:batch/:group/:subject' element={<RequireAdmin>
           <IndividualSubjectAllResults></IndividualSubjectAllResults>
+        </RequireAdmin>}></Route>
+        <Route path='/checkPayment' element={<RequireAdmin>
+          <CheckPayment></CheckPayment>
+        </RequireAdmin>}></Route>
+        <Route path='/manageIndividualClassPayment/:className/:batch/:group' element={<RequireAdmin>
+          <ManageIndividualClassPayment></ManageIndividualClassPayment>
         </RequireAdmin>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>

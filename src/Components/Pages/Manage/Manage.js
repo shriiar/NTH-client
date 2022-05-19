@@ -27,6 +27,10 @@ const Manage = () => {
                 <h2>Exams & Results</h2>
                 <Button onClick={() => goTo('/examsResults')}>Add Or Manage</Button>
             </div>
+            <div className='p-3'>
+                <h2>Payment</h2>
+                <Button onClick={() => goTo('/checkPayment')}>Manage Payments</Button>
+            </div>
         </div>
     );
 };
