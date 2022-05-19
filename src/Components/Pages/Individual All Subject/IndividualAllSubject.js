@@ -5,6 +5,14 @@ import './IndividualAllSubject.css';
 
 const IndividualAllSubject = (props) => {
 
+    const { student } = props;
+
+    console.log(student);
+
+    const className = student[0].className;
+    const batch = student[0].batch;
+    const group = student[0].group;
+
     let subjectNameCapital = props.subject;
     const myArray = subjectNameCapital.split(" ");
     let subjectName = '';
@@ -31,7 +39,7 @@ const IndividualAllSubject = (props) => {
                     <p className="card__description pb-2 fs-5">{subjectNameCapital}</p>
                     <div className="row">
                         <div className="col-12">
-                            <button onClick={() => goTo(`/individualSubject/${subjectName}`)}className='mb-3'>Classes of {subjectNameCapital}</button>
+                            <button onClick={() => goTo(`/individualSubject/${className}/${batch}/${group}/${subjectName}`)} className='mb-3'>Classes of {subjectNameCapital}</button>
                         </div>
                         <div className="col-12">
                             <button onClick={() => goTo(`/myResults/${subjectName}`)}>All Results Of {subjectNameCapital}</button>

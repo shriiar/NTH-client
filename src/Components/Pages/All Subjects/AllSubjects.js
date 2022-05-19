@@ -9,18 +9,9 @@ const AllSubjects = ({student}) => {
     const [allSubjects, setAllSubjects] = useState([]);
 
     console.log(student);
-    let studentObj = [{
-        name: student[0]?.name,
-        email: student[0]?.email,
-        father: student[0]?.father,
-        mother: student[0]?.mother,
-        className: student[0]?.className,
-        group: student[0]?.group,
-        batch: student[0]?.batch,
-        id: student[0]?._id
-    }]
+
     useEffect(() => {
-        fetch(`http://localhost:5000/subjects?className=${studentObj[0]?.className}&batch=${studentObj[0]?.batch}&group=${studentObj[0]?.group}`, {
+        fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +21,7 @@ const AllSubjects = ({student}) => {
             .then(data => setAllSubjects(data))
     }, [student])
 
-    console.log(studentObj[0]?.className, studentObj[0]?.batch, studentObj[0]?.group);
+    console.log(student[0]?.className, student[0]?.batch, student[0]?.group);
     let subjects = allSubjects[0]?.subjects;
 
     console.log(subjects);
@@ -38,7 +29,7 @@ const AllSubjects = ({student}) => {
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
             {
-                allSubjects[0]?.subjects.map(subject => <IndividualAllSubject key={subject._id} subject={subject}></IndividualAllSubject>)
+                allSubjects[0]?.subjects.map(subject => <IndividualAllSubject key={subject._id} subject={subject} student={student}></IndividualAllSubject>)
             }
         </div>
     );

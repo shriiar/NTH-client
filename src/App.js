@@ -87,7 +87,7 @@ function App() {
         </RequireAdmin>}></Route>
         <Route path='/manageIndividualClass/:className/:batch/:group' element={<ManageInvididualClass></ManageInvididualClass>}></Route>
         <Route path='/managesingleStudent' element={<SingleStudent></SingleStudent>}></Route>
-        <Route path='/individualSubject/:subjectName' element={<IndividualSubjectVideos student={student}></IndividualSubjectVideos>}></Route>
+        <Route path='/individualSubject/:className/:batch/:group/:subject' element={<IndividualSubjectVideos student={student}></IndividualSubjectVideos>}></Route>
         <Route path='/subjectVideos' element={<SingleSubjectVideos></SingleSubjectVideos>}></Route>
         <Route path='/singleSubjectVideo' element={<SingleSubjectVideo></SingleSubjectVideo>}></Route>
         <Route path='/taskRecords' element={<RequireAdmin>

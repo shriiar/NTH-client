@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SingleSubjectVideos from '../Single Subject Videos/SingleSubjectVideos';
 
-const IndividualSubjectVideos = ({student}) => {
+const IndividualSubjectVideos = ({ student }) => {
 
-    const subjectName = useParams();
+    const { className, batch, group, subject } = useParams();
+
+    console.log(className, batch, group, subject);
+
     const [subjectsVid, setSubjectsVid] = useState([]);
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/subWAcc?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&subject=${student?.subjectName}`, {
+        fetch(`http://localhost:5000/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

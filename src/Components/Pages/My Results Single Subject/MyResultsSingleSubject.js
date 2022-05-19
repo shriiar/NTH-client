@@ -6,10 +6,10 @@ const MyResultsSingleSubject = ({ student }) => {
     const [result, setResult] = useState([]);
 
     const { subject } = useParams();
-    console.log(subject);
+    console.log(student, subject);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/results?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&email=${student?.email}&subject=${subject}`, {
+        fetch(`http://localhost:5000/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
