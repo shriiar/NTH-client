@@ -36,6 +36,7 @@ const Student = () => {
     const onChange = e => {
         setImage(e.target.files[0]);
         setFilename(e.target.files[0].name);
+        e.target.value = null;
     };
 
     const onSubmit = async e => {
@@ -72,6 +73,8 @@ const Student = () => {
                             const img = result.data.url;
                             console.log(img);
                             toast.success('Image uploaded');
+                            setFilename('Choose File');
+                            setImage({});
 
                             const updateProfile = {
                                 name: student[0]?.name,
@@ -111,6 +114,8 @@ const Student = () => {
         });
     };
 
+    console.log(filename);
+
     return (
         <div className='w-50 mx-auto'>
             <Fragment>
@@ -121,8 +126,12 @@ const Student = () => {
                             type='file'
                             className='custom-file-input'
                             id='customFile'
+                            name='imgFile'
                             onChange={onChange}
                         />
+                        <label className='custom-file-label' htmlFor='customFile'>
+                            {filename}
+                        </label>
                     </div>
 
                     <Progress percentage={uploadPercentage} />
