@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Message from './Message';
 import Progress from './Progress';
@@ -10,7 +11,7 @@ const Student = () => {
     const [student, setStudent] = useState([]);
     const [user] = useAuthState(auth);
 
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState({});
     const [filename, setFilename] = useState('Choose File');
     const [uploadedFile, setUploadedFile] = useState({});
     const [message, setMessage] = useState('');
@@ -28,7 +29,9 @@ const Student = () => {
     }, [user])
 
     const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
-    console.log(student);
+    // console.log(student);
+
+    // console.log(image);
 
     const onChange = e => {
         setImage(e.target.files[0]);
@@ -37,13 +40,13 @@ const Student = () => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        const formData = new FormData();
+        let formData = new FormData();
         formData.append('image', image);
 
-        console.log(image);
+        console.log(image.name);
 
-        if (!image) {
-            setFilename('');
+        if (image.name === undefined) {
+            toast.error('Please upload your image');
             return;
         }
 
@@ -68,15 +71,7 @@ const Student = () => {
                         if (result.success) {
                             const img = result.data.url;
                             console.log(img);
-
-                            setTimeout(() => setUploadPercentage(0), 10000);
-                            const { fileName, filePath } = res.data;
-                            setUploadedFile({ fileName, filePath });
-                            setMessage('File Uploaded');
-                            setFilename('');
-                            setImage('');
-                            formData = {};
-
+                            toast.success('Image uploaded');
 
                             const updateProfile = {
                                 name: student[0]?.name,
@@ -103,16 +98,21 @@ const Student = () => {
                                 .then(res => res.json())
                                 .then(data => {
                                     console.log(data);
+                                    console.log(updateProfile);
+
+                                    setTimeout(() => setUploadPercentage(0), 10000);
+                                    const { fileName, filePath } = res.data;
+                                    setUploadedFile({ fileName, filePath });
+                                    setMessage('File Uploaded');
                                 })
                         }
                     })
             }
         });
-        e.target.reset();
     };
 
     return (
-        <div>
+        <div className='w-50 mx-auto'>
             <Fragment>
                 {message ? <Message msg={message} /> : null}
                 <form onSubmit={onSubmit}>
@@ -123,9 +123,6 @@ const Student = () => {
                             id='customFile'
                             onChange={onChange}
                         />
-                        <label className='custom-file-label' htmlFor='customFile'>
-                            {filename}
-                        </label>
                     </div>
 
                     <Progress percentage={uploadPercentage} />
@@ -137,6 +134,7 @@ const Student = () => {
                     />
                 </form>
             </Fragment>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
