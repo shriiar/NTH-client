@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ResultsForClass = () => {
     const navigate = useNavigate();
 
-    const toExams = () => {
+    const goTo = () => {
         navigate('/addResultAllClass');
     }
     const toResults = () => {
@@ -13,14 +13,28 @@ const ResultsForClass = () => {
     }
     return (
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2'>
-            <div className='p-3'>
-                <h2>Add Result</h2>
-                <Button onClick={() => toExams()}>Add</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Manage Results</h2>
-                <Button onClick={() => toResults()}>Manage</Button>
-            </div>
+            <section class="hero-section">
+                <div class="card-grid-TaskRecords">
+                    <div class="card">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Add Notice</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/addResultAllClass')}>Add</Button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Manage Notice</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/manageResults')}>Manage</Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

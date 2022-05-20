@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './Manage.css'
 
 const Manage = () => {
 
@@ -10,27 +11,56 @@ const Manage = () => {
         navigate(path);
     }
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-            <div className='p-3'>
-                <h2>All users</h2>
-                <Button onClick={() => goTo('/manageUsers')}>Manage Users</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Add / Manage Task</h2>
-                <Button onClick={() => goTo('/taskRecords')}>Task</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Notice</h2>
-                <Button onClick={() => goTo('/Notice')}>Notice</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Exams & Results</h2>
-                <Button onClick={() => goTo('/examsResults')}>Add Or Manage</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Payment</h2>
-                <Button onClick={() => goTo('/checkPayment')}>Manage Payments</Button>
-            </div>
+        <div>
+            <section class="hero-section">
+                <div class="card-grid-Manage">
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Manage All Students</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/manageUsers')}>Manage</Button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">All Tasks</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/taskRecords')}>Add or Manage</Button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">All Notices</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/Notice')}>Add or Manage</Button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Exams & Results</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/examsResults')}>Add or Manage</Button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">All Payments</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/checkPayment')}>Manage Users</Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

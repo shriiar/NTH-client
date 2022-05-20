@@ -57,7 +57,7 @@ const SingleStudent = (props) => {
     }
     return (
         <div className='row'>
-            <div className='col-6 card d-flex justify-content-center'>
+            <div className='col-6 d-flex flex-column justify-content-center'>
                 {
                     img && <img src={img} className='w-25 mx-auto my-2' alt="Student Image" />
                 }
@@ -69,7 +69,7 @@ const SingleStudent = (props) => {
                 <h3>Group: {group}</h3>
                 <h3>{email}</h3>
             </div>
-            <div className='col-6 card d-flex justify-content-center'>
+            <div className='col-6 d-flex flex-column justify-content-center'>
                 <button onClick={() => updateStudent()} className='mb-5'>Update {name}'s Profile</button>
                 <Button variant="primary" onClick={() => setModalShow(true)}>
                     Delete {name}'s Profile

@@ -1,27 +1,39 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './Exams.css'
 
 const Exams = () => {
 
     const navigate = useNavigate();
 
-    const toSet = () => {
-        navigate('/setExams');
-    }
-    const toManage = () => {
-        navigate('/ManageExams');
+    const goTo = (path) => {
+        navigate(path);
     }
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2'>
-            <div className='p-3'>
-                <h2>Set Exam</h2>
-                <Button onClick={() => toSet()}>Add</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Manage All Exams</h2>
-                <Button onClick={() => toManage()}>Manage</Button>
-            </div>
+        <div>
+            <section class="hero-section">
+                <div class="card-grid-Exams mx-auto">
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Set Exams</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/setExams')}>Add</Button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Manage Exams</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/ManageExams')}>Manage</Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

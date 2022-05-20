@@ -1,23 +1,38 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './TaskRecords.css';
 
 const TaskRecords = () => {
     const navigate = useNavigate();
-    
+
     const goTo = (path) => {
         navigate(path);
     }
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2'>
-            <div className='p-3'>
-                <h2>Add Task</h2>
-                <Button onClick={() => goTo('/addTasks')}>Add</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Manage Task</h2>
-                <Button onClick={() => goTo('/manageTask')}>Manage</Button>
-            </div>
+        <div>
+            <section class="hero-section">
+                <div class="card-grid-TaskRecords">
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Add Tasks</h3>
+                            <button className='w-50 mx-auto' onClick={() => goTo('/addTasks')}>Add</button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading text-center">Manage Tasks</h3>
+                            <button className='w-50 mx-auto' onClick={() => goTo('/manageTask')}>Manage</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

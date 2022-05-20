@@ -50,7 +50,7 @@ const ManageIndividualNotice = (props) => {
     }
     return (
         <div className='p-3'>
-            <div className='card d-flex align-items-center justify-content-center'>
+            <div className='d-flex flex-column align-items-center justify-content-center'>
                 <h1>Class {className}</h1>
                 <h2>Batch {batch}</h2>
                 <h3>Group {group}</h3>

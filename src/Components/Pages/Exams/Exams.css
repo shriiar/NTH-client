@@ -1,0 +1,17 @@
+.card-grid-Exams {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: var(--spacing-l);
+    grid-row-gap: var(--spacing-l);
+    max-width: var(--width-container);
+    width: 100%;
+  }
+  
+  .card-grid-Exams:hover > .card-blur:not(:hover) .card__background {
+    filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+  }
+  
+  .card__background {
+    background: url("https://wallpaperaccess.com/full/13394.png");
+  }
+  

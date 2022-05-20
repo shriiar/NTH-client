@@ -6,22 +6,33 @@ const ExamsResults = () => {
 
     const navigate = useNavigate();
 
-    const toExams = () => {
-        navigate('/exams');
-    }
-    const toResults = () => {
-        navigate('/addResultAllClass');
+    const goTo = (path) => {
+        navigate(path);
     }
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-2'>
-            <div className='p-3'>
-                <h2>Exams</h2>
-                <Button onClick={() => toExams()}>Manage Or Add</Button>
-            </div>
-            <div className='p-3'>
-                <h2>Results</h2>
-                <Button onClick={() => toResults()}>Manage Or Add</Button>
-            </div>
+        <div>
+            <section class="hero-section">
+                <div class="card-grid-TaskRecords">
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Add Manage Exams</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/exams')}>Add</Button>
+                        </div>
+                    </div>
+                    <div class="card-blur">
+                        <div class="card__background">
+
+                        </div>
+                        <div class="card__content d-flex flex-column">
+                            <h3 class="card__heading">Manage Exams</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/addResultAllClass')}>Manage</Button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
