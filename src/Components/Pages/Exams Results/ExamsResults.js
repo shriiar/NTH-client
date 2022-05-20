@@ -19,7 +19,7 @@ const ExamsResults = () => {
                         </div>
                         <div class="card__content d-flex flex-column">
                             <h3 class="card__heading">Add Manage Exams</h3>
-                            <Button className='w-50 mx-auto' onClick={() => goTo('/exams')}>Add</Button>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/exams')}>Exams</Button>
                         </div>
                     </div>
                     <div class="card-blur">
@@ -27,8 +27,8 @@ const ExamsResults = () => {
 
                         </div>
                         <div class="card__content d-flex flex-column">
-                            <h3 class="card__heading">Manage Exams</h3>
-                            <Button className='w-50 mx-auto' onClick={() => goTo('/addResultAllClass')}>Manage</Button>
+                            <h3 class="card__heading">Add Manage Results</h3>
+                            <Button className='w-50 mx-auto' onClick={() => goTo('/addResultAllClass')}>Results</Button>
                         </div>
                     </div>
                 </div>

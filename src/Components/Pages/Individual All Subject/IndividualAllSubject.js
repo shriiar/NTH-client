@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './IndividualAllSubject.css';
 
@@ -29,20 +30,20 @@ const IndividualAllSubject = (props) => {
     return (
         <div>
             <div className='card border-0 mb-3'>
-                <img src='https://images5.alphacoders.com/585/thumbbig-585645.webp' class="card__image" alt="" />
+                <img src='https://images5.alphacoders.com/585/thumbbig-585645.webp' class="card__image w-100" alt="" />
                 <div class="card__overlay">
                     <div class="card__header">
                         <div class="card__header-text fs-1">
-                            <h3 class="card__title">{subjectNameCapital}</h3>
+                            <h3 class="card__title">{subjectNameCapital.toUpperCase()}</h3>
                         </div>
                     </div>
-                    <p className="card__description pb-2 fs-5">{subjectNameCapital}</p>
+                    {/* <p className="card__description pb-2 fs-5">{subjectNameCapital}</p> */}
                     <div className="row">
                         <div className="col-12">
-                            <button onClick={() => goTo(`/individualSubject/${className}/${batch}/${group}/${subjectName}`)} className='mb-3'>Classes of {subjectNameCapital}</button>
+                            <Button onClick={() => goTo(`/individualSubject/${className}/${batch}/${group}/${subjectName}`)} className='mb-3'>Classes of {subjectNameCapital}</Button>
                         </div>
                         <div className="col-12">
-                            <button onClick={() => goTo(`/myResults/${subjectName}`)}>All Results Of {subjectNameCapital}</button>
+                            <Button className='mb-3' onClick={() => goTo(`/myResults/${subjectName}`)}>All Results Of {subjectNameCapital}</Button>
                         </div>
                     </div>
                 </div>

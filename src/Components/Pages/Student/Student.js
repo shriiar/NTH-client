@@ -30,7 +30,6 @@ const Student = () => {
 
     const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
     // console.log(student);
-
     // console.log(image);
 
     const onChange = e => {
@@ -115,6 +114,46 @@ const Student = () => {
     };
 
     console.log(filename);
+    const data = [
+        {
+            "month": "Mar",
+            "investment": 100000,
+            "sell": 241,
+            "revenue": 10401
+        },
+        {
+            "month": "Apr",
+            "investment": 200000,
+            "sell": 423,
+            "revenue": 24500
+        },
+        {
+            "month": "May",
+            "investment": 500000,
+            "sell": 726,
+            "revenue": 67010
+        },
+        {
+            "month": "Jun",
+            "investment": 500000,
+            "sell": 529,
+            "revenue": 40405
+        },
+        {
+            "month": "Jul",
+            "investment": 600000,
+            "sell": 601,
+            "revenue": 50900
+        },
+        {
+            "month": "Aug",
+            "investment": 700000,
+            "sell": 670,
+            "revenue": 61000
+        }
+    ]
+
+
 
     return (
         <div className='w-50 mx-auto'>
@@ -144,6 +183,19 @@ const Student = () => {
                 </form>
             </Fragment>
             <ToastContainer></ToastContainer>
+
+            {/* <ResponsiveContainer width="99%" height={600}>
+                <BarChart width={900} height={300} data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey={"month"} />
+                    <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+                    <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar yAxisId="left" dataKey="investment" fill="#8884d8" />
+                    <Bar yAxisId="right" dataKey="sell" fill="#82ca9d" />
+                </BarChart>
+            </ResponsiveContainer> */}
         </div>
     );
 };

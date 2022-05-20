@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import './SingleStudent.css'
 
 const SingleStudent = (props) => {
 
@@ -56,24 +57,29 @@ const SingleStudent = (props) => {
         );
     }
     return (
-        <div className='row'>
-            <div className='col-6 d-flex flex-column justify-content-center'>
+        <div className='p-3'>
+            <div className='card border-0 mb-3'>
                 {
-                    img && <img src={img} className='w-25 mx-auto my-2' alt="Student Image" />
+                    img && <img src={img} className='w-100 card__image' alt="Student Image" />
                 }
-                <h1>{name}</h1>
-                <h2>Father's Name: {father}</h2>
-                <h2>Mothers's Name: {mother}</h2>
-                <h3>Class: {className}</h3>
-                <h3>Batch: {batch}</h3>
-                <h3>Group: {group}</h3>
-                <h3>{email}</h3>
-            </div>
-            <div className='col-6 d-flex flex-column justify-content-center'>
-                <button onClick={() => updateStudent()} className='mb-5'>Update {name}'s Profile</button>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Delete {name}'s Profile
-                </Button>
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <div class="card__header-text fs-1">
+                            <h3 class="card__title">{name}</h3>
+                        </div>
+                    </div>
+                    <p className="card__description pb-2 fs-3">{className}</p>
+                    <p className="card__description pb-2 fs-3">{batch.toUpperCase()}</p>
+                    <p className="card__description pb-2 fs-3">{group.toUpperCase()}</p>
+                    <div className="row justify-content-center">
+                        <div className='col-6 d-flex flex-column justify-content-center'>
+                            <Button onClick={() => updateStudent()} className='mb-2'>Update {name}'s Profile</Button>
+                            <Button variant="primary" className='mb-3' onClick={() => setModalShow(true)}>
+                                Delete {name}'s Profile
+                            </Button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <ToastContainer></ToastContainer>
 

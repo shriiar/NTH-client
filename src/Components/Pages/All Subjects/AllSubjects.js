@@ -18,7 +18,7 @@ const AllSubjects = () => {
     const navigate = useNavigate();
 
     let myArray = formattedDate.split(' ');
-    console.log(myArray);
+    // console.log(myArray);
 
     let newDate = myArray[1][0], newMonth = myArray[0], newYear = parseInt(myArray[2]);
     if (myArray[1].length > 2) {
@@ -47,7 +47,7 @@ const AllSubjects = () => {
         const updatedUser =
             { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: false, lastPaid: student[0]?.lastPaid, due: 1, payMonth: myArray[0], payYear: newYear }
 
-        console.log(updatedUser);
+        // console.log(updatedUser);
 
         fetch(`http://localhost:5000/students/${student[0]?.email}`, {
             method: 'PUT',
@@ -58,7 +58,7 @@ const AllSubjects = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 // console.log(updatedUser);
             })
     }
@@ -67,7 +67,7 @@ const AllSubjects = () => {
         const updatedUser =
             { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0], payYear: newYear }
 
-        console.log(updatedUser);
+        // console.log(updatedUser);
 
         fetch(`http://localhost:5000/students/${student[0]?.email}`, {
             method: 'PUT',
@@ -78,7 +78,7 @@ const AllSubjects = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
             })
     }
 
@@ -93,17 +93,43 @@ const AllSubjects = () => {
             .then(data => setAllSubjects(data))
     }, [student])
 
+    // const [searchText, setSearchText] = useState('');
+
+    // const textChange = (event) => { // getting search result
+    //     console.log(event.target.value);
+    //     setSearchText(event.target.value);
+    // }
+
+    // useEffect(() => { // used to get search result
+    //     fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const match = data.filter(item => item?.name?.toLowerCase().includes(searchText));
+    //             setAllSubjects(match);
+    //         })
+    // }, [searchText, student])
+
     // console.log(student[0]?.className, student[0]?.batch, student[0]?.group);
-    // let subjects = allSubjects[0]?.subjects;
+    let subjects = allSubjects[0]?.subjects;
 
     // console.log(subjects);
     console.log(student);
 
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-            {
-                allSubjects[0]?.subjects.map(subject => <IndividualAllSubject key={subject._id} subject={subject} student={student}></IndividualAllSubject>)
-            }
+        <div>
+            {/* <div className=''>
+                <input id='input-text' onChange={textChange} className='my-5' type="text" placeholder='Search pictures..' />
+            </div> */}
+            <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+                {
+                    allSubjects[0]?.subjects.map(subject => <IndividualAllSubject key={subject._id} subject={subject} student={student}></IndividualAllSubject>)
+                }
+            </div>
         </div>
     );
 };
