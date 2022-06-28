@@ -64,7 +64,7 @@ const Signup = () => {
         const mother = motherRef.current.value;
         const email = emailRef.current.value;
         const className = event.target.class.value;
-        const userId = userIdRef.current.value
+        const userId = userIdRef.current.value;
         const batch = event.target.batch.value;
         const group = event.target.group.value;
         const password = passwordRef.current.value;

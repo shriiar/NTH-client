@@ -1,25 +1,92 @@
-import React from 'react';
+import { format } from 'date-fns';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AddIndividualResult = (props) => {
-    const navigate = useNavigate();
-    const { name, father, mother, className, batch, group, email } = props.student;
+	const navigate = useNavigate();
+	const { email } = props.student;
 
-    const goTo = () => {
-        navigate(`/addStudentResult/${email}`);
-    }
-    return (
-        <div className='col-6 card d-flex justify-content-center'>
-            <h1>{name}</h1>
-            <h2>Father's Name: {father}</h2>
-            <h2>Mothers's Name: {mother}</h2>
-            <h3>Class: {className}</h3>
-            <h3>Batch: {batch}</h3>
-            <h3>Group: {group}</h3>
-            <h3>{email}</h3>
-            <button onClick={() => goTo()} className='w-50 mx-auto'>Add Result</button>
-        </div>
-    );
+	const [date, setDate] = useState(new Date());
+	const formattedDate = format(date, 'PP');
+	const [student, setStudent] = useState([])
+
+	useEffect(() => {
+		fetch(`http://localhost:5000/students/admin?email=${email}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setStudent(data))
+	}, [email]);
+
+	console.log(student);
+
+	const resultQuery = JSON.parse(localStorage.getItem('resultQuery'));
+	console.log(resultQuery);
+
+	const EventSubmit = (event) => {
+		event.preventDefault();
+
+		const myArray = resultQuery.subject.split(" ");
+		let subjectName = '';
+		for (let i = 0; i < myArray.length; i++) {
+			subjectName += myArray[i];
+		}
+
+		subjectName = subjectName.toLowerCase();
+
+		const result = {
+			name: event.target.name.value, email: student[0]?.email, subject: resultQuery.subject, subjectCode: subjectName, topic: resultQuery.topic, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, mark: event.target.mark.value, fmark: resultQuery.fullMarks, date: formattedDate
+		};
+
+		console.log(result);
+		const url = `http://localhost:5000/results`;
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(result)
+		})
+			.then(res => res.json())
+			.then(result => {
+				toast(`Result Has Been Added for ${student[0]?.name}`)
+			})
+	};
+
+	return (
+		<div className='col-6 card d-flex justify-content-center h-100'>
+			<form onSubmit={EventSubmit} className="w-100">
+				<div className="input-group w-75 mx-auto">
+					<label htmlFor='name'>Name</label>
+					<input value={student[0]?.name} readOnly type="text" name="name" required />
+				</div>
+				<div className="input-group w-75 mx-auto">
+					<label htmlFor='topic'>Topic Name</label>
+					<input value={resultQuery.topic} readOnly type="text" name="topic" required />
+				</div>
+				<div className='row'>
+					<div className="col-6">
+						<div className="input-group w-75 mx-auto">
+							<label htmlFor='mark'>Attained Mark</label>
+							<input type="number" min={0} name="mark" required />
+						</div>
+					</div>
+					<div className="col-6">
+						<div className="input-group w-75 mx-auto">
+							<label htmlFor='fmark'>Full Mark</label>
+							<input value={resultQuery.fullMarks} type="text" readOnly name="fmark" required />
+						</div>
+					</div>
+				</div>
+				<input className='form-submit button-33 w-75 mx-auto mt-4' type="submit" required value="Add Result" />
+			</form>
+		</div>
+	);
 };
 
 export default AddIndividualResult;

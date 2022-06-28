@@ -10,7 +10,7 @@ const AddResultAllClass = () => {
             className: obj.className, batch: obj.batch, group: obj.group
         }];
         console.log(subjectObj);
-        navigate(`/addResultIndividualClass/${subjectObj[0].className}/${subjectObj[0].batch}/${subjectObj[0].group}`);
+        navigate(`/addResultIndividualClassQuery/${subjectObj[0].className}/${subjectObj[0].batch}/${subjectObj[0].group}`);
     }
     const goTomanage = (obj) => {
         let subjectObj = [{
