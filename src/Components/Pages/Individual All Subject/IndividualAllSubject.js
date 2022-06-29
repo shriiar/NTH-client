@@ -1,14 +1,19 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './IndividualAllSubject.css';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const IndividualAllSubject = (props) => {
 
     const { student } = props;
 
     // console.log(student);
+
+	useEffect(() => {
+		Aos.init({ duration: 2000 });
+	}, [])
 
     const className = student[0].className;
     const batch = student[0].batch;
@@ -29,7 +34,7 @@ const IndividualAllSubject = (props) => {
 
     return (
         <div>
-            <div className='card border-0 mb-3'>
+            <div data-aos='fade-up' className='card border-0 mb-3'>
                 <img src='https://images5.alphacoders.com/585/thumbbig-585645.webp' class="card__image w-100" alt="" />
                 <div class="card__overlay">
                     <div class="card__header">

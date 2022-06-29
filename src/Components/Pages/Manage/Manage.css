@@ -15,13 +15,13 @@
 
   @media(min-width: 540px){
     .card-grid-Manage{
-      grid-template-columns: repeat(2, 1fr); 
+      grid-template-columns: repeat(1, 1fr); 
     }
   }
   
   @media(min-width: 960px){
     .card-grid-Manage{
-      grid-template-columns: repeat(3, 1fr); 
+      grid-template-columns: repeat(1, 1fr); 
     }
   }
 

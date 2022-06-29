@@ -1,4 +1,5 @@
 import { async } from '@firebase/util';
+import './AllSubjects.css';
 import { format } from 'date-fns';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
@@ -10,128 +11,140 @@ import IndividualAllSubject from '../Individual All Subject/IndividualAllSubject
 
 const AllSubjects = () => {
 
-    const [allSubjects, setAllSubjects] = useState([]);
-    const [student, setStudent] = useState([]);
-    const [user] = useAuthState(auth);
-    const [date, setDate] = useState(new Date());
-    const formattedDate = format(date, 'PP');
-    const navigate = useNavigate();
+	const [allSubjects, setAllSubjects] = useState([]);
+	const [student, setStudent] = useState([]);
+	const [searchText, setSearchText] = useState('');
+	const [user] = useAuthState(auth);
+	const [date, setDate] = useState(new Date());
+	const formattedDate = format(date, 'PP');
+	const navigate = useNavigate();
 
-    let myArray = formattedDate.split(' ');
-    // console.log(myArray);
+	let myArray = formattedDate.split(' ');
+	// console.log(myArray);
 
-    let newDate = myArray[1][0], newMonth = myArray[0], newYear = parseInt(myArray[2]);
-    if (myArray[1].length > 2) {
-        newDate += myArray[1][1];
-    }
+	let newDate = myArray[1][0], newMonth = myArray[0], newYear = parseInt(myArray[2]);
+	if (myArray[1].length > 2) {
+		newDate += myArray[1][1];
+	}
 
-    newDate = parseInt(newDate);
+	newDate = parseInt(newDate);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/students?email=${user?.email}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setStudent(data))
-    }, [user])
+	useEffect(() => {
+		fetch(`http://localhost:5000/students?email=${user?.email}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setStudent(data))
+	}, [user])
 
-    if (student[0]?.due === 2 && ((newDate >= 15 && student[0]?.payMonth === myArray[0]) || (student[0]?.payMonth !== myArray[0]) || (student[0]?.payYear !== newYear))) {
-        signOut(auth);
-        navigate('/login');
-    }
+	if (student[0]?.due === 2 && ((newDate >= 15 && student[0]?.payMonth === myArray[0]) || (student[0]?.payMonth !== myArray[0]) || (student[0]?.payYear !== newYear))) {
+		signOut(auth);
+		navigate('/login');
+	}
 
-    if ((student[0]?.paid === false && student[0]?.due === null && newDate >= 1 && student[0]?.role !== 'admin')) {
-        const updatedUser =
-            { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: false, lastPaid: student[0]?.lastPaid, due: 1, payMonth: myArray[0], payYear: newYear }
+	if ((student[0]?.paid === false && student[0]?.due === null && newDate >= 1 && student[0]?.role !== 'admin')) {
+		const updatedUser =
+			{ name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: false, lastPaid: student[0]?.lastPaid, due: 1, payMonth: myArray[0], payYear: newYear }
 
-        // console.log(updatedUser);
+		// console.log(updatedUser);
 
-        fetch(`http://localhost:5000/students/${student[0]?.email}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedUser)
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                // console.log(updatedUser);
-            })
-    }
+		fetch(`http://localhost:5000/students/${student[0]?.email}`, {
+			method: 'PUT',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(updatedUser)
+		})
+			.then(res => res.json())
+			.then(data => {
+				// console.log(data);
+				// console.log(updatedUser);
+			})
+	}
 
-    if (student[0]?.paid === false && student[0]?.due === 1 && student[0]?.payMonth !== myArray[0] && newDate >= 1) {
-        const updatedUser =
-            { name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0], payYear: newYear }
+	if (student[0]?.paid === false && student[0]?.due === 1 && student[0]?.payMonth !== myArray[0] && newDate >= 1) {
+		const updatedUser =
+			{ name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0], payYear: newYear }
 
-        // console.log(updatedUser);
+		// console.log(updatedUser);
 
-        fetch(`http://localhost:5000/students/${student[0]?.email}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedUser)
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-            })
-    }
+		fetch(`http://localhost:5000/students/${student[0]?.email}`, {
+			method: 'PUT',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(updatedUser)
+		})
+			.then(res => res.json())
+			.then(data => {
+				// console.log(data);
+			})
+	}
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setAllSubjects(data))
-    }, [student])
+	useEffect(() => {
+		fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data[0].subjects);
+				const match = data[0].subjects.filter(item => item.toLowerCase().includes(searchText.toLowerCase()));
+				setAllSubjects(match);
+				console.log(allSubjects);
+			})
+	}, [student, searchText])
 
-    // const [searchText, setSearchText] = useState('');
 
-    // const textChange = (event) => { // getting search result
-    //     console.log(event.target.value);
-    //     setSearchText(event.target.value);
-    // }
+	// const [searchText, setSearchText] = useState('');
 
-    // useEffect(() => { // used to get search result
-    //     fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             const match = data.filter(item => item?.name?.toLowerCase().includes(searchText));
-    //             setAllSubjects(match);
-    //         })
-    // }, [searchText, student])
+	// const textChange = (event) => { // getting search result
+	//     console.log(event.target.value);
+	//     setSearchText(event.target.value);
+	// }
 
-    // console.log(student[0]?.className, student[0]?.batch, student[0]?.group);
-    let subjects = allSubjects[0]?.subjects;
+	// useEffect(() => { // used to get search result
+	//     fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+	//         method: 'GET',
+	//         headers: {
+	//             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+	//         }
+	//     })
+	//         .then(res => res.json())
+	//         .then(data => {
+	//             const match = data.filter(item => item?.name?.toLowerCase().includes(searchText));
+	//             setAllSubjects(match);
+	//         })
+	// }, [searchText, student])
 
-    // console.log(subjects);
-    console.log(student);
+	// console.log(student[0]?.className, student[0]?.batch, student[0]?.group);
+	let subjects = allSubjects[0]?.subjects;
 
-    return (
-        <div>
-            {/* <div className=''>
-                <input id='input-text' onChange={textChange} className='my-5' type="text" placeholder='Search pictures..' />
-            </div> */}
-            <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-                {
-                    allSubjects[0]?.subjects.map(subject => <IndividualAllSubject key={subject._id} subject={subject} student={student}></IndividualAllSubject>)
-                }
-            </div>
-        </div>
-    );
+	// console.log(subjects);
+	// console.log(student);
+
+	const textChange = (event) => { // getting search result
+		console.log(event.target.value);
+		setSearchText(event.target.value);
+	}
+
+	return (
+		<div>
+			<div className='mx-auto w-75'>
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+			</div>
+			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
+				{
+					allSubjects.map(subject => <IndividualAllSubject key={subject._id} subject={subject} student={student}></IndividualAllSubject>)
+				}
+			</div>
+		</div>
+	);
 };
 
 export default AllSubjects;

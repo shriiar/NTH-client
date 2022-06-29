@@ -24,7 +24,7 @@ const MyNotice = ({ student }) => {
     return (
         <div className='row row-cols-1 row-cols-md-1 row-cols-lg-1'>
             {
-                notice.map(noc => <MyIndividualNotice key={noc._id} noc={noc}></MyIndividualNotice>)
+                notice.slice(0).reverse().map(noc => <MyIndividualNotice key={noc._id} noc={noc}></MyIndividualNotice>)
             }
         </div>
     );

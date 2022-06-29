@@ -3,7 +3,7 @@ import './StudentResults.css';
 
 const StudentResults = (props) => {
 	const { subject, topic, mark, fmark, date } = props.item;
-	console.log(props);
+	// console.log(props);
 	return (
 		<div className='p-5'>
 			<h1>{subject}</h1>

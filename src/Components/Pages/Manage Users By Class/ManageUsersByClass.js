@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import './ManageUsersByClass.css'
+import './ManageUsersByClass.css';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const ManageUsersByClass = () => {
     const navigate = useNavigate();
@@ -18,8 +20,13 @@ const ManageUsersByClass = () => {
         }];
         navigate(`/manageIndividualClass/${subjectObj[0]?.className}/${subjectObj[0]?.batch}/${subjectObj[0]?.group}`);
     }
+
+	useEffect(() => {
+		Aos.init({ duration: 2000 });
+	}, [])
+
     return (
-        <div>
+        <div data-aos='fade-left'>
             <section class="hero-section p-0">
                 <div class="card-grid-ManageUsersByClass">
                     <div class="card-blur-class">

@@ -21,9 +21,9 @@ const SingleSubjectTasks = () => {
 
     console.log(task);
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
             {
-                task?.map(item => <SingleSubjectTask key={item._id} item={item} task={task} setTask={setTask}></SingleSubjectTask>)
+                task?.slice(0).reverse().map(item => <SingleSubjectTask key={item._id} item={item} task={task} setTask={setTask}></SingleSubjectTask>)
             }
         </div>
     );

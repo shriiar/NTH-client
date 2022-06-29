@@ -4,33 +4,47 @@ import SingleSubjectVideos from '../Single Subject Videos/SingleSubjectVideos';
 
 const IndividualSubjectVideos = ({ student }) => {
 
-    const { className, batch, group, subject } = useParams();
+	const { className, batch, group, subject } = useParams();
+	const [searchText, setSearchText] = useState('');
 
-    // console.log(className, batch, group, subject);
+	// console.log(className, batch, group, subject);
 
-    const [subjectsVid, setSubjectsVid] = useState([]);
+	const [subjectsVid, setSubjectsVid] = useState([]);
 
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setSubjectsVid(data))
-    }, [])
+	useEffect(() => {
+		fetch(`http://localhost:5000/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => {
+				const match = data.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
+				setSubjectsVid(match);
+			})
+	}, [searchText])
 
-    console.log(subjectsVid);
+	console.log(subjectsVid);
 
-    return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-            {
-                subjectsVid.map(subjectVid => <SingleSubjectVideos key={subjectVid._id} subjectVid={subjectVid} className={className} batch={batch} group={group}></SingleSubjectVideos>)
-            }
-        </div>
-    );
+	const textChange = (event) => { // getting search result
+		console.log(event.target.value);
+		setSearchText(event.target.value);
+	}
+
+	return (
+		<div>
+			<div className=''>
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+			</div>
+			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
+				{
+					subjectsVid.slice(0).reverse().map(subjectVid => <SingleSubjectVideos key={subjectVid._id} subjectVid={subjectVid} className={className} batch={batch} group={group}></SingleSubjectVideos>)
+				}
+			</div>
+		</div>
+	);
 };
 
 export default IndividualSubjectVideos;

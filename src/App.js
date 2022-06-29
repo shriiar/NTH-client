@@ -88,20 +88,42 @@ function App() {
 				<Route path='/student' element={<RequireAuth>
 					<Student></Student>
 				</RequireAuth>}></Route>
+
+
 				<Route path='/manage' element={<RequireAdmin>
 					<Manage></Manage>
 				</RequireAdmin>}></Route>
-				<Route path='/manageUsers' element={<RequireAdmin>
-					<ManageUsersByClass></ManageUsersByClass>
-				</RequireAdmin>}></Route>
+
+				<Route path='/manage' element={<RequireAuth>
+					<Manage></Manage></RequireAuth>}>
+
+					<Route path='manageUsers' element={<RequireAdmin>
+						<ManageUsersByClass></ManageUsersByClass>
+					</RequireAdmin>}></Route>
+
+					<Route path='taskRecords' element={<RequireAdmin>
+						<TaskRecords></TaskRecords>
+					</RequireAdmin>}></Route>
+
+					<Route path='Notice' element={<RequireAdmin>
+						<Notice></Notice>
+					</RequireAdmin>}></Route>
+
+					<Route path='examsResults' element={<RequireAdmin>
+						<ExamsResults></ExamsResults>
+					</RequireAdmin>}></Route>
+
+					<Route path='checkPayment' element={<RequireAdmin>
+						<CheckPayment></CheckPayment>
+					</RequireAdmin>}></Route>
+
+				</Route>
+
 				<Route path='/manageIndividualClass/:className/:batch/:group' element={<ManageInvididualClass></ManageInvididualClass>}></Route>
 				<Route path='/managesingleStudent' element={<SingleStudent></SingleStudent>}></Route>
 				<Route path='/individualSubject/:className/:batch/:group/:subject' element={<IndividualSubjectVideos student={student}></IndividualSubjectVideos>}></Route>
 				<Route path='/subjectVideos' element={<SingleSubjectVideos></SingleSubjectVideos>}></Route>
 				<Route path='/singleSubjectVideo' element={<SingleSubjectVideo></SingleSubjectVideo>}></Route>
-				<Route path='/taskRecords' element={<RequireAdmin>
-					<TaskRecords></TaskRecords>
-				</RequireAdmin>}></Route>
 				<Route path='/addTasks' element={<RequireAdmin>
 					<AddTasks></AddTasks>
 				</RequireAdmin>}></Route>
@@ -114,9 +136,6 @@ function App() {
 				<Route path='/subjectTasks/:className/:batch/:group/:subject' element={<RequireAdmin>
 					<SingleSubjectTasks></SingleSubjectTasks>
 				</RequireAdmin>}></Route>
-				<Route path='/Notice' element={<RequireAdmin>
-					<Notice></Notice>
-				</RequireAdmin>}></Route>
 				<Route path='/addNotice' element={<RequireAdmin>
 					<AddNotice></AddNotice>
 				</RequireAdmin>}></Route>
@@ -128,9 +147,6 @@ function App() {
 				</RequireAdmin>}></Route>
 				<Route path='/updateStudent/:email/:id' element={<RequireAdmin>
 					<UpdateStudent></UpdateStudent>
-				</RequireAdmin>}></Route>
-				<Route path='/examsResults' element={<RequireAdmin>
-					<ExamsResults></ExamsResults>
 				</RequireAdmin>}></Route>
 				<Route path='/exams' element={<RequireAdmin>
 					<Exams></Exams>
@@ -161,9 +177,6 @@ function App() {
 				</RequireAdmin>}></Route>
 				<Route path='/individualAllSubjectResults/:className/:batch/:group/:subject' element={<RequireAdmin>
 					<IndividualSubjectAllResults></IndividualSubjectAllResults>
-				</RequireAdmin>}></Route>
-				<Route path='/checkPayment' element={<RequireAdmin>
-					<CheckPayment></CheckPayment>
 				</RequireAdmin>}></Route>
 				<Route path='/manageIndividualClassPayment/:className/:batch/:group' element={<RequireAdmin>
 					<ManageIndividualClassPayment></ManageIndividualClassPayment>
