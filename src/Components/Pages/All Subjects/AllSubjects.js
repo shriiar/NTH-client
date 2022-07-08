@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import IndividualAllSubject from '../Individual All Subject/IndividualAllSubject';
+import Loading from '../../Shared/Loading/Loading';
 
 const AllSubjects = () => {
 
@@ -20,7 +21,6 @@ const AllSubjects = () => {
 	const navigate = useNavigate();
 
 	let myArray = formattedDate.split(' ');
-	// console.log(myArray);
 
 	let newDate = myArray[1][0], newMonth = myArray[0], newYear = parseInt(myArray[2]);
 	if (myArray[1].length > 2) {
@@ -30,10 +30,10 @@ const AllSubjects = () => {
 	newDate = parseInt(newDate);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/students?email=${user?.email}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())
@@ -49,9 +49,8 @@ const AllSubjects = () => {
 		const updatedUser =
 			{ name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: false, lastPaid: student[0]?.lastPaid, due: 1, payMonth: myArray[0], payYear: newYear }
 
-		// console.log(updatedUser);
 
-		fetch(`http://localhost:5000/students/${student[0]?.email}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${student[0]?.email}`, {
 			method: 'PUT',
 			headers: {
 				'content-type': 'application/json'
@@ -60,8 +59,6 @@ const AllSubjects = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				// console.log(data);
-				// console.log(updatedUser);
 			})
 	}
 
@@ -69,9 +66,7 @@ const AllSubjects = () => {
 		const updatedUser =
 			{ name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0], payYear: newYear }
 
-		// console.log(updatedUser);
-
-		fetch(`http://localhost:5000/students/${student[0]?.email}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${student[0]?.email}`, {
 			method: 'PUT',
 			headers: {
 				'content-type': 'application/json'
@@ -80,23 +75,20 @@ const AllSubjects = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				// console.log(data);
 			})
 	}
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data[0].subjects);
 				const match = data[0].subjects.filter(item => item.toLowerCase().includes(searchText.toLowerCase()));
 				setAllSubjects(match);
-				console.log(allSubjects);
 			})
 	}, [student, searchText])
 
@@ -109,10 +101,10 @@ const AllSubjects = () => {
 	// }
 
 	// useEffect(() => { // used to get search result
-	//     fetch(`http://localhost:5000/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+	//     fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
 	//         method: 'GET',
 	//         headers: {
-	//             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+	//             'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 	//         }
 	//     })
 	//         .then(res => res.json())
@@ -125,16 +117,16 @@ const AllSubjects = () => {
 	// console.log(student[0]?.className, student[0]?.batch, student[0]?.group);
 	let subjects = allSubjects[0]?.subjects;
 
-	// console.log(subjects);
-	// console.log(student);
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
 	return (
 		<div>
+			{
+				allSubjects.length === 0 && <Loading></Loading>
+			}
 			<div className='mx-auto w-75'>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

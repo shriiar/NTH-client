@@ -12,10 +12,10 @@ const ManageInvididualClass = () => {
 	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/students?className=${className}&batch=${batch}&group=${group}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?className=${className}&batch=${batch}&group=${group}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())

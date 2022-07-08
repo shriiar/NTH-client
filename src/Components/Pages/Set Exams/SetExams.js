@@ -5,12 +5,25 @@ import { toast, ToastContainer } from 'react-toastify';
 const SetExams = () => {
     const [date, setDate] = useState(new Date());
     const formattedDate = format(date, 'PP');
+	
     const EventSubmit = async (event) => {
         event.preventDefault();
+
+		let newLink = '', newFormLink = event.target.formLink.value;
+		let id1 = 0;
+
+		for(let i = 0; i < newFormLink.length; i++){
+			if(id1 === 0 && newFormLink[i] === '"'){
+				id1 = 1;
+				console.log('GG');
+			}
+			else if(id1 === 1 && newFormLink[i] !== '"') newLink += newFormLink[i];
+			else if(id1 === 1 && newFormLink[i] === '"') break;
+		}
         const exam = {
             name: event.target.name.value,
             topic: event.target.topic.value,
-            formLink: event.target.formLink.value,
+            formLink: newLink,
             date: event.target.date.value,
             className: event.target.className.value,
             batch: event.target.batch.value,
@@ -19,7 +32,7 @@ const SetExams = () => {
         console.log(exam);
         let toastText = `Class ${exam.className} Batch ${exam.batch} Group ${exam.group}`
 
-        fetch('http://localhost:5000/exams', {
+        fetch('https://infinite-cliffs-52841.herokuapp.com/exams', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

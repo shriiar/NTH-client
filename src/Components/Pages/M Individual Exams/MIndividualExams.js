@@ -8,7 +8,7 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
     const { className, batch, group, name, topic, date, _id } = exam;
 
     const deleteNotice = () => {
-        const url = `http://localhost:5000/exams?className=${className}&batch=${batch}&group=${group}&name=${name}&topic=${topic}`;
+        const url = `https://infinite-cliffs-52841.herokuapp.com/exams?className=${className}&batch=${batch}&group=${group}&name=${name}&topic=${topic}`;
         fetch(url, {
             method: 'DELETE'
         })

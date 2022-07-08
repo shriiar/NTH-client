@@ -33,7 +33,7 @@ const IndividualAllSubject = (props) => {
     }
 
     return (
-        <div>
+        <div className='card-pos'>
             <div data-aos='fade-up' className='card border-0 mb-3'>
                 <img src='https://images5.alphacoders.com/585/thumbbig-585645.webp' class="card__image w-100" alt="" />
                 <div class="card__overlay">

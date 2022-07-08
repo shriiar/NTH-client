@@ -7,21 +7,18 @@ const IndividualSubjectVideos = ({ student }) => {
 	const { className, batch, group, subject } = useParams();
 	const [searchText, setSearchText] = useState('');
 
-	// console.log(className, batch, group, subject);
-
 	const [subjectsVid, setSubjectsVid] = useState([]);
 
-
 	useEffect(() => {
-		fetch(`http://localhost:5000/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())
 			.then(data => {
-				const match = data.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
+				const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.date.toLowerCase().includes(searchText.toLowerCase())));
 				setSubjectsVid(match);
 			})
 	}, [searchText])

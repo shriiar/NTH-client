@@ -9,7 +9,6 @@ const IndividualSubjectREsults = (props) => {
     for (let i = 0; i < myArray.length; i++) {
         subjectName += myArray[i];
     }
-    console.log(details)
 
     const navigate = useNavigate();
     const goToSubject = () => {

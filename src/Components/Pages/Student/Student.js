@@ -30,10 +30,10 @@ const Student = () => {
 	}, [])
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/students?email=${user?.email}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())
@@ -41,10 +41,10 @@ const Student = () => {
 	}, [user])
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/resultsOfAll?email=${user?.email}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/resultsOfAll?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())
@@ -114,7 +114,7 @@ const Student = () => {
 								payMonth: student[0]?.payMonth,
 								payYear: student[0]?.payYear
 							}
-							fetch(`http://localhost:5000/students/${updateProfile.email}`, {
+							fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${updateProfile.email}`, {
 								method: 'PUT',
 								headers: {
 									'content-type': 'application/json'
@@ -124,10 +124,10 @@ const Student = () => {
 								.then(res => res.json())
 								.then(data => {
 
-									fetch(`http://localhost:5000/students?email=${user?.email}`, {
+									fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
 										method: 'GET',
 										headers: {
-											'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+											'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 										}
 									})
 										.then(res => res.json())
@@ -206,11 +206,17 @@ const Student = () => {
 									<div className="follow_count-user">Last paid: {student[0]?.lastPaid}</div>
 								</div>
 							</div>
+							<div className='col-12'>
+								<button className='px-3 bg-success'>
+									<a href="http://localhost:5000/ssl-request">Make Payment</a>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div className='mx-auto w-50'>
+				<h1 className='text-danger my-5'>Upload Your Photo</h1>
 				<Fragment>
 					{message ? <Message msg={message} /> : null}
 					<form onSubmit={onSubmit}>

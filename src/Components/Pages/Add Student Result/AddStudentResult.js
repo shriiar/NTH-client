@@ -14,10 +14,10 @@ const AddStudentResult = () => {
     const [student, setStudent] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/students/admin?email=${email}`, {
+        fetch(`https://infinite-cliffs-52841.herokuapp.com/students/admin?email=${email}`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -42,7 +42,7 @@ const AddStudentResult = () => {
         };
 
         console.log(result);
-        const url = `http://localhost:5000/results`;
+        const url = `https://infinite-cliffs-52841.herokuapp.com/results`;
         fetch(url, {
             method: 'POST',
             headers: {

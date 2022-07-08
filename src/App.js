@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Shared/Header/Header';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './Components/Login/Login/Login';
 import Signup from './Components/Login/Sign Up/Signup';
 import RequireAuth from './Components/Shared/RequiredAuth/RequiredAuth';
@@ -48,22 +48,29 @@ import CheckPayment from './Components/Pages/Check Payment/CheckPayment';
 import ManageIndividualClassPayment from './Components/Pages/Manage Individual Class Payment/ManageIndividualClassPayment';
 import DueMessage from './Components/Shared/Due Message/DueMessage';
 import AddResultIndividualClassQuery from './Components/Pages/AddResultIndividualClassQuery/AddResultIndividualClassQuery';
+import { signOut } from 'firebase/auth';
 
 function App() {
 
 	const [student, setStudent] = useState([]);
 	const [user] = useAuthState(auth);
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/students?email=${user?.email}`, {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
-				'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
 			.then(res => res.json())
 			.then(data => setStudent(data))
 	}, [user])
+
+	// window.onbeforeunload = function () {
+	// 	signOut(auth);
+	// 	navigate('/login');
+	// };
 
 	return (
 		<div className="App">

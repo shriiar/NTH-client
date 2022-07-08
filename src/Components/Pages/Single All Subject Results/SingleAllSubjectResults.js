@@ -5,9 +5,9 @@ import { toast, ToastContainer } from 'react-toastify';
 const SingleAllSubjectResults = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const { allResult, setAllResult } = props;
-    const { name, className, batch, group, subject, topic, mark, fmark, _id } = props.res;
+    const { name, className, batch, group, subject, topic, mark, fmark, _id, date } = props.res;
     const deleteRecord = () => {
-        const url = `http://localhost:5000/results?className=${props.res?.className}&batch=${props.res?.batch}&group=${props.res?.group}&subject=${subject}&topic=${topic}&id=${_id}`;
+        const url = `https://infinite-cliffs-52841.herokuapp.com/results?className=${props.res?.className}&batch=${props.res?.batch}&group=${props.res?.group}&subject=${subject}&topic=${topic}&id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -52,6 +52,7 @@ const SingleAllSubjectResults = (props) => {
                 <h2>{subject}</h2>
                 <h2>{topic}</h2>
                 <h3>Mark: <span className='text-danger'>{mark} / {fmark}</span></h3>
+				<h4>{date}</h4>
                 <Button variant="primary" onClick={() => setModalShow(true)}>
                     Delete Result
                 </Button>

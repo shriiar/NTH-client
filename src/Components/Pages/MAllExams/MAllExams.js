@@ -6,10 +6,10 @@ const MAllExams = () => {
     const [exams, setExams] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/exams/admin`, {
+        fetch(`https://infinite-cliffs-52841.herokuapp.com/exams/admin`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

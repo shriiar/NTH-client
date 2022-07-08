@@ -16,7 +16,7 @@ const SingleStudent = (props) => {
     }
 
     const deleteStudent = () => {
-        const url = `http://localhost:5000/students?className=${className}&batch=${batch}&group=${group}&name=${name}&father=${father}&mother=${mother}&email=${email}`;
+        const url = `https://infinite-cliffs-52841.herokuapp.com/students?className=${className}&batch=${batch}&group=${group}&name=${name}&father=${father}&mother=${mother}&email=${email}`;
         fetch(url, {
             method: 'DELETE'
         })

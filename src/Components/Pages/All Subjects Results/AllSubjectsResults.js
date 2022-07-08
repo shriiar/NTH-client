@@ -5,53 +5,63 @@ import auth from '../../../firebase.init';
 import IndividualSubjectREsults from '../Individual Subject REsults/IndividualSubjectREsults';
 
 const AllSubjectsResults = () => {
-    const [allSubjects, setAllSubjects] = useState([]);
-    const [student, setStudent] = useState([]);
-    const [user] = useAuthState(auth);
+	const [allSubjects, setAllSubjects] = useState([]);
+	const [student, setStudent] = useState([]);
+	const [user] = useAuthState(auth);
+	const [searchText, setSearchText] = useState('');
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/students?email=${user?.email}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setStudent(data))
-    }, [user])
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setStudent(data))
+	}, [user])
 
-    console.log(student);
+	const { className, batch, group } = useParams();
 
-    const { className, batch, group } = useParams();
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => {
+				const match = data[0].subjects.filter(item => item.toLowerCase().includes(searchText.toLowerCase()));
+				setAllSubjects(match);
+			})
+	}, [student, searchText])
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/subjects?className=${className}&batch=${batch}&group=${group}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setAllSubjects(data))
-    }, [student])
+	console.log(allSubjects);
 
-    let subjects = allSubjects[0]?.subjects;
+	const details = {
+		className: student[0]?.className,
+		batch: student[0]?.batch,
+		group: student[0]?.group
+	}
 
-    console.log(subjects);
+	const textChange = (event) => { // getting search result
+		console.log(event.target.value);
+		setSearchText(event.target.value);
+	}
 
-    const details = {
-        className: student[0]?.className,
-        batch: student[0]?.batch,
-        group: student[0]?.group
-    }
-
-    return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-            {
-                allSubjects[0]?.subjects.map(subject => <IndividualSubjectREsults key={subject._id} subject={subject} details={details}></IndividualSubjectREsults>)
-            }
-        </div>
-    );
+	return (
+		<div>
+			<div className=''>
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+			</div>
+			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
+				{
+					allSubjects?.map(subject => <IndividualSubjectREsults key={subject._id} subject={subject} details={details}></IndividualSubjectREsults>)
+				}
+			</div>
+		</div>
+	);
 };
 
 export default AllSubjectsResults;

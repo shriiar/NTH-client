@@ -14,7 +14,7 @@ const AddResultIndividualClassQuery = () => {
 
 		localStorage.removeItem('resultQuery');
 
-		const resultQuery = { subject: event.target.subject.value, topic: event.target.topic.value, fullMarks: event.target.fullMarks.value };
+		const resultQuery = { subject: event.target.subject.value, topic: event.target.topic.value, highest: event.target.highest.value, fullMarks: event.target.fullMarks.value };
 		localStorage.setItem('resultQuery', JSON.stringify(resultQuery));
 
 		console.log(resultQuery);
@@ -56,6 +56,10 @@ const AddResultIndividualClassQuery = () => {
 							<div className="input-group w-75 mx-auto">
 								<label htmlFor='topic'>Topic Name</label>
 								<input type="text" name="topic" required />
+							</div>
+							<div className="input-group w-75 mx-auto">
+								<label htmlFor='highest'>Highest Mark</label>
+								<input type="number" min={0} name="highest" required />
 							</div>
 							<div className="input-group w-75 mx-auto">
 								<label htmlFor='fullMarks'>Full Marks</label>

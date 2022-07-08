@@ -32,7 +32,7 @@ const SingleStudentPayment = (props) => {
             updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: false, lastPaid: null, due: null, payMonth: myArray[0], payYear: payYear };
         }
         console.log(updatedUser);
-        fetch(`http://localhost:5000/students/${email}`, {
+        fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -44,10 +44,10 @@ const SingleStudentPayment = (props) => {
                 console.log(data);
                 toast.success(`Payment Updated`);
 
-                fetch(`http://localhost:5000/students?className=${className}&batch=${batch}&group=${group}`, {
+                fetch(`https://infinite-cliffs-52841.herokuapp.com/students?className=${className}&batch=${batch}&group=${group}`, {
                     method: 'GET',
                     headers: {
-                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
                     }
                 })
                     .then(res => res.json())
@@ -55,7 +55,7 @@ const SingleStudentPayment = (props) => {
             })
     }
     return (
-        <div className='card d-flex align-items-center justify-content-center'>
+        <div className='card border-0 d-flex align-items-center justify-content-center'>
             <h1>{student.name}</h1>
             <h2>Class: {student.className}</h2>
             <h2>Batch: {student.batch}</h2>

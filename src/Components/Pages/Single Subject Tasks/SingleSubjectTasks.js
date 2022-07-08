@@ -3,30 +3,43 @@ import { useNavigate, useParams } from 'react-router-dom';
 import SingleSubjectTask from '../Single Subject Task/SingleSubjectTask';
 
 const SingleSubjectTasks = () => {
-    const { className, batch, group, subject } = useParams();
-    console.log(className, group, batch, subject);
+	const { className, batch, group, subject } = useParams();
+	const [searchText, setSearchText] = useState('');
 
-    const [task, setTask] = useState([]);
+	const [task, setTask] = useState([]);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setTask(data))
-    }, [])
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => {
+				const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.date.toLowerCase().includes(searchText.toLowerCase())));
+				setTask(match);
+			})
+	}, [searchText])
 
-    console.log(task);
-    return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
-            {
-                task?.slice(0).reverse().map(item => <SingleSubjectTask key={item._id} item={item} task={task} setTask={setTask}></SingleSubjectTask>)
-            }
-        </div>
-    );
+	const textChange = (event) => { // getting search result
+		console.log(event.target.value);
+		setSearchText(event.target.value);
+	}
+
+	console.log(task);
+	return (
+		<div>
+			<div className=''>
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+			</div>
+			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
+				{
+					task?.slice(0).reverse().map(item => <SingleSubjectTask key={item._id} item={item} task={task} setTask={setTask}></SingleSubjectTask>)
+				}
+			</div>
+		</div>
+	);
 };
 
 export default SingleSubjectTasks;

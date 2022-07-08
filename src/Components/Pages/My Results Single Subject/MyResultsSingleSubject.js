@@ -9,10 +9,10 @@ const MyResultsSingleSubject = ({ student }) => {
     console.log(student, subject);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
+        fetch(`https://infinite-cliffs-52841.herokuapp.com/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

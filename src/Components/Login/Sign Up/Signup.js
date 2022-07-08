@@ -53,7 +53,7 @@ const Signup = () => {
     }
 
     if (token) {
-        navigate('/subjects');
+        navigate(from, { replace: true });
     }
 
     const eventSubmit = async (event) => {
@@ -89,7 +89,7 @@ const Signup = () => {
             payYear: newYear
         }
 
-        fetch('http://localhost:5000/students', {
+        fetch('https://infinite-cliffs-52841.herokuapp.com/students', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -7,19 +7,13 @@
   width: 100%;
 }
 
-@media(max-width: 539px){
+@media(max-width: 1600px){
     .card-grid-Manage{
       grid-template-columns: repeat(1, 1fr); 
     }
   }
 
-  @media(min-width: 540px){
-    .card-grid-Manage{
-      grid-template-columns: repeat(1, 1fr); 
-    }
-  }
-  
-  @media(min-width: 960px){
+  @media(max-width: 1200px){
     .card-grid-Manage{
       grid-template-columns: repeat(1, 1fr); 
     }
@@ -37,4 +31,9 @@
 
 .card__background {
   background: url("https://wallpaperaccess.com/full/13394.png");
+}
+
+.sidebar{
+	background-color: whitesmoke;
+	border-radius: 20px;
 }

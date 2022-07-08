@@ -5,10 +5,10 @@ const MyResults = ({student}) => {
     const [result, setResult] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/results?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&email=${student?.email}`, {
+        fetch(`https://infinite-cliffs-52841.herokuapp.com/results?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&email=${student?.email}`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

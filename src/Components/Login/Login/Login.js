@@ -29,10 +29,10 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/students?email=${user?.email}`, {
+        fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
@@ -50,7 +50,7 @@ const Login = () => {
 
     if (token) {
         if (student[0]?.due !== 2) {
-            navigate('/subjects');
+            navigate(from, { replace: true });
         }
     }
 
