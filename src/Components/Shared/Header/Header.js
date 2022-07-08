@@ -66,7 +66,7 @@ const Header = () => {
 				<Navbar key={expand} expand={expand} className="nav-bar-bg px-5" sticky='top'>
 					<Container fluid>
 						<CustomLink className="me-4 navLink" to="/">
-							<img src={logo} className='img-fluid logo' alt="" />
+							<img src='https://i.ibb.co/GszHmKK/01.png' className='img-fluid logo' alt="" />
 						</CustomLink>
 						<Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 						<Navbar.Offcanvas
@@ -77,7 +77,7 @@ const Header = () => {
 							<Offcanvas.Header closeButton className='nav-bar-bg'>
 								<Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
 									<CustomLink className="me-4 navLink" to="/">
-										<img src={logo} className='img-fluid logo' alt="" />
+										<img src='https://i.ibb.co/GszHmKK/01.png' className='img-fluid logo' alt="" />
 									</CustomLink>
 								</Offcanvas.Title>
 							</Offcanvas.Header>

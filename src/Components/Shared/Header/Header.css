@@ -1,17 +1,17 @@
 .nav-bg{
-    background-color: #f33799;
+    background-color: #165b85;
 }
 .navLink, .navLink-header{
     font-size: 20px;
 }
 
 .navLink-header{
-    color: #f33799;
+    color: #165b85;
     text-decoration: none;
 }
 
 .navbar-toggler-icon, .navbar-toggler, .collapsed{
-    background-color: #f33799;
+    background-color: #165b85;
 }
 
 .user-name{
@@ -19,11 +19,11 @@
 }
 
 .logo{
-	width: 50px;
+	width: 80px;
 }
 
 .nav-bar-bg{
-	background-color: #982e93;
+	background-color: #165b85;
 }
 
 :root {
