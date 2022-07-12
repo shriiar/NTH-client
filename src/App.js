@@ -49,6 +49,9 @@ import ManageIndividualClassPayment from './Components/Pages/Manage Individual C
 import DueMessage from './Components/Shared/Due Message/DueMessage';
 import AddResultIndividualClassQuery from './Components/Pages/AddResultIndividualClassQuery/AddResultIndividualClassQuery';
 import { signOut } from 'firebase/auth';
+import 'font-awesome/css/font-awesome.min.css';
+import Footer from './Components/Shared/Footer/Footer';
+
 
 function App() {
 
@@ -192,15 +195,8 @@ function App() {
 				<Route path='/login' element={<Login></Login>}></Route>
 				<Route path='/signup' element={<Signup></Signup>}></Route>
 
-				{/* <Route path='/singleAllSubjectResults' element={<RequireAdmin>
-          <SingleAllSubjectResults></SingleAllSubjectResults>
-        </RequireAdmin>}></Route> */}
-
-				{/* <Route path='/bkashIntegration' element={<RequireAuth>
-          <BkashIntegration></BkashIntegration>
-        </RequireAuth>}></Route> */}
-
 			</Routes>
+			<Footer></Footer>
 		</div>
 	);
 }

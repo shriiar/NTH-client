@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
+import './Home.scss';
 import Typewriter from "typewriter-effect";
 import Tilt from 'react-tilt';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
@@ -110,6 +111,14 @@ const Home = () => {
 						</div>
 					))}
 				</Slider>
+			</div>
+
+			<div>
+				<form class="login">
+					<input type="text" placeholder="Username" />
+					<input type="password" placeholder="Password" />
+					<button>Login</button>
+				</form>
 			</div>
 		</div>
 	);
