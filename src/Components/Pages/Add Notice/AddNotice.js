@@ -4,12 +4,14 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const AddNotice = () => {
     const noticeRef = useRef();
+    const titleRef = useRef();
     const [date, setDate] = useState(new Date());
     const formattedDate = format(date, 'PP');
     const EventSubmit = async (event) => {
         event.preventDefault();
         const notice = {
-            description: noticeRef.current.value,
+			title: event.target.titleText.value,
+            description: event.target.noticeText.value,
             date: event.target.date.value,
             className: event.target.className.value,
             batch: event.target.batch.value,
@@ -33,9 +35,13 @@ const AddNotice = () => {
     return (
         <div>
             <form onSubmit={EventSubmit}>
+			<div className="input-group mb-0 w-75 mx-auto">
+                    <label htmlFor='titleText'>Title</label>
+                    <input type="titleText" name="titleText" id='email' required />
+                </div>
                 <div className="input-group mb-0 w-75 mx-auto">
-                    <label htmlFor='noticeText'>Description</label>
-                    <textarea cols="60" rows="7" ref={noticeRef} type="noticeText" name="noticeText" id='email' required />
+                    <label htmlFor='noticeText'>Notice</label>
+                    <textarea cols="60" rows="7" type="noticeText" name="noticeText" id='email' required />
                 </div>
                 <div className="input-group w-75 mx-auto">
                     <label htmlFor='date'>Date</label>

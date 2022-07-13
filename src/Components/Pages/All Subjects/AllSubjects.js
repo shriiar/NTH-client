@@ -85,6 +85,23 @@ const AllSubjects = () => {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
+			.then(res => {
+				res.json()
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth);
+				}
+			})
+			.then(data => {
+			})
+	}, [student])
+
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
 			.then(res => res.json())
 			.then(data => {
 				const match = data[0].subjects.filter(item => item.toLowerCase().includes(searchText.toLowerCase()));

@@ -12,7 +12,7 @@ import { MdOutlineMailOutline } from 'react-icons/md';
 const Footer = () => {
     return (
         <div className='footerClass' style={{ margin: "100px 0 0 0" }}>
-            <div class="footer-basic">
+            {/* <div class="footer-basic">
                 <footer>
                     <ul class="list-inline row">
                         <div className="col-3 col-md-2 col-lg-2">
@@ -50,7 +50,7 @@ const Footer = () => {
                     <h4 class="copyright fs-4 d-flex justify-content-center"><MdOutlineMailOutline className='a-icon me-2'></MdOutlineMailOutline>fahimshariar13@gmail.com</h4>
                     <h6 class="copyright fs-6">Competitive Programmer || Web Developer</h6>
                 </footer>
-            </div>
+            </div> */}
         </div>
     );
 };

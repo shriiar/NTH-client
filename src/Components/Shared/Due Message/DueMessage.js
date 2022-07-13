@@ -12,8 +12,7 @@ const DueMessage = () => {
     const formattedDate = format(date, 'PP');
 
     let myArray = formattedDate.split(' ');
-    console.log(myArray);
-
+	
     let newDate = myArray[1][0], leapYear = parseInt(myArray[2]);
     if (myArray[1].length > 2) {
         newDate += myArray[1][1];
@@ -38,8 +37,6 @@ const DueMessage = () => {
     if ((0 === leapYear % 4) && (0 !== leapYear % 100) || (0 === leapYear % 400)) {
         monthLimit = 29;
     }
-
-    console.log(newDate, monthLimit);
 
     useEffect(() => {
         fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {

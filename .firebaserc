@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "nazib-teaching-home"
-  }
+    "default": "nazib-teaching-home-73a45",
+    "staging": "nazib-teaching-home-73a45"
+  },
+  "targets": {}
 }

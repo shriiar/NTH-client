@@ -9,10 +9,10 @@ import astronaut from '../../../img/nazib1.jpg';
 import celebrating from '../../../img/nazib2.jpg';
 import education from '../../../img/nazib3.jpg';
 import taken from '../../../img/nazib4.jpg';
+import { FaBeer } from 'react-icons/fa';
 
 
 const Home = () => {
-
 	const images = [astronaut, celebrating, education, taken];
 
 	const NextArrow = ({ onClick }) => {
@@ -111,14 +111,6 @@ const Home = () => {
 						</div>
 					))}
 				</Slider>
-			</div>
-
-			<div>
-				<form class="login">
-					<input type="text" placeholder="Username" />
-					<input type="password" placeholder="Password" />
-					<button>Login</button>
-				</form>
 			</div>
 		</div>
 	);

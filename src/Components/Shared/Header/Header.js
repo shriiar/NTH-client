@@ -22,45 +22,14 @@ const Header = () => {
 		navigate('/login');
 	}
 
-	const name = user?.displayName.split(' ');
+	const name = user?.displayName?.split(' ');
+
+	console.log(user);
 
 	const goTo = (path) => {
 		navigate(path);
 	}
 	return (
-		// <Navbar collapseOnSelect expand="lg" bg="" className='nav-bg mb-4' sticky='top' variant="dark">
-		//     <Container>
-		//         <Navbar.Brand as={Link} to="/">
-
-		//         </Navbar.Brand>
-		//         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-		//         <Navbar.Collapse id="responsive-navbar-nav">
-		//             <Nav className="ms-auto">
-		//                 <CustomLink className="me-4 navLink" to="/">Home</CustomLink>
-		//                 {
-		//                     user && <>
-		//                         <CustomLink className="me-4 navLink" to="/subjects">My Subjects</CustomLink>
-		//                         <CustomLink className="me-4 navLink" to="/myQuiz">My Quiz</CustomLink>
-		//                         <CustomLink className="me-4 navLink" to="/myNotice">My Notice</CustomLink>
-		//                         {/* <CustomLink className="me-4 navLink" to="/bkashIntegration">Payment</CustomLink> */}
-		//                     </>
-		//                 }
-		//                 {
-		//                     admin && <CustomLink className="me-4 navLink" to="/manage">Manage NTH</CustomLink>
-		//                 }
-		//                 {
-		//                     !user ? <>
-		//                         <CustomLink className="me-4 navLink" to="/signup">Sign Up</CustomLink>
-		//                         <CustomLink className="me-4 navLink" to="/login">Login</CustomLink></>
-		//                         :
-		//                         <>
-		//                             <CustomLink className="me-4 navLink" to="/student">{user?.displayName}</CustomLink>
-		//                             <button className="navLink border-0 text-center bg-transparent text-start p-0" onClick={userSignOut}>Sign Out</button></>
-		//                 }
-		//             </Nav>
-		//         </Navbar.Collapse>
-		//     </Container>
-		// </Navbar >
 		<>
 			{[false].map((expand) => (
 				<Navbar key={expand} expand={expand} className="nav-bar-bg px-5" sticky='top'>
@@ -166,9 +135,13 @@ const Header = () => {
 															backgroundImage: `url("https://i.ibb.co/tCxkj9c/Student.png")`
 														}}>
 														</div>
-														<div class="card__content d-flex flex-column">
-															<h3 class="card__heading-navbar">{name[0]} {name[1]}</h3>
-														</div>
+														{
+															name && <>
+																<div class="card__content d-flex flex-column">
+																	<h3 class="card__heading-navbar">{name[0]} {name[1]}</h3>
+																</div>
+															</>
+														}
 													</button>
 													<button class="card-blur-navbar bg-transparent" onClick={userSignOut}>
 														<div class="card__background" style={{

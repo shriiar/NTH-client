@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../../Shared/Loading/Loading';
 import useToken from '../../../Hooks/useToken';
-import carPng from '../../../img/undraw_electric_car_b7hl.png';
+import carPng from '../../../img/undraw_Educator_re_ju47.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 
 const Login = () => {
@@ -84,7 +84,7 @@ const Login = () => {
             <div class="page">
                 <div class="container-login">
                     <div class="left">
-                        <div class="login">Login</div>
+                        <div class="loginn">Login</div>
                         <img src={carPng} className='img-fluid' alt="" />
                     </div>
                     <div class="right">
@@ -99,7 +99,7 @@ const Login = () => {
                             </div>
                             <button className='form-link bg-transparent border-0 mb-3' onClick={resetPassword}>Reset Password</button>
 
-                            <input className='form-submit button-33 w-75 mx-auto' type="submit" required value="Login" />
+                            <input className='form-submit button-48 w-75 mx-auto' type="submit" required value="Login" />
                         </form>
                     </div>
                     <ToastContainer />

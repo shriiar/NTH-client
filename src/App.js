@@ -51,6 +51,7 @@ import AddResultIndividualClassQuery from './Components/Pages/AddResultIndividua
 import { signOut } from 'firebase/auth';
 import 'font-awesome/css/font-awesome.min.css';
 import Footer from './Components/Shared/Footer/Footer';
+import ExpandedNotice from './Components/Pages/Expanded Notice/ExpandedNotice';
 
 
 function App() {
@@ -126,6 +127,15 @@ function App() {
 					<Route path='checkPayment' element={<RequireAdmin>
 						<CheckPayment></CheckPayment>
 					</RequireAdmin>}></Route>
+
+				</Route>
+
+				<Route path='/myNotice' element={<RequireAuth>
+					<MyNotice></MyNotice></RequireAuth>}>
+
+					<Route path='expandedNotice/:_id' element={<RequireAuth>
+						<ExpandedNotice></ExpandedNotice>
+					</RequireAuth>}></Route>
 
 				</Route>
 

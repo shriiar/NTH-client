@@ -1,38 +1,16 @@
 [
   {
-    "className": "5",
-    "batch": "bangla",
-    "subjects": [
-      "bangla",
-      "english",
-      "science",
-      "mathematics",
-      "bgs",
-      "religion"
-    ]
-  },
-  {
-    "className": "5",
-    "batch": "english",
-    "subjects": [
-      "bangla",
-      "english",
-      "science",
-      "mathematics",
-      "bgs",
-      "religion"
-    ]
-  },
-  {
-    "className": "5",
-    "batch": "english",
-    "subjects": [
-      "bangla",
-      "english",
-      "science",
-      "mathematics",
-      "bgs",
-      "religion"
-    ]
+    "Bangla1": "https://i.ibb.co/G3Tfqd8/Bangla1.jpg",
+    "Bangla2": "https://i.ibb.co/rFcFtNC/Bangla2.png",
+    "English1": "https://i.ibb.co/k030MRq/English1.jpg",
+    "English2": "https://i.ibb.co/0CytZM5/English2.jpg",
+    "Math": "https://i.ibb.co/J7VxS2x/Math.jpg",
+    "Science": "https://i.ibb.co/Ycrk0PG/Science.webp",
+    "Bgs": "https://i.ibb.co/nMYVJPv/BGS.jpg",
+    "Physics": "https://i.ibb.co/p36TF02/Physics.jpg",
+    "Chemistry": "https://i.ibb.co/3kD2TD9/Chemistry.jpg",
+    "Biology": "https://i.ibb.co/nP45VbM/Biology.jpg",
+    "Ict": "https://i.ibb.co/yBQdrn0/Ict.webp",
+    "Religion": "https://i.ibb.co/hg3p3sb/Religion.jpg"
   }
 ]

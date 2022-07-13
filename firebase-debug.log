@@ -1,0 +1,13 @@
+[debug] [2022-07-12T21:54:13.151Z] ----------------------------------------------------------------------
+[debug] [2022-07-12T21:54:13.153Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\fahim\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-07-12T21:54:13.154Z] CLI Version:   11.2.1
+[debug] [2022-07-12T21:54:13.154Z] Platform:      win32
+[debug] [2022-07-12T21:54:13.154Z] Node Version:  v16.14.2
+[debug] [2022-07-12T21:54:13.154Z] Time:          Wed Jul 13 2022 03:54:13 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-07-12T21:54:13.155Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-07-12T21:54:13.208Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-07-12T21:54:13.208Z] > authorizing via signed-in user (nthgec@gmail.com)
+[debug] [2022-07-12T21:54:13.208Z] [iam] checking project nazib-teaching-home-73a45 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-07-12T21:54:13.210Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/nazib-teaching-home-73a45:testIamPermissions [none]
+[debug] [2022-07-12T21:54:13.210Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nazib-teaching-home-73a45:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
