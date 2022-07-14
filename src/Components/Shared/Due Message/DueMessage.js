@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
+import './DueMessage.css';
 
 const DueMessage = () => {
 
@@ -54,8 +55,8 @@ const DueMessage = () => {
     return (
         <div>
             {
-                ((student[0]?.due === 1 && user) && (newDate >= 15 && newDate <= monthLimit)) && <p className='text-danger fw-bold'>
-                    You have a due of this month. <br /> If you already paid please contact NTH support. <br /> Thank you for being with us.
+                ((student[0]?.due === 1 && user) && (newDate >= 15 && newDate <= monthLimit)) && <p className='text-danger fw-bold button-85 fs-5'>
+                    You have a due of this month. If you already paid please contact NTH support. <br /> Thank you for being with us.
                 </p>
             }
             {

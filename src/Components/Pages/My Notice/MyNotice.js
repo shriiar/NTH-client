@@ -1,9 +1,12 @@
 import { format } from 'date-fns';
+import './MyNotice.css';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Outlet } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import MyIndividualNotice from '../My Individual Notice/MyIndividualNotice';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const MyNotice = () => {
 
@@ -14,6 +17,9 @@ const MyNotice = () => {
 	const formattedDate = format(date, 'PP');
 	const [searchText, setSearchText] = useState('');
 
+	useEffect(() => {
+		Aos.init({ duration: 2000 });
+	}, [])
 
 	useEffect(() => {
 		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
@@ -62,20 +68,24 @@ const MyNotice = () => {
 			{
 				notice.length !== 0 && <>
 					<div className="row">
-						<div className="col-12 col-md-4 col-lg-4">
-							< div className='row row-cols-1 row-cols-md-1 row-cols-lg-1' >
-								{
-									notice?.slice(0).reverse().map(noc => <MyIndividualNotice key={noc._id} noc={noc}></MyIndividualNotice>)
-								}
-							</div >
+						<div className="col-12 col-md-4 col-lg-4 order-2 order-sm-2 order-md-1 order-lg-1">
+							<section class="hero-section p-0 px-4">
+								<div data-aos='fade-right' class="card-grid-notice">
+									{/* < div className='row row-cols-1 row-cols-md-1 row-cols-lg-1' > */}
+									{
+										notice?.slice(0).reverse().map(noc => <MyIndividualNotice key={noc._id} noc={noc}></MyIndividualNotice>)
+									}
+									{/* </div > */}
+								</div>
+							</section>
 						</div>
-						<div className="col-12 col-md-8 col-lg-8">
+						<div className="col-12 col-md-8 col-lg-8 order-1 order-sm-1 order-md-2 order-lg-2 mb-5">
 							<Outlet></Outlet>
 						</div>
 					</div>
 				</>
 			}
-		</div>
+		</div >
 	);
 };
 

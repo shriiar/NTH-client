@@ -60,7 +60,7 @@ const IndividualAllSubject = (props) => {
 
     return (
         <div className='card-pos'>
-            <div data-aos='fade-up' className='card border-0 mb-3'>
+            <div data-aos='fade-up' className='card-sub border-0 mb-3'>
                 <img src={img} class="card__image w-100" alt="" />
                 <div class="card__overlay">
                     <div class="card__header">
