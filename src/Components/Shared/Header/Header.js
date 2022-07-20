@@ -9,6 +9,7 @@ import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import useAdmin from '../../../Hooks/useAdmin';
 import logo from '../../../img/Logo-02.png';
+import DueMessage from '../Due Message/DueMessage';
 
 const Header = () => {
 	const [user] = useAuthState(auth);
@@ -23,9 +24,7 @@ const Header = () => {
 	}
 
 	const name = user?.displayName?.split(' ');
-
-	console.log(user);
-
+	
 	const goTo = (path) => {
 		navigate(path);
 	}
@@ -159,6 +158,7 @@ const Header = () => {
 							</Offcanvas.Body>
 						</Navbar.Offcanvas>
 					</Container>
+					<DueMessage></DueMessage>
 				</Navbar>
 			))}
 		</>

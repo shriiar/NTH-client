@@ -6,7 +6,7 @@ import img from '../../../img/undraw_Observations.png';
 
 const ExpandedNotice = () => {
 	const { _id } = useParams();
-	console.log(_id);
+	// console.log(_id);
 
 	const [notice, setNotice] = useState([]);
 
@@ -21,7 +21,7 @@ const ExpandedNotice = () => {
 			.then(data => setNotice(data))
 	}, [_id])
 
-	console.log(notice);
+	// console.log(notice);
 
 	return (
 		<div class="center-notice px-5">

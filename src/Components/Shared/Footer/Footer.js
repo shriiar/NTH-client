@@ -1,58 +1,75 @@
 import React from 'react';
-import './Footer.css'
-import { FaGithub } from 'react-icons/fa';
-import { FaInstagram } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa';
-import { SiCodeforces } from 'react-icons/si';
-import { SiCodechef } from 'react-icons/si';
-import { SiTopcoder } from 'react-icons/si';
-import { GoLocation } from 'react-icons/go';
-import { MdOutlineMailOutline } from 'react-icons/md';
+import './Footer.css';
+import logo from '../../../img/01.png';
+import vid from '../../../vid/footer animation.mp4';
 
 const Footer = () => {
-    return (
-        <div className='footerClass' style={{ margin: "100px 0 0 0" }}>
-            {/* <div class="footer-basic">
-                <footer>
-                    <ul class="list-inline row">
-                        <div className="col-3 col-md-2 col-lg-2">
-                            <a href="https://www.instagram.com/shriiar/">
-                                <FaInstagram className='a-icon'></FaInstagram>
-                            </a>
-                        </div>
-                        <div className="col-3 col-md-2 col-lg-2">
-                            <a href="https://github.com/shriiiar">
-                                <FaGithub className='a-icon'></FaGithub>
-                            </a>
-                        </div>
-                        <div className="col-3 col-md-2 col-lg-2">
-                            <a href="https://www.linkedin.com/in/fahim-shahriar-sajid-139757235/">
-                                <FaLinkedin className='a-icon'></FaLinkedin>
-                            </a>
-                        </div>
-                        <div className="col-3 col-md-2 col-lg-2">
-                            <a href="https://codeforces.com/profile/Shriiar">
-                                <SiCodeforces className='a-icon'></SiCodeforces>
-                            </a>
-                        </div>
-                        <div className="col-3 col-md-2 col-lg-2">
-                            <a href="https://atcoder.jp/users/Shriiar">
-                                <SiTopcoder className='a-icon'></SiTopcoder>
-                            </a>
-                        </div>
-                        <div className="col-3 col-md-2 col-lg-2">
-                            <a href="https://www.codechef.com/users/shriiar">
-                                <SiCodechef className='a-icon'></SiCodechef>
-                            </a>
-                        </div>
-                    </ul>
-                    <h3 className='copyright text-center my-2 fs-3'><GoLocation className='a-icon'></GoLocation> Nasirabad, Chittagong, Bangladesh</h3>
-                    <h4 class="copyright fs-4 d-flex justify-content-center"><MdOutlineMailOutline className='a-icon me-2'></MdOutlineMailOutline>fahimshariar13@gmail.com</h4>
-                    <h6 class="copyright fs-6">Competitive Programmer || Web Developer</h6>
-                </footer>
-            </div> */}
-        </div>
-    );
+	return (
+		<div class="pg-footer" style={{ margin: "190px 0 0 0" }}>
+			<footer class="footer">
+				<svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+					<path class="footer-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+				</svg>
+				<div class="footer-content d-flex align-items-center p-0">
+					<div class="footer-content-column">
+						<div class="footer-logo">
+							<img src={logo} className='img-fluid' alt="" />
+						</div>
+						<div class="footer-menu">
+							<h2 class="footer-menu-name">Nazib Teaching Home</h2>
+						</div>
+					</div>
+					<div class="footer-content-column">
+						<div class="footer-menu">
+							<h2 class="footer-menu-name">Email</h2>
+							<ul id="menu-company" class="footer-menu-list">
+								<li class="menu-item menu-item-type-post_type menu-item-object-page">
+									<p href="#">nthgec@gmail.com</p>
+								</li>
+								{/* <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+									<a href="#">01800000000</a>
+								</li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="#">Careers</a>
+								</li> */}
+							</ul>
+						</div>
+						<div class="footer-menu">
+							<h2 class="footer-menu-name">Phone</h2>
+							<ul id="menu-legal" class="footer-menu-list">
+								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+									<p href="#">01800000000</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer-content-column">
+						<div class="footer-menu">
+							<h2 class="footer-menu-name">Adress</h2>
+							<ul id="menu-quick-links" class="footer-menu-list">
+								<li class="menu-item menu-item-type-custom menu-item-object-custom">
+									<p target="_blank" rel="noopener noreferrer" href="#">Beside Well Park, Gec Circle, Chottogram, Bangladesh</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="footer-content-column">
+						<div class="footer-call-to-action">
+							<video class="my-5 footer-vid" src={vid}
+								autoPlay loop muted></video>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright">
+					<div class="footer-copyright-wrapper">
+						<p class="footer-copyright-text">
+							<p class="footer-copyright-link"> ©2020. | Designed & Developed By: Fahim Shahriar Sajid. | All rights reserved. </p>
+						</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+	);
 };
 
 export default Footer;

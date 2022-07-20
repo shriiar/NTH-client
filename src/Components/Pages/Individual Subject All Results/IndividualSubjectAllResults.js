@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import SingleAllSubjectResults from '../Single All Subject Results/SingleAllSubjectResults';
 
 const IndividualSubjectAllResults = () => {
@@ -26,13 +27,14 @@ const IndividualSubjectAllResults = () => {
 	}, [searchText])
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
-	console.log(allResult);
+	// console.log(allResult);
 	return (
 		<div>
+			<HelmetTitle title={`${className} ${batch.toUpperCase()} ${subject.toUpperCase()}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

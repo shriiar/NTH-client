@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import IndividualSubjectREsults from '../Individual Subject REsults/IndividualSubjectREsults';
 
 const AllSubjectsResults = () => {
@@ -37,7 +38,7 @@ const AllSubjectsResults = () => {
 			})
 	}, [student, searchText])
 
-	console.log(allSubjects);
+	// console.log(allSubjects);
 
 	const details = {
 		className: student[0]?.className,
@@ -46,12 +47,13 @@ const AllSubjectsResults = () => {
 	}
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
 	return (
 		<div>
+			<HelmetTitle title={`Manage Result Class ${className}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

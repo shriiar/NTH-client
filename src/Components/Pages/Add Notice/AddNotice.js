@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import React, { useRef, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 
 const AddNotice = () => {
     const noticeRef = useRef();
@@ -17,7 +18,7 @@ const AddNotice = () => {
             batch: event.target.batch.value,
             group: event.target.group.value,
         }
-        console.log(notice);
+        // console.log(notice);
         let toastText = `Class ${notice.className} Batch ${notice.batch} Group ${notice.group}`
 
         fetch('https://infinite-cliffs-52841.herokuapp.com/notice', {
@@ -34,6 +35,7 @@ const AddNotice = () => {
     };
     return (
         <div>
+			<HelmetTitle title={'Add Notice'}></HelmetTitle>
             <form onSubmit={EventSubmit}>
 			<div className="input-group mb-0 w-75 mx-auto">
                     <label htmlFor='titleText'>Title</label>

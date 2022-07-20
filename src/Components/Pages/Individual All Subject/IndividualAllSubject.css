@@ -102,7 +102,7 @@
 }
 
 .button-87 {
-  padding: 15px 20px;
+  padding: 15px 15px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -123,6 +123,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin: 0 15px;
 }
 
 .button-87:hover {

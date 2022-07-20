@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import SingleStudentPayment from '../Single Student Payment/SingleStudentPayment';
 
 const ManageIndividualClassPayment = () => {
@@ -23,12 +24,13 @@ const ManageIndividualClassPayment = () => {
 	}, [searchText])
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
 	return (
 		<div>
+			<HelmetTitle title={`Manage Payment Class ${className}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

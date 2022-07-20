@@ -17,13 +17,13 @@ const AddResultIndividualClassQuery = () => {
 		const resultQuery = { subject: event.target.subject.value, topic: event.target.topic.value, highest: event.target.highest.value, fullMarks: event.target.fullMarks.value };
 		localStorage.setItem('resultQuery', JSON.stringify(resultQuery));
 
-		console.log(resultQuery);
+		// console.log(resultQuery);
 
 		navigate(`/addResultIndividualClass/${className}/${batch}/${group}`);
 	}
 	return (
 		<div>
-			<HelmetTitle title='Add To Inventory'></HelmetTitle>
+			<HelmetTitle title={`Result Query Class ${className}`}></HelmetTitle>
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
 					<div class="left-add">

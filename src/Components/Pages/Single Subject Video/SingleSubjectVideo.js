@@ -8,7 +8,7 @@ const SingleSubjectVideo = () => {
         subjectObj = JSON.parse(storedSubjectObj);
     }
 
-    console.log(subjectObj);
+    // console.log(subjectObj);
 
     return (
         <div>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate, useParams } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import SingleSubjectTask from '../Single Subject Task/SingleSubjectTask';
 
 const SingleSubjectTasks = () => {
@@ -23,13 +25,14 @@ const SingleSubjectTasks = () => {
 	}, [searchText])
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
-	console.log(task);
+	// console.log(task);
 	return (
 		<div>
+			<HelmetTitle title={`Manage Class ${className} ${subject.toUpperCase()}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

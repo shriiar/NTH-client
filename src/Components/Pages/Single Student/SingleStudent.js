@@ -58,7 +58,7 @@ const SingleStudent = (props) => {
     }
     return (
         <div className='p-3'>
-            <div className='card border-0 mb-3'>
+            <div className='card-sub border-0 mb-3'>
                 {
                     img && <img src={img} className='w-100 card__image' alt="Student Image" />
                 }

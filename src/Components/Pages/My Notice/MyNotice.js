@@ -7,6 +7,10 @@ import auth from '../../../firebase.init';
 import MyIndividualNotice from '../My Individual Notice/MyIndividualNotice';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { signOut } from 'firebase/auth';
+import empty from '../../../img/empty.jpg';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
+
 
 const MyNotice = () => {
 
@@ -28,11 +32,27 @@ const MyNotice = () => {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
+			.then(res => {
+				res.json()
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth);
+				}
+			})
+			.then(data => { })
+	}, [user])
+
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
 			.then(res => res.json())
 			.then(data => setStudent(data))
 	}, [user])
 
-	console.log(student);
+	// console.log(student);
 
 	useEffect(() => {
 		fetch(`https://infinite-cliffs-52841.herokuapp.com/notice?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
@@ -43,13 +63,13 @@ const MyNotice = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				const match = data.filter(item => item.date.toLowerCase().includes(searchText.toLowerCase()));
 				setNotice(match);
 			})
 	}, [user, student, searchText])
 
-	console.log(notice);
+	// console.log(notice);
 
 	const textChange = (event) => { // getting search result
 		setSearchText(event.target.value);
@@ -57,12 +77,14 @@ const MyNotice = () => {
 
 	return (
 		<div>
+			<HelmetTitle title={'My Notice'}></HelmetTitle>
 			<div className='mx-auto w-75'>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search By Date..' />
 			</div>
 			{
 				notice.length === 0 && <div>
-					<h1>No new notice</h1>
+					<h1 className='mt-5'>No new notice</h1>
+					<img src={empty} className='img-fluid' width='900px' alt="" style={{ margin: "0 0 0 100px" }} />
 				</div>
 			}
 			{

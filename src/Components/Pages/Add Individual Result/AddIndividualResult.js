@@ -40,7 +40,7 @@ const AddIndividualResult = (props) => {
 			name: event.target.name.value, email: student[0]?.email, subject: resultQuery.subject, subjectCode: subjectName, topic: resultQuery.topic, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, mark: event.target.mark.value, highest: resultQuery.highest, fmark: resultQuery.fullMarks, date: formattedDate
 		};
 
-		console.log(result);
+		// console.log(result);
 		const url = `https://infinite-cliffs-52841.herokuapp.com/results`;
 		fetch(url, {
 			method: 'POST',

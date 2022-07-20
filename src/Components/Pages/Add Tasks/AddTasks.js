@@ -26,7 +26,7 @@ const AddTasks = () => {
 			className: event.target.class.value, batch: event.target.batch.value, group: event.target.group.value, date: event.target.date.value
 		};
 
-		console.log(newItem);
+		// console.log(newItem);
 		const url = `https://infinite-cliffs-52841.herokuapp.com/subWAcc`;
 		fetch(url, {
 			method: 'POST',
@@ -48,7 +48,7 @@ const AddTasks = () => {
 	};
 	return (
 		<div>
-			<HelmetTitle title='Add To Inventory'></HelmetTitle>
+			<HelmetTitle title='Add Task'></HelmetTitle>
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
 					<div class="left-add">

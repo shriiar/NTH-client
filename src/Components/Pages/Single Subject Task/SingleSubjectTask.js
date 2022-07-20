@@ -8,13 +8,13 @@ const SingleSubjectTask = (props) => {
 	const { task, setTask } = props;
 	const deleteTask = () => {
 		const url = `https://infinite-cliffs-52841.herokuapp.com/subWAcc?id=${_id}`;
-		console.log(url);
+		// console.log(url);
 		fetch(url, {
 			method: 'DELETE'
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				if (data.deletedCount > 0) {
 					const remaining = task.filter(item => item._id !== _id);
 					toast.success('Successfully Deleted');

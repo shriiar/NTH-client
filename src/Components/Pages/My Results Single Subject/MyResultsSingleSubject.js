@@ -1,32 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import MyIndividualResult from '../My Individual Result/MyIndividualResult';
 
-const MyResultsSingleSubject = ({ student }) => {
-    const [result, setResult] = useState([]);
+const MyResultsSingleSubject = () => {
 
-    const { subject } = useParams();
-    console.log(student, subject);
+	const [user] = useAuthState(auth);
+	const [result, setResult] = useState([]);
+	const [student, setStudent] = useState([]);
 
-    useEffect(() => {
-        fetch(`https://infinite-cliffs-52841.herokuapp.com/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setResult(data))
-    }, [])
+	const { subject } = useParams();
+	// console.log(student, subject);
 
-    console.log(result);
-    return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
-            {
-                result.map(res => <MyIndividualResult key={res._id} res={res}></MyIndividualResult>)
-            }
-        </div>
-    );
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setStudent(data))
+	}, [user])
+
+
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setResult(data))
+	}, [student])
+
+	// console.log(result);
+	return (
+		<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+			{
+				result.map(res => <MyIndividualResult key={res._id} res={res}></MyIndividualResult>)
+			}
+		</div>
+	);
 };
 
 export default MyResultsSingleSubject;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import SingleClassTasks from '../Single Class Tasks/SingleClassTasks';
 
 const ManageIndividualClassByTask = () => {
@@ -8,7 +9,7 @@ const ManageIndividualClassByTask = () => {
 	const [allSubjects, setAllSubjects] = useState([]);
 	const [searchText, setSearchText] = useState('');
 
-	console.log(className, batch, group, `https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`);
+	// console.log(className, batch, group, `https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`);
 
 	useEffect(() => {
 		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`, {
@@ -25,16 +26,17 @@ const ManageIndividualClassByTask = () => {
 	}, [searchText])
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
 	let subjects = allSubjects[0]?.subjects;
 
-	console.log(allSubjects[0]);
+	// console.log(allSubjects[0]);
 
 	return (
 		<div>
+			<HelmetTitle title={`Manage Tasks Class ${className}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

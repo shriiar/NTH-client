@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const AddStudentResult = () => {
 
     const { email } = useParams();
-    console.log(email);
+    // console.log(email);
     const [date, setDate] = useState(new Date());
     const formattedDate = format(date, 'PP');
     const [student, setStudent] = useState([])
@@ -24,7 +24,7 @@ const AddStudentResult = () => {
             .then(data => setStudent(data))
     }, [email])
 
-    console.log(student);
+    // console.log(student);
 
     const EventSubmit = (event) => {
         event.preventDefault();
@@ -41,7 +41,7 @@ const AddStudentResult = () => {
             name: event.target.name.value, email: event.target.email.value, subject: event.target.subject.value, subjectCode: subjectName, topic: event.target.topic.value, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, mark: event.target.mark.value, fmark: event.target.fmark.value, date: event.target.date.value
         };
 
-        console.log(result);
+        // console.log(result);
         const url = `https://infinite-cliffs-52841.herokuapp.com/results`;
         fetch(url, {
             method: 'POST',

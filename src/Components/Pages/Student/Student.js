@@ -10,6 +10,10 @@ import Progress from './Progress';
 import './Student.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import cover from '../../../img/cover.jpg';
+import { signOut } from 'firebase/auth';
+import empty from '../../../img/empty.jpg';
+
 
 const Student = () => {
 
@@ -36,6 +40,22 @@ const Student = () => {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
 			}
 		})
+			.then(res => {
+				res.json()
+				if (res.status === 401 || res.status === 403) {
+					signOut(auth);
+				}
+			})
+			.then(data => { })
+	}, [user])
+
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
 			.then(res => res.json())
 			.then(data => setStudent(data))
 	}, [user])
@@ -54,7 +74,7 @@ const Student = () => {
 			})
 	}, [searchText, user.email])
 
-	console.log(result);
+	// console.log(result);
 
 	const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
 
@@ -91,7 +111,6 @@ const Student = () => {
 				})
 					.then(res => res.json())
 					.then(result => {
-						console.log(result);
 						if (result.success) {
 							const img = result.data.url;
 							console.log(img);
@@ -133,8 +152,8 @@ const Student = () => {
 										.then(res => res.json())
 										.then(data => setStudent(data))
 
-									console.log(data);
-									console.log(updateProfile);
+									// console.log(data);
+									// console.log(updateProfile);
 
 									setTimeout(() => setUploadPercentage(0), 10000);
 									const { fileName, filePath } = res.data;
@@ -152,108 +171,85 @@ const Student = () => {
 		setSearchText(event.target.value);
 	}
 
-	console.log(student[0]);
+	// console.log(student[0]);
 
 	return (
 		<div className='mx-auto'>
 			<div>
-				<HelmetTitle title='My Portfolio'></HelmetTitle>
-				<div className='myPortfolio'>
-					<div class="portfoliocard-user text-start">
+				<HelmetTitle title={'My Profile'}></HelmetTitle>
+				<div className='myPortfolio text-start'>
+					<div class="portfoliocard-user">
 						<div class="coverphoto-user"></div>
 						<div data-aos='fade-right' class="profile_picture-user" style={{
 							backgroundImage: `url(${student[0]?.img})`
 						}}></div>
-						<div data-aos='fade-right' className="following-user mt-5">
-							<div className="follow_count-user" style={{ margin: "100px 0 0 0" }}>{student[0]?.name}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">{student[0]?.email}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">ID: {student[0]?.userId}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">Class: {student[0]?.className}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">Batch: {student[0]?.batch}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">Group: {student[0]?.group}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">Father's Name: {student[0]?.father}</div>
-						</div>
-						<div data-aos='fade-left' className="following-user">
-							<div className="follow_count-user">Mother's Name: {student[0]?.mother}</div>
-						</div>
-
-						<div data-aos='fade-left' className='row'>
-							<div className="col-12 mt-4">
-								{
-									student[0]?.due !== null ? <div data-aos='fade-left' className="following-user">
-										<div className="follow_count-user">Mother's Name: {student[0]?.mother}</div>
-									</div>
-										:
-										<div data-aos='fade-left' className="following-user">
-											<div className="follow_count-user">Due: Payment Clear</div>
+						<div class="left_col-user">
+							<div className='following-user'>
+								<h1 className='text-upload my-5'>Upload Your Photo</h1>
+								<Fragment>
+									{message ? <Message msg={message} /> : null}
+									<form onSubmit={onSubmit}>
+										<div className='custom-file mb-4'>
+											<input
+												type='file'
+												className='custom-file-input'
+												id='customFile'
+												name='imgFile'
+												onChange={onChange}
+											/>
 										</div>
-								}
+
+										<Progress percentage={uploadPercentage} />
+
+										<input
+											type='submit'
+											value='Upload'
+											className='button bg-success mt-4 mx-auto h-100'
+										/>
+									</form>
+								</Fragment>
 							</div>
-							<div className="col-12">
-								<div data-aos='fade-left' className="following-user">
-									<div className="follow_count-user">Last paid: {student[0]?.lastPaid}</div>
-								</div>
-							</div>
-							<div className='col-12'>
-								<button className='px-3 bg-success'>
-									<a href="http://localhost:5000/ssl-request">Make Payment</a>
-								</button>
+						</div>
+						<div data-aos='fade-left' class="right_col-user">
+							<h2 class="name-user text-upload">{student[0]?.name}</h2>
+							<h3 class="location-user text-upload">{student[0]?.email}</h3>
+							<h3 class="location-user">Class: <span className='text-upload'>{student[0]?.className}</span></h3>
+							<h3 class="location-user">Batch: <span className='text-upload'>{student[0]?.batch.toUpperCase()}</span></h3>
+							{
+								(student[0]?.className === '9' || student[0]?.className === '10') && <h3 class="location-user">Group: <span className='text-upload'>{student[0]?.group.toUpperCase()}</span>
+								</h3>
+							}
+							<h3 class="location-user">Informations:</h3>
+							<div className='row ps-5'>
+								<div className="col-12 text-upload fw-bold">{student[0]?.father}</div>
+
+								<div className="col-12 text-upload fw-bolder">{student[0]?.mother}</div>
+								<div className="col-12 text-upload fw-bold">{student[0]?.phone}</div>
+								<div className="col-12 text-upload fw-bold">{student[0]?.adress}</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className='mx-auto w-50'>
-				<h1 className='text-danger my-5'>Upload Your Photo</h1>
-				<Fragment>
-					{message ? <Message msg={message} /> : null}
-					<form onSubmit={onSubmit}>
-						<div className='custom-file mb-4'>
-							<input
-								type='file'
-								className='custom-file-input'
-								id='customFile'
-								name='imgFile'
-								onChange={onChange}
-							/>
-							<label className='custom-file-label' htmlFor='customFile'>
-								{filename}
-							</label>
-						</div>
-
-						<Progress percentage={uploadPercentage} />
-
-						<input
-							type='submit'
-							value='Upload'
-							className='btn btn-primary btn-block mt-4'
-						/>
-					</form>
-				</Fragment>
-			</div>
-			<h1 className='text-center shop-header container mt-5'>Search Results</h1>
-			<div className=''>
-				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
-			</div>
-			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+			<div>
+				<h1 className='text-center shop-header container mt-5'>Search Results</h1>
+				<div className=''>
+					<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+				</div>
 				{
-					result.slice(0).reverse().map(item => <StudentResults key={item._id} item={item}></StudentResults>)
+					result.length === 0 && <>
+					<h1 className='mt-5'>You have no subject results at the moment</h1>
+					<img src={empty} className='img-fluid' width='900px' alt="" style={{margin: "0 0 0 100px"}}/>
+					</>
 				}
+				<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
+					{
+						result.slice(0).reverse().map(item => <StudentResults key={item._id} item={item}></StudentResults>)
+					}
+				</div>
 			</div>
 			<ToastContainer></ToastContainer>
-		</div>
+		</div >
 	);
 };
 

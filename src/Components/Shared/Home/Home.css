@@ -1,11 +1,116 @@
-img {
-  border-radius: 20px;
-}
-
 video {
   border-radius: 20px;
 }
 
 .cadetsCollage {
   border-radius: 0px;
+}
+
+.glass-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+}
+
+.glass-body1 {
+  border-radius: 2rem;
+  width: 90%;
+}
+
+.glass {
+  background-color: rgb(255, 255, 255);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  width: 100%;
+  backdrop-filter: blur(1rem);
+  margin: auto;
+}
+
+.circle1 {
+  top: 5%;
+  left: 5%;
+}
+
+.circle2 {
+  bottom: 5%;
+  right: 5%;
+}
+
+.nav {
+  margin-right: 2em;
+  float: right;
+}
+
+.nav a {
+  float: left;
+  color: #426696;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.2s;
+  font-family: "Nunito", sans-serif;
+  opacity: 0.8;
+}
+
+.nav a:hover {
+  background-color: white;
+}
+
+.header img {
+  margin-top: 3em;
+  width: 100% !important;
+  float: left;
+  animation: MoveUpDown 3s ease infinite;
+  left: 0;
+  bottom: 0;
+}
+
+.moving-img {
+  width: 700px !important;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: translateY(-0.4em);
+  }
+  50% {
+    transform: translateY(0.4em);
+  }
+}
+
+.header p {
+  margin-top: 4em;
+  margin-right: 4em;
+  width: 25%;
+  float: right;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  font-size: 90%;
+  opacity: 0.8;
+}
+
+.quote p {
+  padding-top: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 2em;
+  clear: both;
+  text-align: center;
+  color: #426696;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+}
+
+.part2, .part4{
+background-color: rgb(233, 233, 233);
 }

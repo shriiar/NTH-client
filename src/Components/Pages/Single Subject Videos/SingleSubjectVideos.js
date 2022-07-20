@@ -37,7 +37,7 @@ const SingleSubjectVideos = (props) => {
 		let subjectObj = [{
 			subject: subject, name: name, videoUrl: videoUrl
 		}];
-		console.log(subjectObj);
+		// console.log(subjectObj);
 		const storedSubjectObj = localStorage.getItem('singleSubjectVideo');
 		if (storedSubjectObj) {
 			subjectObj = JSON.parse(storedSubjectObj);

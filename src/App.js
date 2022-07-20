@@ -52,6 +52,8 @@ import { signOut } from 'firebase/auth';
 import 'font-awesome/css/font-awesome.min.css';
 import Footer from './Components/Shared/Footer/Footer';
 import ExpandedNotice from './Components/Pages/Expanded Notice/ExpandedNotice';
+import ManageResultAllClass from './Components/Pages/ManageResultAllClass/ManageResultAllClass';
+import InsertID from './Components/Pages/InsertID/InsertID';
 
 
 function App() {
@@ -71,15 +73,10 @@ function App() {
 			.then(data => setStudent(data))
 	}, [user])
 
-	// window.onbeforeunload = function () {
-	// 	signOut(auth);
-	// 	navigate('/login');
-	// };
-
 	return (
 		<div className="App">
 			<Header></Header>
-			<DueMessage></DueMessage>
+			{/* <DueMessage></DueMessage> */}
 			<Routes>
 				<Route path='/subjects' element={<RequireAuth>
 					<AllSubjects></AllSubjects>
@@ -126,6 +123,10 @@ function App() {
 
 					<Route path='checkPayment' element={<RequireAdmin>
 						<CheckPayment></CheckPayment>
+					</RequireAdmin>}></Route>
+
+					<Route path='insertID' element={<RequireAdmin>
+						<InsertID></InsertID>
 					</RequireAdmin>}></Route>
 
 				</Route>
@@ -182,6 +183,9 @@ function App() {
 				</RequireAdmin>}></Route>
 				<Route path='/addResultAllClass' element={<RequireAdmin>
 					<AddResultAllClass></AddResultAllClass>
+				</RequireAdmin>}></Route>
+				<Route path='/manageResultAllClass' element={<RequireAdmin>
+					<ManageResultAllClass></ManageResultAllClass>
 				</RequireAdmin>}></Route>
 				<Route path='/addResultIndividualClassQuery/:className/:batch/:group' element={<RequireAdmin>
 					<AddResultIndividualClassQuery></AddResultIndividualClassQuery>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 
 const CheckPayment = () => {
 
@@ -19,7 +20,8 @@ const CheckPayment = () => {
 		navigate(`/manageIndividualClass/${subjectObj[0]?.className}/${subjectObj[0]?.batch}/${subjectObj[0]?.group}`);
 	}
 	return (
-		<div>
+		<div className='p-5'>
+			<HelmetTitle title={`Manage payment`}></HelmetTitle>
 			<section class="hero-section p-0">
 				<div class="card-grid-ManageUsersByClass">
 					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "5", batch: "bangla", group: "under9" })}>							<div class="card__background"></div>

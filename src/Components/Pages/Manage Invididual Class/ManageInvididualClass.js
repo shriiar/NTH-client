@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import SingleStudent from '../Single Student/SingleStudent';
 
 const ManageInvididualClass = () => {
 
 	const { className, batch, group } = useParams();
 
-	console.log(className, batch, group);
+	// console.log(className, batch, group);
 
 	const [allStudents, setAllStudents] = useState([]);
 	const [searchText, setSearchText] = useState('');
@@ -25,15 +26,16 @@ const ManageInvididualClass = () => {
 			})
 	}, [searchText])
 
-	console.log(allStudents);
+	// console.log(allStudents);
 
 	const textChange = (event) => { // getting search result
-		console.log(event.target.value);
+		// console.log(event.target.value);
 		setSearchText(event.target.value);
 	}
 
 	return (
 		<div>
+			<HelmetTitle title={`Manage Students Class ${className}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>

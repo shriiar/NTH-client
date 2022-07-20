@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import Loading from '../../Shared/Loading/Loading';
 import AddIndividualResult from '../Add Individual Result/AddIndividualResult';
 
@@ -19,13 +20,13 @@ const AddResultIndividualClass = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data[2]);
+				// console.log(data[2]);
 				const match = data.filter(item => item.email.toLowerCase().includes(searchText.toLowerCase()));
 				setAllStudents(match);
 			})
 	}, [searchText])
 
-	console.log(allStudents);
+	// console.log(allStudents);
 	const resultQuery = JSON.parse(localStorage.getItem('resultQuery'));
 
 	const textChange = (event) => { // getting search result
@@ -34,7 +35,8 @@ const AddResultIndividualClass = () => {
 
 	return (
 		<div>
-			<h1 className='text-center'>Results of class {className} {batch} on {resultQuery.subject}, topic {resultQuery.topic}</h1>
+			<HelmetTitle title={`Add Result Class ${className}`}></HelmetTitle>
+			<h1 className='text-center mt-5'>Results of class {className} {batch} on {resultQuery.subject}, topic {resultQuery.topic}</h1>
 			{
 				allStudents.length === 0 && <Loading></Loading>
 			}

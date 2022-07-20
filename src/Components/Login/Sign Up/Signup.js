@@ -28,7 +28,6 @@ const Signup = () => {
 	const formattedDate = format(date, 'PP');
 
 	let myArray = formattedDate.split(' ');
-	console.log(myArray);
 
 	let newYear = parseInt(myArray[2]);
 
@@ -62,6 +61,8 @@ const Signup = () => {
 		const name = nameRef.current.value;
 		const father = fatherRef.current.value;
 		const mother = motherRef.current.value;
+		const adress = event.target.adress.value;
+		const phone = event.target.phone.value;
 		const email = emailRef.current.value;
 		const className = event.target.class.value;
 		const userId = userIdRef.current.value;
@@ -70,12 +71,32 @@ const Signup = () => {
 		const password = passwordRef.current.value;
 		const confirmPassword = confirmPasswordRef.current.value;
 
+		if (password.length < 6) {
+			toast.error("Password must be 6 chars or more");
+			location.reload();
+			return;
+		}
+
+		if (password !== confirmPassword) {
+			toast.error("passwords do not match");
+			location.reload();
+			return;
+		}
+
+		if (!agree) {
+			toast.error("Please agree terms & conditions")
+			location.reload();
+			return;
+		}
+
 		setErrorMessage("");
 
 		const student = {
 			name: name,
 			father: father,
 			mother: mother,
+			adress: adress,
+			phone: phone,
 			className: className,
 			userId: userId,
 			batch: batch,
@@ -106,14 +127,9 @@ const Signup = () => {
 				}
 			});
 
-		console.log(name, father, mother, email, password, className, batch, group, userId);
-		if (agree) {
-			await createUserWithEmailAndPassword(email, password);
-			await updateProfile({ displayName: name });
-		}
-		else {
-			setErrorMessage('Please Agree Terms & Conditions');
-		}
+		// console.log(name, father, mother, email, password, className, batch, group, userId);
+		await createUserWithEmailAndPassword(email, password);
+		await updateProfile({ displayName: name });
 	};
 
 	if (error) {
@@ -138,6 +154,12 @@ const Signup = () => {
 								</div>
 								<div className="input-group">
 									<input placeholder='Mothers Name' ref={motherRef} type="mother" name="mother" required />
+								</div>
+								<div className="input-group">
+									<input placeholder='Adress' type="text" name="adress" required />
+								</div>
+								<div className="input-group">
+									<input placeholder='Phone No.' min={0} type="number" name="phone" required />
 								</div>
 								<div className="input-group">
 									<select name="class" type="class">
@@ -183,7 +205,7 @@ const Signup = () => {
 							<h6 className="text-danger my-3"> {errorMsg}</h6>
 							<h6 className="text-danger my-3"> {errorMessage}</h6>
 							<ToastContainer />
-							<p className='my-3 fs-5' style={{color: "#f58320"}}>
+							<p className='my-3 fs-5' style={{ color: "#f58320" }}>
 								Already have an account? <Link className='form-link' to='/login'>Login</Link>
 							</p>
 						</div>

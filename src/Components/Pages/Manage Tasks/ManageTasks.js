@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 
 const ManageTasks = () => {
 
@@ -20,6 +21,7 @@ const ManageTasks = () => {
 	}
 	return (
 		<div>
+			<HelmetTitle title={'Manage Tasks'}></HelmetTitle>
 			<section class="hero-section p-0">
 				<div class="card-grid-ManageUsersByClass">
 					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "5", batch: "bangla", group: "under9" })}>							<div class="card__background"></div>

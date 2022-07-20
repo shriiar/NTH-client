@@ -23,7 +23,7 @@ const IndividualSubjectVideos = ({ student }) => {
 			})
 	}, [searchText])
 
-	console.log(subjectsVid);
+	// console.log(subjectsVid);
 
 	const textChange = (event) => { // getting search result
 		console.log(event.target.value);

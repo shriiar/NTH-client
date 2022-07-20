@@ -16,13 +16,13 @@ const SingleClassTasks = (props) => {
 
     const navigate = useNavigate();
     const goTo = (path) => {
-        console.log(path);
+        // console.log(path);
         navigate(path);
     }
 
     return (
         <div>
-            <div className='card border-0 mb-3'>
+            <div className='card-sub border-0 mb-3'>
                 <img src='https://images5.alphacoders.com/585/thumbbig-585645.webp' class="card__image" alt="" />
                 <div class="card__overlay">
                     <div class="card__header">

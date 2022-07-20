@@ -35,7 +35,7 @@ const UpdateStudent = () => {
 		// console.log(name, father, mother, className, batch, group);
 
 		const updatedUser = { name, father, mother, className, batch, group, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: student[0]?.due, payMonth: student[0]?.payMonth, payYear: student[0]?.payYear };
-		console.log(updatedUser);
+		// console.log(updatedUser);
 
 		// Send updated data to the server for student info update
 		fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${email}`, {
@@ -47,13 +47,13 @@ const UpdateStudent = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				toast.success(`${name} your info is update`)
 			})
 	}
 	return (
 		<div>
-			<HelmetTitle title='Add To Inventory'></HelmetTitle>
+			<HelmetTitle title='Update Student'></HelmetTitle>
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
 					<div class="left-add">
