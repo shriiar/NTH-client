@@ -11,12 +11,6 @@ const MyIndividualNotice = (props) => {
 		navigate(`/myNotice/expandedNotice/${_id}`);
 	}
 	return (
-		// <button className='my-4' onClick={() => goTo()}>
-		// 	<div>
-		// 		<h1>{title}</h1>
-		// 		<h3>{date}</h3>
-		// 	</div>
-		// </button>
 		<button class="card-blur-notice bg-transparent" onClick={() => goTo()}>
 			<div class="card__background" style={{
 				backgroundImage: `url(${img})`

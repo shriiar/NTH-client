@@ -25,7 +25,7 @@ const ExpandedNotice = () => {
 
 	return (
 		<div class="center-notice px-5">
-			<div class="card w-100">
+			<div class="card w-100 h-100">
 				<h2>{notice[0]?.title}</h2>
 				<hr />
 				<div className='text-start d-flex flex-column justify-content-center h-100'>

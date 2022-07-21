@@ -8,7 +8,7 @@ const ManageIndividualNotice = (props) => {
     const { notice, setNotice } = props;
     const { description, className, batch, group, date, _id } = props.noc;
     const deleteNotice = () => {
-        const url = `https://infinite-cliffs-52841.herokuapp.com/notice?className=${props.noc?.className}&batch=${props.noc?.batch}&group=${props.noc?.group}`;
+        const url = `https://infinite-cliffs-52841.herokuapp.com/notice?id=${props?.noc?._id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -49,16 +49,16 @@ const ManageIndividualNotice = (props) => {
         );
     }
     return (
-        <div className='p-3'>
-            <div className='d-flex flex-column align-items-center justify-content-center'>
-                <h1>Class {className}</h1>
-                <h2>Batch {batch}</h2>
-                <h3>Group {group}</h3>
+        <div className='p-5'>
+            <div className='card d-flex flex-column align-items-center justify-content-center mx-auto w-100 h-100'>
+                <h1>Class: {className}</h1>
+                <h2>Batch: {batch.toUpperCase()}</h2>
+                <h3>Group: {group.toUpperCase()}</h3>
                 <h3>Notice: {description}</h3>
                 <h3>{date}</h3>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
+                <button className='button-87' variant="primary" onClick={() => setModalShow(true)}>
                     Delete Notice
-                </Button>
+                </button>
             </div>
             <ToastContainer></ToastContainer>
 

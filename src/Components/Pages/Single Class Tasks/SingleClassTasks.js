@@ -27,13 +27,12 @@ const SingleClassTasks = (props) => {
                 <div class="card__overlay">
                     <div class="card__header">
                         <div class="card__header-text fs-1">
-                            <h3 class="card__title">{subjectNameCapital}</h3>
+                            <h3 class="card__title text-white text-start">{subjectNameCapital.toUpperCase()}</h3>
                         </div>
                     </div>
-                    <p className="card__description pb-2 fs-5">{subjectNameCapital}</p>
                     <div className="row">
                         <div className="col-12">
-                            <button onClick={() => goTo(`/subjectTasks/${className}/${batch}/${group}/${subjectName}`)} className='mb-3'>All Videos Of {subjectNameCapital}</button>
+                            <button onClick={() => goTo(`/subjectTasks/${className}/${batch}/${group}/${subjectName}`)} className='mb-3 button-87'>All Videos Of {subjectNameCapital}</button>
                         </div>
                     </div>
                 </div>

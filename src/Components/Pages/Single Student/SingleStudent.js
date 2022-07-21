@@ -65,17 +65,17 @@ const SingleStudent = (props) => {
                 <div class="card__overlay">
                     <div class="card__header">
                         <div class="card__header-text fs-1">
-                            <h3 class="card__title">{name}</h3>
+                            <h3 class="card__title text-white">{name}</h3>
                         </div>
                     </div>
-                    <p className="card__description pb-2 fs-3">{className}</p>
-                    <p className="card__description pb-2 fs-3">{batch.toUpperCase()}</p>
-                    <p className="card__description pb-2 fs-3">{group.toUpperCase()}</p>
+                    <p className="card__description pb-2 fs-3 text-white text-start">Class: {className}</p>
+                    <p className="card__description pb-2 fs-3 text-white text-start">Batch: {batch.toUpperCase()}</p>
+                    <p className="card__description pb-2 fs-3 text-white text-start">Group: {group.toUpperCase()}</p>
                     <div className="row justify-content-center">
                         <div className='col-6 d-flex flex-column justify-content-center'>
-                            <Button onClick={() => updateStudent()} className='mb-2'>Update {name}'s Profile</Button>
-                            <Button variant="primary" className='mb-3' onClick={() => setModalShow(true)}>
-                                Delete {name}'s Profile
+                            <Button onClick={() => updateStudent()} className='mb-2 button-87'>Update Profile</Button>
+                            <Button variant="primary" className='mb-3 button-87' onClick={() => setModalShow(true)}>
+                                Delete Profile
                             </Button>
                         </div>
                     </div>

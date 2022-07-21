@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import './AddTasks.css'
 import { format } from 'date-fns';
 
@@ -44,7 +44,7 @@ const AddTasks = () => {
 					toast.error(`This Video already exist`);
 				}
 			})
-		// event.target.reset();
+		event.target.reset();
 	};
 	return (
 		<div>
@@ -52,7 +52,7 @@ const AddTasks = () => {
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
 					<div class="left-add">
-						<div class="login">Add Items</div>
+						<div class="login">Add Task</div>
 						<img src={addImg} className='img-fluid' alt="" />
 					</div>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import { useParams } from 'react-router-dom';
 
 const UpdateStudent = () => {
@@ -57,7 +57,7 @@ const UpdateStudent = () => {
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
 					<div class="left-add">
-						<div class="login">Add Items</div>
+						<div class="login">Update Student Profile</div>
 						<img src={addImg} className='img-fluid' alt="" />
 					</div>
 

@@ -21,12 +21,12 @@ const AddResultIndividualClass = () => {
 			.then(res => res.json())
 			.then(data => {
 				// console.log(data[2]);
-				const match = data.filter(item => item.email.toLowerCase().includes(searchText.toLowerCase()));
+				const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.email.toLowerCase().includes(searchText.toLowerCase())));
 				setAllStudents(match);
 			})
 	}, [searchText])
 
-	// console.log(allStudents);
+	console.log(allStudents);
 	const resultQuery = JSON.parse(localStorage.getItem('resultQuery'));
 
 	const textChange = (event) => { // getting search result

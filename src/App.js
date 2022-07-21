@@ -54,6 +54,7 @@ import Footer from './Components/Shared/Footer/Footer';
 import ExpandedNotice from './Components/Pages/Expanded Notice/ExpandedNotice';
 import ManageResultAllClass from './Components/Pages/ManageResultAllClass/ManageResultAllClass';
 import InsertID from './Components/Pages/InsertID/InsertID';
+import UpdateResult from './Components/Pages/Update Result/UpdateResult';
 
 
 function App() {
@@ -198,6 +199,9 @@ function App() {
 				</RequireAdmin>}></Route>
 				<Route path='/manageResultsAllSubjects/:className/:batch/:group' element={<RequireAdmin>
 					<AllSubjectsResults></AllSubjectsResults>
+				</RequireAdmin>}></Route>
+				<Route path='/updateResult/:_id' element={<RequireAdmin>
+					<UpdateResult></UpdateResult>
 				</RequireAdmin>}></Route>
 				<Route path='/individualAllSubjectResults/:className/:batch/:group/:subject' element={<RequireAdmin>
 					<IndividualSubjectAllResults></IndividualSubjectAllResults>

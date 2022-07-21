@@ -7,8 +7,8 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
     const [modalShow, setModalShow] = useState(false);
     const { className, batch, group, name, topic, date, _id } = exam;
 
-    const deleteNotice = () => {
-        const url = `https://infinite-cliffs-52841.herokuapp.com/exams?className=${className}&batch=${batch}&group=${group}&name=${name}&topic=${topic}`;
+    const deleteExam = () => {
+        const url = `https://infinite-cliffs-52841.herokuapp.com/exams?id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -41,7 +41,7 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
                     <h5>{topic}</h5>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => deleteNotice()}>Delete Quiz</Button>
+                    <Button onClick={() => deleteExam()}>Delete Quiz</Button>
                 </Modal.Footer>
             </Modal>
         );

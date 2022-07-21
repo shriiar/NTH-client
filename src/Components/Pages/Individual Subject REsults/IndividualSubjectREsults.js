@@ -28,11 +28,10 @@ const IndividualSubjectREsults = (props) => {
 				<div class="card__overlay">
 					<div class="card__header">
 						<div class="card__header-text fs-1">
-							<h3 class="card__title">{subjectNameCapital}</h3>
+							<h3 class="card__title text-start text-white">{subjectNameCapital.toUpperCase()}</h3>
 						</div>
 					</div>
-					<p className="card__description pb-2 fs-5">{subjectNameCapital}</p>
-					<button onClick={() => goToSubject()}>All Results</button>
+					<button className='button-87 my-3' onClick={() => goToSubject()}>All Results</button>
 				</div>
 			</div>
 		</div>

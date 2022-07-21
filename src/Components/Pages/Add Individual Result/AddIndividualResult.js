@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddIndividualResult = (props) => {
 	const navigate = useNavigate();
@@ -51,12 +51,12 @@ const AddIndividualResult = (props) => {
 		})
 			.then(res => res.json())
 			.then(result => {
-				toast(`Result Has Been Added for ${student[0]?.name}`)
+				toast.success(`Result Has Been Added for ${student[0]?.name}`)
 			})
 	};
 
 	return (
-		<div className='col-6 d-flex justify-content-center h-100 my-5'>
+		<div className='card mx-auto w-100 col-6 d-flex justify-content-center h-100 my-5'>
 			<form onSubmit={EventSubmit} className="w-100">
 				<div className="input-group w-75 mx-auto">
 					<label htmlFor='name'>Name</label>
@@ -82,6 +82,7 @@ const AddIndividualResult = (props) => {
 				</div>
 				<input className='form-submit button-33 w-75 mx-auto mt-4' type="submit" required value="Add Result" />
 			</form>
+			<ToastContainer/>
 		</div>
 	);
 };

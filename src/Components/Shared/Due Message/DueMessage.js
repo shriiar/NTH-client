@@ -38,7 +38,7 @@ const DueMessage = () => {
 	if ((0 === leapYear % 4) && (0 !== leapYear % 100) || (0 === leapYear % 400)) {
 		monthLimit = 29;
 	}
-	console.log(user?.email);
+	// console.log(user?.email);
 	// console.log(student, newDate, monthLimit);
 
 	useEffect(() => {
@@ -52,7 +52,7 @@ const DueMessage = () => {
 			.then(data => setStudent(data))
 	}, [user?.email])
 
-	console.log(student[0], newDate, monthLimit);
+	// console.log(student[0], newDate, monthLimit);
 
 	return (
 		<div className='w-100'>

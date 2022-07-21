@@ -20,7 +20,7 @@ const ManageNotice = () => {
 	return (
 		<div>
 			<HelmetTitle title={'Manage Notice'}></HelmetTitle>
-			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 align-items-start'>
 				{
 					notice.slice(0).reverse().map(noc => <ManageIndividualNotice key={noc._id} noc={noc} notice={notice} setNotice={setNotice}></ManageIndividualNotice>)
 				}

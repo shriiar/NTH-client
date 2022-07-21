@@ -20,7 +20,7 @@ const IndividualSubjectAllResults = () => {
 			.then(res => res.json())
 			.then(data => {
 				{
-					const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.date.toLowerCase().includes(searchText.toLowerCase())));
+					const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || (item.date.toLowerCase().includes(searchText.toLowerCase())) || (item.email.toLowerCase().includes(searchText.toLowerCase())));
 					setAllResult(match);
 				}
 			})
@@ -31,7 +31,7 @@ const IndividualSubjectAllResults = () => {
 		setSearchText(event.target.value);
 	}
 
-	// console.log(allResult);
+	console.log(allResult);
 	return (
 		<div>
 			<HelmetTitle title={`${className} ${batch.toUpperCase()} ${subject.toUpperCase()}`}></HelmetTitle>
@@ -40,7 +40,7 @@ const IndividualSubjectAllResults = () => {
 			</div>
 			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
 				{
-					allResult.map(res => <SingleAllSubjectResults key={res._id}
+					allResult.slice(0).reverse().map(res => <SingleAllSubjectResults key={res._id}
 						res={res} allResult={allResult} setAllResult={setAllResult}></SingleAllSubjectResults>)
 				}
 			</div>
