@@ -26,12 +26,6 @@ const Footer = () => {
 								<li class="menu-item menu-item-type-post_type menu-item-object-page">
 									<p href="#">nthgec@gmail.com</p>
 								</li>
-								{/* <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
-									<a href="#">01800000000</a>
-								</li>
-								<li class="menu-item menu-item-type-post_type menu-item-object-page">
-									<a href="#">Careers</a>
-								</li> */}
 							</ul>
 						</div>
 						<div class="footer-menu">

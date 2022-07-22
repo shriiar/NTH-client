@@ -9,6 +9,7 @@ import two from '../../../img/undraw_Detailed_examination_re_ieui.png';
 import three from '../../../img/undraw_Observations_re_ohja.png';
 import four from '../../../img/undraw_Online_payments_re_y8f2.png';
 import five from '../../../img/undraw_Online_test_re_kyfx.png';
+import six from '../../../img/insertID.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 
 const Manage = () => {
@@ -79,7 +80,7 @@ const Manage = () => {
 							</button>
 							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/insertID')}>
 								<div class="card__background" style={{
-									backgroundImage: `url(${four})`
+									backgroundImage: `url(${six})`
 								}}>
 								</div>
 								<div class="card__content d-flex flex-column">

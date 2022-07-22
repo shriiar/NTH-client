@@ -6,28 +6,28 @@ import { toast, ToastContainer } from 'react-toastify';
 const SingleAllSubjectResults = (props) => {
 	const [modalShow, setModalShow] = useState(false);
 	const { allResult, setAllResult } = props;
-	const { name, className, batch, group, subject, topic, mark, fmark, _id, date, highest } = props.res;
+	const { name, className, batch, group, subject, topic, mark, fmark, _id, date, highest, attendance } = props.res;
 	const navigate = useNavigate();
 
 	const goTo = (path) => {
 		navigate(path);
 	}
 
-	console.log(props.res.name, props.res._id);
+	console.log(props.res);
 
 	const deleteRecord = () => {
 		const url = `https://infinite-cliffs-52841.herokuapp.com/results?id=${_id}`;
 		fetch(url, {
-		    method: 'DELETE'
+			method: 'DELETE'
 		})
-		    .then(res => res.json())
-		    .then(data => {
-		        if (data.deletedCount > 0) {
-		            const remaining = allResult.filter(item => item._id !== _id);
-		            toast.success('Successfully Deleted');
-		            setAllResult(remaining);
-		        }
-		    })
+			.then(res => res.json())
+			.then(data => {
+				if (data.deletedCount > 0) {
+					const remaining = allResult.filter(item => item._id !== _id);
+					toast.success('Successfully Deleted');
+					setAllResult(remaining);
+				}
+			})
 	}
 	function MyVerticallyCenteredModal(props) {
 		return (
@@ -60,7 +60,12 @@ const SingleAllSubjectResults = (props) => {
 				<h1>{name}</h1>
 				<h2>{subject}</h2>
 				<h2>{topic}</h2>
-				<h3>Mark: <span className='text-danger'>{mark} / {fmark}</span></h3>
+				{
+					attendance === 'present' && <h3>Mark: <span className='text-danger'>{mark} / {fmark}</span></h3>
+				}
+				{
+					attendance === 'absent' && <h3>Mark: <span className='text-danger'>{attendance.toUpperCase()}</span></h3>
+				}
 				<h3>Highest: <span className='text-danger'>{highest}</span></h3>
 				<h4>{date}</h4>
 				<button className='button-87 my-3' onClick={() => goTo(`/updateResult/${_id}`)}>Update Result</button>

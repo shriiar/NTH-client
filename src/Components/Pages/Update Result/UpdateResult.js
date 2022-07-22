@@ -38,11 +38,12 @@ const UpdateResult = () => {
 			highest: student[0]?.highest,
 			subject: student[0]?.subject,
 			subjectCode: student[0]?.subjectCode,
-			topic: student[0]?.topic
+			topic: student[0]?.topic,
+			attendance: event.target.attendance.value
 		};
 
 		// console.log(newItem);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/updateResult/${_id._id}`;
+		const url = `http://localhost:5000/updateResult/${_id._id}`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {
@@ -90,6 +91,13 @@ const UpdateResult = () => {
 
 					<div class="right-add-id d-flex align-items-center justify-content-center">
 						<form onSubmit={EventSubmit} className="w-100">
+							<div className="input-group">
+								<label for="attendance">Attendance: </label>
+								<select name="attendance" type='attendance'>
+									<option value="present">Present</option>
+									<option value="absent">Absent</option>
+								</select>
+							</div>
 							<div className="input-group w-75 mx-auto">
 								<label htmlFor='mark'>Obtained Mark</label>
 								<input type="text" name="mark" required />

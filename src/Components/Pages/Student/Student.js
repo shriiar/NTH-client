@@ -177,18 +177,21 @@ const Student = () => {
 		<div className='mx-auto'>
 			<div>
 				<HelmetTitle title={'My Profile'}></HelmetTitle>
+				<img src={cover} className='img-fluid w-100' alt="" />
 				<div className='myPortfolio text-start'>
 					<div class="portfoliocard-user">
 						<div class="coverphoto-user"></div>
-						<div data-aos='fade-right' class="profile_picture-user" style={{
-							backgroundImage: `url(${student[0]?.img})`
-						}}></div>
+						<div className='w-100'>
+							<div class="profile_picture-user mx-auto" style={{
+								backgroundImage: `url(${student[0]?.img})`
+							}}></div>
+						</div>
 						<div class="left_col-user">
 							<div className='following-user'>
 								<h1 className='text-upload my-5'>Upload Your Photo</h1>
 								<Fragment>
 									{message ? <Message msg={message} /> : null}
-									<form onSubmit={onSubmit}>
+									<form className='w-75' onSubmit={onSubmit}>
 										<div className='custom-file mb-4'>
 											<input
 												type='file'
@@ -238,8 +241,8 @@ const Student = () => {
 				</div>
 				{
 					result.length === 0 && <>
-					<h1 className='mt-5'>You have no subject results at the moment</h1>
-					<img src={empty} className='img-fluid' width='900px' alt="" style={{margin: "0 0 0 100px"}}/>
+						<h1 className='mt-5'>You have no subject results at the moment</h1>
+						<img src={empty} className='img-fluid' width='900px' alt="" style={{ margin: "0 0 0 100px" }} />
 					</>
 				}
 				<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>

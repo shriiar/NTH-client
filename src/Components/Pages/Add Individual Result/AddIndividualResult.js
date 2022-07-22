@@ -37,7 +37,7 @@ const AddIndividualResult = (props) => {
 		subjectName = subjectName.toLowerCase();
 
 		const result = {
-			name: event.target.name.value, email: student[0]?.email, subject: resultQuery.subject, subjectCode: subjectName, topic: resultQuery.topic, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, mark: event.target.mark.value, highest: resultQuery.highest, fmark: resultQuery.fullMarks, date: formattedDate
+			name: event.target.name.value, email: student[0]?.email, subject: resultQuery.subject, subjectCode: subjectName, topic: resultQuery.topic, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, mark: event.target.mark.value, highest: resultQuery.highest, fmark: resultQuery.fullMarks, date: formattedDate, attendance: event.target.attendance.value
 		};
 
 		// console.log(result);
@@ -66,6 +66,13 @@ const AddIndividualResult = (props) => {
 					<label htmlFor='topic'>Topic Name</label>
 					<input value={resultQuery.topic} readOnly type="text" name="topic" required />
 				</div>
+				<div className="input-group">
+					<label for="attendance">Attendance: </label>
+					<select name="attendance" type='attendance'>
+						<option value="present">Present</option>
+						<option value="absent">Absent</option>
+					</select>
+				</div>
 				<div className='row'>
 					<div className="col-6">
 						<div className="input-group w-75 mx-auto">
@@ -82,7 +89,7 @@ const AddIndividualResult = (props) => {
 				</div>
 				<input className='form-submit button-33 w-75 mx-auto mt-4' type="submit" required value="Add Result" />
 			</form>
-			<ToastContainer/>
+			<ToastContainer />
 		</div>
 	);
 };

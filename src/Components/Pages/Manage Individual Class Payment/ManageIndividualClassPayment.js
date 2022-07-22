@@ -30,7 +30,7 @@ const ManageIndividualClassPayment = () => {
 
 	return (
 		<div>
-			<HelmetTitle title={`Manage Payment Class ${className}`}></HelmetTitle>
+			<HelmetTitle title={`Payment ${className} ${batch.toUpperCase()} ${group.toUpperCase()}`}></HelmetTitle>
 			<div className=''>
 				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
 			</div>
