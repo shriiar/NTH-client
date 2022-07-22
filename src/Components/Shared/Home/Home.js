@@ -36,6 +36,7 @@ import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import HelmetTitle from '../HelmetTitle/HelmetTitle';
+import SingleHomeImages from '../Single Home Images/SingleHomeImages';
 
 
 
@@ -46,6 +47,7 @@ const Home = () => {
 	}, [])
 
 	const [student, setStudent] = useState([]);
+	const [images, setimages] = useState([]);
 	const [user] = useAuthState(auth);
 	const [date, setDate] = useState(new Date());
 	const formattedDate = format(date, 'PP');
@@ -70,6 +72,19 @@ const Home = () => {
 			.then(res => res.json())
 			.then(data => setStudent(data))
 	}, [user?.email])
+
+	useEffect(() => {
+		fetch(`https://infinite-cliffs-52841.herokuapp.com/images`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setimages(data))
+	}, [])
+
+	console.log(images);
 
 	// console.log(student[0], newDate);
 
@@ -279,46 +294,11 @@ const Home = () => {
 			</div>
 
 			<div className="container">
-				<h1>Inside Nazib Teaching Home</h1>
-				<div class="container-grid row">
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c1} />
-						<span>0</span>
-					</div>
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c2} />
-						<span>0</span>
-					</div>
-				</div>
-				<div class="container-grid row">
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c3} />
-						<span>0</span>
-					</div>
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c4} />
-						<span>0</span>
-					</div>
-				</div>
-				<div class="container-grid row">
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c5} />
-						<span>0</span>
-					</div>
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c6} />
-						<span>0</span>
-					</div>
-				</div>
-				<div class="container-grid row">
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c7} />
-						<span>0</span>
-					</div>
-					<div class="box col-12 col-md-3 col-lg-3">
-						<img src={c8} />
-						<span>0</span>
-					</div>
+				<h1 className='my-5'>Inside Nazib Teaching Home</h1>
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 align-items-center justify-content-center">
+					{
+						images.map(item => <SingleHomeImages key={item._id} item={item}></SingleHomeImages>)
+					}
 				</div>
 			</div>
 

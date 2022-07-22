@@ -5,7 +5,8 @@ const StudentResults = (props) => {
 	const { subject, topic, mark, fmark, highest, date, attendance } = props.item;
 	// console.log(props);
 	return (
-		<div className='p-5 h-100'>
+		<div className='p-5'>
+			<div className='card d-flex justify-content-center mx-auto w-100 h-100'>
 			<h1>{subject}</h1>
 			<h3>{topic}</h3>
 			{
@@ -16,6 +17,7 @@ const StudentResults = (props) => {
 			}
 			<h4>Highest: <span className='text-danger'>{highest} / {fmark}</span></h4>
 			<h5>{date}</h5>
+		</div>
 		</div>
 	);
 };

@@ -21,12 +21,12 @@ const ManageInvididualClass = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				const match = data.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
+				const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || item.userId.toLowerCase().includes(searchText.toLowerCase()) || item.email.toLowerCase().includes(searchText.toLowerCase()));
 				setAllStudents(match);
 			})
 	}, [searchText])
 
-	// console.log(allStudents);
+	console.log(allStudents);
 
 	const textChange = (event) => { // getting search result
 		// console.log(event.target.value);
@@ -37,7 +37,7 @@ const ManageInvididualClass = () => {
 		<div>
 			<HelmetTitle title={`Manage Students Class ${className}`}></HelmetTitle>
 			<div className=''>
-				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search By Name, ID or Email..' />
 			</div>
 			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 p-5'>
 				{

@@ -10,7 +10,7 @@ const SingleStudent = (props) => {
     const [modalShow, setModalShow] = useState(false);
 
     const { allStudents, setAllStudents } = props;
-    const { name, father, mother, className, batch, group, email, _id, img } = props.student;
+    const { name, father, mother, className, batch, group, email, _id, img, userId } = props.student;
     const updateStudent = () => {
         navigate(`/updateStudent/${email}/${_id}`);
     }
@@ -68,6 +68,8 @@ const SingleStudent = (props) => {
                             <h3 class="card__title text-white">{name}</h3>
                         </div>
                     </div>
+                    <p className="card__description pb-2 fs-3 text-white text-start">ID: {userId}</p>
+                    <p className="card__description pb-2 fs-3 text-white text-start">Email: {email}</p>
                     <p className="card__description pb-2 fs-3 text-white text-start">Class: {className}</p>
                     <p className="card__description pb-2 fs-3 text-white text-start">Batch: {batch.toUpperCase()}</p>
                     <p className="card__description pb-2 fs-3 text-white text-start">Group: {group.toUpperCase()}</p>

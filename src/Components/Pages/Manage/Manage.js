@@ -78,13 +78,22 @@ const Manage = () => {
 									<h3 class="card__heading">All Payments</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/insertID')}>
+							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/studentID')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${six})`
 								}}>
 								</div>
 								<div class="card__content d-flex flex-column">
-									<h3 class="card__heading">Insert ID</h3>
+									<h3 class="card__heading">Student ID</h3>
+								</div>
+							</button>
+							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/adminImage')}>
+								<div class="card__background" style={{
+									backgroundImage: `url(${six})`
+								}}>
+								</div>
+								<div class="card__content d-flex flex-column">
+									<h3 class="card__heading">Add & Manage Images</h3>
 								</div>
 							</button>
 						</div>

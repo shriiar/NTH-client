@@ -277,11 +277,11 @@
 //   }
 
 .box {
-  flex: 1;
+//   flex: 1;
   overflow: hidden;
-  transition: 0.5s;
+//   transition: 0.5s;
   margin: 0 2%;
-  line-height: 0;
+  transition: 0.3s;
 }
 
 .box > img {
@@ -289,6 +289,7 @@
   height: calc(100% - 10vh);
   object-fit: cover;
   transition: 0.5s;
+  border-radius: 20px;
 }
 
 .box > span {
@@ -298,13 +299,16 @@
   height: 10vh;
   line-height: 2.6;
   color: transparent;
+  transition: 0.5s;
 }
 
 .box:hover {
   flex: 1 1 50%;
   margin-bottom: 10px;
+  transition: 0.3s;
 }
 .box:hover > img {
   width: 100%;
   height: 100%;
+  transition: 0.5s;
 }

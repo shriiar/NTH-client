@@ -55,6 +55,11 @@ import ExpandedNotice from './Components/Pages/Expanded Notice/ExpandedNotice';
 import ManageResultAllClass from './Components/Pages/ManageResultAllClass/ManageResultAllClass';
 import InsertID from './Components/Pages/InsertID/InsertID';
 import UpdateResult from './Components/Pages/Update Result/UpdateResult';
+import StudentID from './Components/Pages/StudentID/StudentID';
+import ManageID from './Components/Pages/ManageID/ManageID';
+import AddImage from './Components/Pages/AddImage/AddImage';
+import AdminImage from './Components/Pages/AdminImage/AdminImage';
+import ManageImages from './Components/Pages/ManageImages/ManageImages';
 
 
 function App() {
@@ -126,8 +131,12 @@ function App() {
 						<CheckPayment></CheckPayment>
 					</RequireAdmin>}></Route>
 
-					<Route path='insertID' element={<RequireAdmin>
-						<InsertID></InsertID>
+					<Route path='studentID' element={<RequireAdmin>
+						<StudentID></StudentID>
+					</RequireAdmin>}></Route>
+
+					<Route path='adminImage' element={<RequireAdmin>
+						<AdminImage></AdminImage>
 					</RequireAdmin>}></Route>
 
 				</Route>
@@ -208,6 +217,18 @@ function App() {
 				</RequireAdmin>}></Route>
 				<Route path='/manageIndividualClassPayment/:className/:batch/:group' element={<RequireAdmin>
 					<ManageIndividualClassPayment></ManageIndividualClassPayment>
+				</RequireAdmin>}></Route>
+				<Route path='/insertID' element={<RequireAdmin>
+					<InsertID></InsertID>
+				</RequireAdmin>}></Route>
+				<Route path='/manageID' element={<RequireAdmin>
+					<ManageID></ManageID>
+				</RequireAdmin>}></Route>
+				<Route path='/addImage' element={<RequireAdmin>
+					<AddImage></AddImage>
+				</RequireAdmin>}></Route>
+				<Route path='/manageImages' element={<RequireAdmin>
+					<ManageImages></ManageImages>
 				</RequireAdmin>}></Route>
 				<Route path='/' element={<Home></Home>}></Route>
 				<Route path='/login' element={<Login></Login>}></Route>

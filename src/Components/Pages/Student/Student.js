@@ -21,7 +21,6 @@ const Student = () => {
 	const [searchText, setSearchText] = useState('');
 	const [result, setResult] = useState([]);
 	const [user] = useAuthState(auth);
-	let flag = 0;
 
 	const [image, setImage] = useState({});
 	const [filename, setFilename] = useState('Choose File');
@@ -69,7 +68,7 @@ const Student = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				const match = data.filter(item => item.subjectCode.toLowerCase().includes(searchText.toLowerCase()));
+				const match = data.filter(item => (item.subjectCode.toLowerCase().includes(searchText.toLowerCase())) || item.topic.toLowerCase().includes(searchText.toLowerCase()) || item.date.toLowerCase().includes(searchText.toLowerCase()));
 				setResult(match);
 			})
 	}, [searchText, user.email])

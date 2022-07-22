@@ -9,8 +9,8 @@ a {
 .footer {
   background-color: #165b85;
   color: #fff;
-  bottom: 0;
-  top: 0;
+  bottom: 0 !important;
+  top: 0 !important;
 }
 .footer-wave-svg {
   background-color: transparent;

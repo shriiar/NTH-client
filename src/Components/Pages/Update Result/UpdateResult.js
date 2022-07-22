@@ -43,7 +43,7 @@ const UpdateResult = () => {
 		};
 
 		// console.log(newItem);
-		const url = `http://localhost:5000/updateResult/${_id._id}`;
+		const url = `https://infinite-cliffs-52841.herokuapp.com/updateResult/${_id._id}`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {
