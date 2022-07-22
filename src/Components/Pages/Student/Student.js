@@ -76,6 +76,17 @@ const Student = () => {
 
 	// console.log(result);
 
+	let absent = 0;
+	for (let item in result) {
+		// console.log(result[item]);
+		if (result[item].attendance === 'absent') {
+			absent += 1;
+			console.log("gg", absent);
+		}
+	}
+
+	console.log(absent);
+
 	const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
 
 	const onChange = e => {
@@ -229,6 +240,12 @@ const Student = () => {
 								<div className="col-12 text-upload fw-bolder">{student[0]?.mother}</div>
 								<div className="col-12 text-upload fw-bold">{student[0]?.phone}</div>
 								<div className="col-12 text-upload fw-bold">{student[0]?.adress}</div>
+							</div>
+							<h3 class="location-user">Exams:</h3>
+							<div className='row ps-5'>
+								<div className="col-12 text-upload fw-bold">Total Exam: {result.length}</div>
+								<div className="col-12 text-upload fw-bolder">Exam Taken: {result.length - absent}</div>
+								<div className="col-12 text-upload fw-bold">Missed Exam: {absent}</div>
 							</div>
 						</div>
 					</div>
