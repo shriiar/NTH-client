@@ -35,7 +35,7 @@ const SetExams = () => {
 		// console.log(exam);
 		let toastText = `Class ${exam.className} Batch ${exam.batch} Group ${exam.group}`
 
-		fetch('https://infinite-cliffs-52841.herokuapp.com/exams', {
+		fetch(`${process.env.REACT_APP_URL}/exams`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

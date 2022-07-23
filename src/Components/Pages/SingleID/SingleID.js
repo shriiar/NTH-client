@@ -7,7 +7,7 @@ const SingleID = ({item, ID, setID}) => {
 
 	const [modalShow, setModalShow] = useState(false);
 	const deleteExam = () => {
-		const url = `https://infinite-cliffs-52841.herokuapp.com/studentID?id=${item._id}`;
+		const url = `${process.env.REACT_APP_URL}/studentID?id=${item._id}`;
 		fetch(url, {
 			method: 'DELETE'
 		})

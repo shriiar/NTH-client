@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Signup.css';
 import auth from '../../../firebase.init'
@@ -10,6 +10,7 @@ import signUpSvg from '../../../img/undraw_Login_re_4vu2.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import useToken from '../../../Hooks/useToken';
 import { format } from 'date-fns';
+var md5 = require('md5');
 
 const Signup = () => {
 
@@ -23,9 +24,9 @@ const Signup = () => {
 	const passwordRef = useRef("");
 	const confirmPasswordRef = useRef("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [agree, setAgree] = useState(false);
 	const [date, setDate] = useState(new Date());
 	const formattedDate = format(date, 'PP');
+	let student;
 
 	let myArray = formattedDate.split(' ');
 
@@ -35,17 +36,15 @@ const Signup = () => {
 		useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 	const [updateProfile, updating] = useUpdateProfile(auth);
 	const [email, setEmail] = useState("");
+	const [studentID, setStudentID] = useState([]);
+
+	const [ID, setID] = useState([]);
 
 	const [token] = useToken(user);
 
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from = location.state?.from?.pathname || "/";
-
-	const checkAgree = () => {
-		if (agree === false) setAgree(true);
-		else setAgree(false);
-	}
 
 	if (loading || updating) {
 		return <Loading></Loading>
@@ -57,6 +56,7 @@ const Signup = () => {
 
 	const eventSubmit = async (event) => {
 		event.preventDefault();
+		sessionStorage.removeItem('student');
 
 		const name = nameRef.current.value;
 		const father = fatherRef.current.value;
@@ -71,27 +71,44 @@ const Signup = () => {
 		const password = passwordRef.current.value;
 		const confirmPassword = confirmPasswordRef.current.value;
 
+		fetch(`${process.env.REACT_APP_URL}/studentUserID?userId=${userId}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setID(data))
+
+		fetch(`${process.env.REACT_APP_URL}/regStudentID?userId=${userId}`, {
+			method: 'GET',
+			headers: {
+				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
+			}
+		})
+			.then(res => res.json())
+			.then(data => setStudentID(data))
+
+		console.log(studentID);
+
+		if (ID[0]?.nameID !== userId || studentID.length !== 0) {
+			toast.error("Student ID do not match");
+			return;
+		}
+
 		if (password.length < 6) {
 			toast.error("Password must be 6 chars or more");
-			location.reload();
 			return;
 		}
 
 		if (password !== confirmPassword) {
 			toast.error("passwords do not match");
-			location.reload();
-			return;
-		}
-
-		if (!agree) {
-			toast.error("Please agree terms & conditions")
-			location.reload();
 			return;
 		}
 
 		setErrorMessage("");
 
-		const student = {
+		student = {
 			name: name,
 			father: father,
 			mother: mother,
@@ -102,7 +119,7 @@ const Signup = () => {
 			batch: batch,
 			group: group,
 			email: email,
-			password: password,
+			password: md5(password),
 			paid: false,
 			lastPaid: null,
 			due: null,
@@ -110,31 +127,16 @@ const Signup = () => {
 			payYear: newYear
 		}
 
-		fetch('https://infinite-cliffs-52841.herokuapp.com/students', {
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify(student)
-		})
-			.then(res => res.json())
-			.then(data => {
-				if (data.success) {
-					toast(`${name} you have been registered, Please verify your email`)
-				}
-				else {
-					toast.error(`User already exist`);
-				}
-			});
+		sessionStorage.setItem('student', JSON.stringify(student));
 
-		// console.log(name, father, mother, email, password, className, batch, group, userId);
-		await createUserWithEmailAndPassword(email, password);
-		await updateProfile({ displayName: name });
+		// await createUserWithEmailAndPassword(email, password);
+		// await updateProfile({ displayName: name });
 	};
 
 	if (error) {
 		errorMsg = <p>{error?.message}</p>;
 	}
+
 	return (
 		<div>
 			<HelmetTitle title='Sign Up'></HelmetTitle>
@@ -198,13 +200,10 @@ const Signup = () => {
 								<div className="input-group">
 									<input placeholder='Confirm Password' ref={confirmPasswordRef} type="password" name="confirm-password" required />
 								</div>
-								<input onClick={checkAgree} className='mb-3' type="checkbox" name="terms" id="" />
-								<label className={`ps-2 ${agree ? 'text-success' : 'text-danger'}`} htmlFor='terms'>Accepct terms and conditions</label>
 								<input className='form-submit' type="submit" required value="Signup" />
 							</form>
 							<h6 className="text-danger my-3"> {errorMsg}</h6>
 							<h6 className="text-danger my-3"> {errorMessage}</h6>
-							<ToastContainer />
 							<p className='my-3 fs-5' style={{ color: "#f58320" }}>
 								Already have an account? <Link className='form-link' to='/login'>Login</Link>
 							</p>

@@ -16,7 +16,7 @@ const SingleAllSubjectResults = (props) => {
 	console.log(props.res);
 
 	const deleteRecord = () => {
-		const url = `https://infinite-cliffs-52841.herokuapp.com/results?id=${_id}`;
+		const url = `${process.env.REACT_APP_URL}/results?id=${_id}`;
 		fetch(url, {
 			method: 'DELETE'
 		})

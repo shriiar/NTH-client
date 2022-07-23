@@ -4,7 +4,7 @@ import SingleImage from '../SingleImage/SingleImage';
 const ManageImages = () => {
 	const [images, setImages] = useState([]);
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/images`, {
+		fetch(`${process.env.REACT_APP_URL}/images`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

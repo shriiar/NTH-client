@@ -13,7 +13,7 @@ const AddIndividualResult = (props) => {
 	const [student, setStudent] = useState([])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students/admin?email=${email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students/admin?email=${email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -41,7 +41,7 @@ const AddIndividualResult = (props) => {
 		};
 
 		// console.log(result);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/results`;
+		const url = `${process.env.REACT_APP_URL}/results`;
 		fetch(url, {
 			method: 'POST',
 			headers: {

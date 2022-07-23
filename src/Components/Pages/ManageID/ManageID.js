@@ -8,7 +8,7 @@ const ManageID = () => {
 	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/studentID`, {
+		fetch(`${process.env.REACT_APP_URL}/studentID`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

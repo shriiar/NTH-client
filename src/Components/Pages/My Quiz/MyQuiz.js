@@ -15,7 +15,7 @@ const MyQuiz = () => {
 	const formattedDate = format(date, 'PP');
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const MyQuiz = () => {
 	}, [user])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -44,7 +44,7 @@ const MyQuiz = () => {
 	// console.log(student);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/exams?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&date=${formattedDate}`, {
+		fetch(`${process.env.REACT_APP_URL}/exams?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&date=${formattedDate}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

@@ -12,7 +12,7 @@ const AllSubjectsResults = () => {
 	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -25,7 +25,7 @@ const AllSubjectsResults = () => {
 	const { className, batch, group } = useParams();
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`, {
+		fetch(`${process.env.REACT_APP_URL}/subjects?className=${className}&batch=${batch}&group=${group}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

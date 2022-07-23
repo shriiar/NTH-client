@@ -9,10 +9,10 @@ const ManageIndividualClassByTask = () => {
 	const [allSubjects, setAllSubjects] = useState([]);
 	const [searchText, setSearchText] = useState('');
 
-	// console.log(className, batch, group, `https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`);
+	// console.log(className, batch, group, `${process.env.REACT_APP_URL}/subjects?className=${className}&batch=${batch}&group=${group}`);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${className}&batch=${batch}&group=${group}`, {
+		fetch(`${process.env.REACT_APP_URL}/subjects?className=${className}&batch=${batch}&group=${group}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

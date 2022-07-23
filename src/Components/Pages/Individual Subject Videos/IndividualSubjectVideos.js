@@ -10,7 +10,7 @@ const IndividualSubjectVideos = ({ student }) => {
 	const [subjectsVid, setSubjectsVid] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
+		fetch(`${process.env.REACT_APP_URL}/subWAcc?className=${className}&batch=${batch}&group=${group}&subject=${subject}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

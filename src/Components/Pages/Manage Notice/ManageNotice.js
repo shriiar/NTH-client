@@ -6,7 +6,7 @@ const ManageNotice = () => {
 	const [notice, setNotice] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/notice/admin`, {
+		fetch(`${process.env.REACT_APP_URL}/notice/admin`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

@@ -10,7 +10,7 @@ const ManageIndividualClassPayment = () => {
 	const [allStudents, setAllStudents] = useState([]);
 	const [searchText, setSearchText] = useState('');
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?className=${className}&batch=${batch}&group=${group}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?className=${className}&batch=${batch}&group=${group}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

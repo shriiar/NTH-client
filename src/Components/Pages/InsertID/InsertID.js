@@ -17,7 +17,7 @@ const InsertID = () => {
 		};
 
 		console.log(newItem);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/studentID`;
+		const url = `${process.env.REACT_APP_URL}/studentID`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {

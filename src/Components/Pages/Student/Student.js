@@ -33,7 +33,7 @@ const Student = () => {
 	}, [])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -49,7 +49,7 @@ const Student = () => {
 	}, [user])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -60,7 +60,7 @@ const Student = () => {
 	}, [user])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/resultsOfAll?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/resultsOfAll?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -86,7 +86,7 @@ const Student = () => {
 
 	console.log(absent);
 
-	const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
+	const imageStorageKey = `${process.env.REACT_APP_ImageKey}`;
 
 	const onChange = e => {
 		setImage(e.target.files[0]);
@@ -143,7 +143,7 @@ const Student = () => {
 								payMonth: student[0]?.payMonth,
 								payYear: student[0]?.payYear
 							}
-							fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${updateProfile.email}`, {
+							fetch(`${process.env.REACT_APP_URL}/students/${updateProfile.email}`, {
 								method: 'PUT',
 								headers: {
 									'content-type': 'application/json'
@@ -153,7 +153,7 @@ const Student = () => {
 								.then(res => res.json())
 								.then(data => {
 
-									fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+									fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 										method: 'GET',
 										headers: {
 											'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

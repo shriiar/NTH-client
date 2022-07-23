@@ -11,7 +11,7 @@ const ExpandedNotice = () => {
 	const [notice, setNotice] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/myNotice?_id=${_id}`, {
+		fetch(`${process.env.REACT_APP_URL}/myNotice?_id=${_id}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

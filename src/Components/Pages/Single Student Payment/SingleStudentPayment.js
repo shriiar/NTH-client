@@ -32,7 +32,7 @@ const SingleStudentPayment = (props) => {
 			updatedUser = { name, father, mother, className, batch, group, email, img: student?.img, paid: false, lastPaid: null, due: null, payMonth: myArray[0], payYear: payYear };
 		}
 		// console.log(updatedUser);
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students/${email}`, {
 			method: 'PUT',
 			headers: {
 				'content-type': 'application/json'
@@ -44,7 +44,7 @@ const SingleStudentPayment = (props) => {
 				// console.log(data);
 				toast.success(`Payment Updated`);
 
-				fetch(`https://infinite-cliffs-52841.herokuapp.com/students?className=${className}&batch=${batch}&group=${group}`, {
+				fetch(`${process.env.REACT_APP_URL}/students?className=${className}&batch=${batch}&group=${group}`, {
 					method: 'GET',
 					headers: {
 						'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

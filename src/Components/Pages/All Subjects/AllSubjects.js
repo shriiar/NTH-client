@@ -22,7 +22,7 @@ const AllSubjects = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -33,7 +33,7 @@ const AllSubjects = () => {
 	}, [user])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+		fetch(`${process.env.REACT_APP_URL}/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -49,7 +49,7 @@ const AllSubjects = () => {
 	}, [student])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+		fetch(`${process.env.REACT_APP_URL}/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -71,7 +71,7 @@ const AllSubjects = () => {
 	// }
 
 	// useEffect(() => { // used to get search result
-	//     fetch(`https://infinite-cliffs-52841.herokuapp.com/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
+	//     fetch(`${process.env.REACT_APP_URL}/subjects?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}`, {
 	//         method: 'GET',
 	//         headers: {
 	//             'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

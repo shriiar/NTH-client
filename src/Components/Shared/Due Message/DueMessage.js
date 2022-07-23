@@ -42,7 +42,7 @@ const DueMessage = () => {
 	// console.log(student, newDate, monthLimit);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

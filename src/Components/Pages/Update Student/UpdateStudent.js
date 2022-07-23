@@ -11,7 +11,7 @@ const UpdateStudent = () => {
 
 	// Getting User Data
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -38,7 +38,7 @@ const UpdateStudent = () => {
 		// console.log(updatedUser);
 
 		// Send updated data to the server for student info update
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students/${email}`, {
 			method: 'PUT',
 			headers: {
 				'content-type': 'application/json'

@@ -29,7 +29,7 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
     useEffect(() => {
-        fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+        fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -56,6 +56,7 @@ const Login = () => {
 
     const EventSubmit = async (event) => {
         event.preventDefault();
+
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 

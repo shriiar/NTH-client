@@ -27,7 +27,7 @@ const AddTasks = () => {
 		};
 
 		// console.log(newItem);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/subWAcc`;
+		const url = `${process.env.REACT_APP_URL}/subWAcc`;
 		fetch(url, {
 			method: 'POST',
 			headers: {

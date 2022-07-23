@@ -14,7 +14,7 @@ const MyResultsSingleSubject = () => {
 	// console.log(student, subject);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const MyResultsSingleSubject = () => {
 
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
+		fetch(`${process.env.REACT_APP_URL}/results?className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&email=${student[0]?.email}&subject=${subject}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

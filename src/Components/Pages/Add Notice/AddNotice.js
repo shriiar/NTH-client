@@ -22,7 +22,7 @@ const AddNotice = () => {
 		// console.log(notice);
 		let toastText = `Class ${notice.className} Batch ${notice.batch} Group ${notice.group}`
 
-		fetch('https://infinite-cliffs-52841.herokuapp.com/notice', {
+		fetch(`${process.env.REACT_APP_URL}/notice`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

@@ -10,7 +10,7 @@ const MyResults = () => {
 
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -21,7 +21,7 @@ const MyResults = () => {
 	}, [user])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/results?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&email=${student?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/results?className=${student?.className}&batch=${student?.batch}&group=${student?.group}&email=${student?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

@@ -7,7 +7,7 @@ const ManagePinnedPost = () => {
 
 	const [posts, setPosts] = useState([]);
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/pinnedPosts`, {
+		fetch(`${process.env.REACT_APP_URL}/pinnedPosts`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

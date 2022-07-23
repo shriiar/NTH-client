@@ -8,7 +8,7 @@ const ManageIndividualNotice = (props) => {
     const { notice, setNotice } = props;
     const { description, className, batch, group, date, _id } = props.noc;
     const deleteNotice = () => {
-        const url = `https://infinite-cliffs-52841.herokuapp.com/notice?id=${props?.noc?._id}`;
+        const url = `${process.env.REACT_APP_URL}/notice?id=${props?.noc?._id}`;
         fetch(url, {
             method: 'DELETE'
         })

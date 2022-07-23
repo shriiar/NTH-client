@@ -8,7 +8,7 @@ const MAllExams = () => {
 	const [exams, setExams] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/exams/admin`, {
+		fetch(`${process.env.REACT_APP_URL}/exams/admin`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

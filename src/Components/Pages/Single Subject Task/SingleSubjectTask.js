@@ -7,7 +7,7 @@ const SingleSubjectTask = (props) => {
 	const { className, batch, group, name, subject, subjectCode, videoUrl, _id, date } = props.item;
 	const { task, setTask } = props;
 	const deleteTask = () => {
-		const url = `https://infinite-cliffs-52841.herokuapp.com/subWAcc?id=${_id}`;
+		const url = `${process.env.REACT_APP_URL}/subWAcc?id=${_id}`;
 		// console.log(url);
 		fetch(url, {
 			method: 'DELETE'

@@ -8,7 +8,7 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
     const { className, batch, group, name, topic, date, _id } = exam;
 
     const deleteExam = () => {
-        const url = `https://infinite-cliffs-52841.herokuapp.com/exams?id=${_id}`;
+        const url = `${process.env.REACT_APP_URL}/exams?id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })

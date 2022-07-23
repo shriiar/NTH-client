@@ -11,7 +11,7 @@ const UpdateResult = () => {
 	// console.log(_id._id);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/updateResult/${_id._id}`, {
+		fetch(`${process.env.REACT_APP_URL}/updateResult/${_id._id}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const UpdateResult = () => {
 		};
 
 		// console.log(newItem);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/updateResult/${_id._id}`;
+		const url = `${process.env.REACT_APP_URL}/updateResult/${_id._id}`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {
@@ -64,7 +64,7 @@ const UpdateResult = () => {
 			highest: event.target.highest.value,
 		};
 		// console.log(newItem);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/updateHighest?&className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&subjectCode=${student[0]?.subjectCode}&date=${student[0]?.date}&highest=${newItem?.highest}`;
+		const url = `${process.env.REACT_APP_URL}/updateHighest?&className=${student[0]?.className}&batch=${student[0]?.batch}&group=${student[0]?.group}&subjectCode=${student[0]?.subjectCode}&date=${student[0]?.date}&highest=${newItem?.highest}`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {

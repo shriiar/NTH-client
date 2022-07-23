@@ -7,7 +7,7 @@ const SingleSubjectVideos = (props) => {
 	const [subImg, setSubImg] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/subimg`, {
+		fetch(`${process.env.REACT_APP_URL}/subimg`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`

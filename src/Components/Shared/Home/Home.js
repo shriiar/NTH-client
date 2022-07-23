@@ -63,7 +63,7 @@ const Home = () => {
 	newDate = parseInt(newDate);
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/students?email=${user?.email}`, {
+		fetch(`${process.env.REACT_APP_URL}/students?email=${user?.email}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -74,7 +74,7 @@ const Home = () => {
 	}, [user?.email])
 
 	useEffect(() => {
-		fetch(`https://infinite-cliffs-52841.herokuapp.com/images`, {
+		fetch(`${process.env.REACT_APP_URL}/images`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -101,7 +101,7 @@ const Home = () => {
 			console.log('OKKKK');
 
 
-			fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${student[0]?.email}`, {
+			fetch(`${process.env.REACT_APP_URL}/students/${student[0]?.email}`, {
 				method: 'PUT',
 				headers: {
 					'content-type': 'application/json'
@@ -116,7 +116,7 @@ const Home = () => {
 			const updatedUser =
 				{ name: student[0]?.name, father: student[0]?.father, mother: student[0]?.mother, className: student[0]?.className, batch: student[0]?.batch, group: student[0]?.group, email: student[0]?.email, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: 2, payMonth: myArray[0], payYear: newYear }
 
-			fetch(`https://infinite-cliffs-52841.herokuapp.com/students/${student[0]?.email}`, {
+			fetch(`${process.env.REACT_APP_URL}/students/${student[0]?.email}`, {
 				method: 'PUT',
 				headers: {
 					'content-type': 'application/json'

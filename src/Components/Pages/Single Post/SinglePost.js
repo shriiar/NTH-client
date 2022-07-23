@@ -6,7 +6,7 @@ import './SinglePost.css';
 const SinglePost = ({ item, posts, setPosts }) => {
 	const [modalShow, setModalShow] = useState(false);
 	const deleteExam = () => {
-		const url = `https://infinite-cliffs-52841.herokuapp.com/pinnedPosts?id=${item._id}`;
+		const url = `${process.env.REACT_APP_URL}/pinnedPosts?id=${item._id}`;
 		fetch(url, {
 			method: 'DELETE'
 		})

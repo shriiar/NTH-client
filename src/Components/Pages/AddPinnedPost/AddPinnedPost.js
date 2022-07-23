@@ -14,7 +14,7 @@ const AddPinnedPost = () => {
 		};
 
 		console.log(newItem);
-		const url = `https://infinite-cliffs-52841.herokuapp.com/pinnedPosts`;
+		const url = `${process.env.REACT_APP_URL}/pinnedPosts`;
 		fetch(url, {
 			method: 'POST',
 			headers: {

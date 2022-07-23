@@ -15,7 +15,7 @@ const AddImage = () => {
 	const [message, setMessage] = useState('');
 	const [uploadPercentage, setUploadPercentage] = useState(0);
 
-	const imageStorageKey = 'f3e7e3f9cefdf2232b287f54b64bea6e';
+	const imageStorageKey = `${process.env.REACT_APP_ImageKey}`;
 
 	const onChange = e => {
 		setImage(e.target.files[0]);
@@ -60,7 +60,7 @@ const AddImage = () => {
 							const updateProfile = {
 								img: img,
 							}
-							fetch(`https://infinite-cliffs-52841.herokuapp.com/images`, {
+							fetch(`${process.env.REACT_APP_URL}/images`, {
 								method: 'POST',
 								headers: {
 									'content-type': 'application/json'
@@ -97,7 +97,7 @@ const AddImage = () => {
 		// console.log(notice);
 		let toastText = `Class ${notice.className} Batch ${notice.batch} Group ${notice.group}`
 
-		fetch('https://infinite-cliffs-52841.herokuapp.com/notice', {
+		fetch(`${process.env.REACT_APP_URL}/notice`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

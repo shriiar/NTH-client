@@ -16,7 +16,7 @@ const SingleStudent = (props) => {
     }
 
     const deleteStudent = () => {
-        const url = `https://infinite-cliffs-52841.herokuapp.com/students?className=${className}&batch=${batch}&group=${group}&name=${name}&father=${father}&mother=${mother}&email=${email}`;
+        const url = `${process.env.REACT_APP_URL}/students?className=${className}&batch=${batch}&group=${group}&name=${name}&father=${father}&mother=${mother}&email=${email}`;
         fetch(url, {
             method: 'DELETE'
         })
