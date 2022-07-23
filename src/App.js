@@ -60,6 +60,10 @@ import ManageID from './Components/Pages/ManageID/ManageID';
 import AddImage from './Components/Pages/AddImage/AddImage';
 import AdminImage from './Components/Pages/AdminImage/AdminImage';
 import ManageImages from './Components/Pages/ManageImages/ManageImages';
+import PinnedPosts from './Components/Pages/PinnedPosts/PinnedPosts';
+import AddPinnedPost from './Components/Pages/AddPinnedPost/AddPinnedPost';
+import ManagePinnedPost from './Components/Pages/ManagePinnedPost/ManagePinnedPost';
+import ShowPinnedPost from './Components/Shared/ShowPinnedPost/ShowPinnedPost';
 
 
 function App() {
@@ -83,6 +87,7 @@ function App() {
 		<div className="App">
 			<Header></Header>
 			{/* <DueMessage></DueMessage> */}
+			<ShowPinnedPost></ShowPinnedPost>
 			<Routes>
 				<Route path='/subjects' element={<RequireAuth>
 					<AllSubjects></AllSubjects>
@@ -137,6 +142,10 @@ function App() {
 
 					<Route path='adminImage' element={<RequireAdmin>
 						<AdminImage></AdminImage>
+					</RequireAdmin>}></Route>
+
+					<Route path='pinnedPosts' element={<RequireAdmin>
+						<PinnedPosts></PinnedPosts>
 					</RequireAdmin>}></Route>
 
 				</Route>
@@ -229,6 +238,12 @@ function App() {
 				</RequireAdmin>}></Route>
 				<Route path='/manageImages' element={<RequireAdmin>
 					<ManageImages></ManageImages>
+				</RequireAdmin>}></Route>
+				<Route path='/addPinnedPost' element={<RequireAdmin>
+					<AddPinnedPost></AddPinnedPost>
+				</RequireAdmin>}></Route>
+				<Route path='/managePinnedPosts' element={<RequireAdmin>
+					<ManagePinnedPost></ManagePinnedPost>
 				</RequireAdmin>}></Route>
 				<Route path='/' element={<Home></Home>}></Route>
 				<Route path='/login' element={<Login></Login>}></Route>
