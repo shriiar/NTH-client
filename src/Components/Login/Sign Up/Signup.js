@@ -54,6 +54,27 @@ const Signup = () => {
 		navigate(from, { replace: true });
 	}
 
+	function containsSpecialChars(str) {
+		const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+		return specialChars.test(str);
+	}
+
+	function containsAnyLetter(str) {
+		return /[a-zA-Z]/.test(str);
+	}
+
+	function onlyNumbers(str) {
+		return /^([^0-9]*)$/.test(str);
+	}
+
+	function validEmail(str) {
+		return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(str);
+	}
+
+	function validPassword(str) {
+		return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(str);
+	}
+
 	const eventSubmit = async (event) => {
 		event.preventDefault();
 		sessionStorage.removeItem('student');
@@ -71,7 +92,22 @@ const Signup = () => {
 		const password = passwordRef.current.value;
 		const confirmPassword = confirmPasswordRef.current.value;
 
-		fetch(`${process.env.REACT_APP_URL}/studentUserID?userId=${userId}`, {
+		if (containsSpecialChars(userId)) {
+			toast.error("User ID can't contain special characters");
+			return;
+		}
+
+		if (containsAnyLetter(userId)) {
+			toast.error("User ID can't contain characters");
+			return;
+		}
+
+		if (onlyNumbers(userId)) {
+			toast.error("Invalid User ID");
+			return;
+		}
+
+		await fetch(`${process.env.REACT_APP_URL}/studentUserID?userId=${userId}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -80,7 +116,7 @@ const Signup = () => {
 			.then(res => res.json())
 			.then(data => setID(data))
 
-		fetch(`${process.env.REACT_APP_URL}/regStudentID?userId=${userId}`, {
+		await fetch(`${process.env.REACT_APP_URL}/regStudentID?userId=${userId}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -96,15 +132,91 @@ const Signup = () => {
 			return;
 		}
 
-		if (password.length < 6) {
-			toast.error("Password must be 6 chars or more");
-			return;
-		}
-
 		if (password !== confirmPassword) {
 			toast.error("passwords do not match");
 			return;
 		}
+
+		if (containsSpecialChars(name)) {
+			toast.error("Name can't contain special characters");
+			return;
+		}
+
+		if (!containsAnyLetter(name)) {
+			toast.error("Invalid Name");
+			return;
+		}
+
+		if (!onlyNumbers(name)) {
+			toast.error("Name can't contain numbers");
+			return;
+		}
+
+		if (containsSpecialChars(father)) {
+			toast.error("Father name can't contain special characters");
+			return;
+		}
+
+		if (!containsAnyLetter(father)) {
+			toast.error("Invalid Father Name");
+			return;
+		}
+
+		if (!onlyNumbers(father)) {
+			toast.error("Father Name can't contain numbers");
+			return;
+		}
+
+		if (containsSpecialChars(mother)) {
+			toast.error("Mother Name can't contain special characters");
+			return;
+		}
+
+		if (!containsAnyLetter(mother)) {
+			toast.error("Mother Invalid Name");
+			return;
+		}
+
+		if (!onlyNumbers(mother)) {
+			toast.error("Mother Name can't contain numbers");
+			return;
+		}
+
+		if (containsSpecialChars(adress)) {
+			toast.error("Adress can't contain special characters");
+			return;
+		}
+
+		if (!containsAnyLetter(adress)) {
+			toast.error("Invalid Adress");
+			return;
+		}
+
+		if (containsSpecialChars(phone)) {
+			toast.error("Phone No. can't contain special characters");
+			return;
+		}
+
+		if (containsAnyLetter(phone)) {
+			toast.error("Phone No. can't contain characters");
+			return;
+		}
+
+		if (onlyNumbers(phone)) {
+			toast.error("Invalid Phone No.");
+			return;
+		}
+
+		if (!validEmail(email)) {
+			toast.error("Invalid Email");
+			return;
+		}
+
+		if (!validPassword(password)) {
+			toast.error('Invalid Password');
+			return;
+		}
+
 
 		setErrorMessage("");
 
@@ -161,7 +273,7 @@ const Signup = () => {
 									<input placeholder='Adress' type="text" name="adress" required />
 								</div>
 								<div className="input-group">
-									<input placeholder='Phone No.' min={0} type="number" name="phone" required />
+									<input placeholder='Phone No.' min={0} type="text" name="phone" required />
 								</div>
 								<div className="input-group">
 									<select name="class" type="class">
@@ -174,7 +286,7 @@ const Signup = () => {
 									</select>
 								</div>
 								<div className="input-group">
-									<input placeholder='Your Student ID' ref={userIdRef} type="userId" name="userId" required />
+									<input placeholder='Your Student ID' ref={userIdRef} type="text" name="userId" required />
 								</div>
 								<div className="input-group">
 									<label for="batch">Batch: </label>
@@ -195,12 +307,13 @@ const Signup = () => {
 									<input placeholder='Your Email' ref={emailRef} type="email" name="email" required />
 								</div>
 								<div className="input-group">
+									<label className='mb-5' for="password">Password must be Minimum 8 characters, at least one uppercase letter, one lowercase letter and one digit, No Special character</label>
 									<input placeholder='Password' ref={passwordRef} type="password" name="password" />
 								</div>
 								<div className="input-group">
 									<input placeholder='Confirm Password' ref={confirmPasswordRef} type="password" name="confirm-password" required />
 								</div>
-								<input className='form-submit' type="submit" required value="Signup" />
+								<input className='form-submit button-87 mx-auto w-75' type="submit" required value="Signup" />
 							</form>
 							<h6 className="text-danger my-3"> {errorMsg}</h6>
 							<h6 className="text-danger my-3"> {errorMessage}</h6>
