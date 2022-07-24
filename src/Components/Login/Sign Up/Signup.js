@@ -241,8 +241,8 @@ const Signup = () => {
 
 		sessionStorage.setItem('student', JSON.stringify(student));
 
-		// await createUserWithEmailAndPassword(email, password);
-		// await updateProfile({ displayName: name });
+		await createUserWithEmailAndPassword(email, password);
+		await updateProfile({ displayName: name });
 	};
 
 	if (error) {

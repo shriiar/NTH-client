@@ -10,8 +10,8 @@ const Footer = () => {
 				<svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
 					<path class="footer-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
 				</svg>
-				<div class="footer-content d-flex align-items-center p-0">
-					<div class="footer-content-column">
+				<div class="footer-content d-flex align-items-center p-0 row">
+					<div class="footer-content-column col-12 col-md-6 col-lg-4">
 						<div class="footer-logo">
 							<img src={logo} className='img-fluid' alt="" />
 						</div>
@@ -19,7 +19,7 @@ const Footer = () => {
 							<h2 class="footer-menu-name">Nazib Teaching Home</h2>
 						</div>
 					</div>
-					<div class="footer-content-column">
+					<div class="footer-content-column col-12 col-md-5 col-lg-4">
 						<div class="footer-menu">
 							<h2 class="footer-menu-name">Email</h2>
 							<ul id="menu-company" class="footer-menu-list">
@@ -37,7 +37,7 @@ const Footer = () => {
 							</ul>
 						</div>
 					</div>
-					<div class="footer-content-column">
+					<div class="footer-content-column col-12 col-md-6 col-lg-4">
 						<div class="footer-menu">
 							<h2 class="footer-menu-name">Adress</h2>
 							<ul id="menu-quick-links" class="footer-menu-list">
@@ -47,7 +47,7 @@ const Footer = () => {
 							</ul>
 						</div>
 					</div>
-					<div class="footer-content-column">
+					<div class="footer-content-column col-12 col-md-6 col-lg-4">
 						<div class="footer-call-to-action">
 							<video class="my-5 footer-vid" src={vid}
 								autoPlay loop muted></video>
@@ -57,7 +57,7 @@ const Footer = () => {
 				<div class="footer-copyright">
 					<div class="footer-copyright-wrapper">
 						<p class="footer-copyright-text">
-							<p class="footer-copyright-link"> ©2020. | Designed & Developed By: Fahim Shahriar Sajid. | All rights reserved. </p>
+							<p class="footer-copyright-link"> ©2022. | Designed & Developed By: Fahim Shahriar Sajid. | All rights reserved. </p>
 						</p>
 					</div>
 				</div>

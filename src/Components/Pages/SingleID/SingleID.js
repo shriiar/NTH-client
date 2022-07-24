@@ -36,7 +36,7 @@ const SingleID = ({item, ID, setID}) => {
 				<Modal.Body>
 				</Modal.Body>
 				<Modal.Footer>
-					<button className='button-87' onClick={() => deleteExam()}>Delete Quiz</button>
+					<button className='button-87' onClick={() => deleteExam()}>Delete ID</button>
 				</Modal.Footer>
 			</Modal>
 		);

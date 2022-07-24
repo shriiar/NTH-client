@@ -84,7 +84,7 @@ const MyNotice = () => {
 			{
 				notice.length === 0 && <div>
 					<h1 className='mt-5'>No new notice</h1>
-					<img src={empty} className='img-fluid' width='900px' alt="" style={{ margin: "0 0 0 100px" }} />
+					<img src={empty} className='img-fluid' width='700px' alt="" style={{ margin: "0 0 0 100px" }} />
 				</div>
 			}
 			{

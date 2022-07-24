@@ -161,7 +161,7 @@ const Home = () => {
 							</div>
 						</div>
 					</div>
-					<div data-aos='fade-left' className="col-12 col-md-12 col-lg-6 mt-5 p-0">
+					<div data-aos='fade-bottom' className="col-12 col-md-12 col-lg-6 mt-5 p-0">
 						<img style={{ width: "600px" }} src="https://i.ibb.co/MV4jG1t/nazib5.jpg" className='img-fluid' alt="" />
 					</div>
 				</div>
