@@ -15,7 +15,7 @@ video {
 
 .glass-body1 {
   border-radius: 2rem;
-  width: 90%;
+  width: 100%;
 }
 
 .glass {
@@ -113,4 +113,8 @@ video {
 
 .part2, .part4{
 background-color: rgb(233, 233, 233);
+}
+
+.part2 img, .part1 img{
+	border-radius: 15px;
 }

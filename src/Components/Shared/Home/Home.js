@@ -9,6 +9,7 @@ import nazib1 from '../../../img/nazib1.jpg';
 import nazib2 from '../../../img/nazib2.jpg';
 import nazib3 from '../../../img/nazib3.jpg';
 import nazib4 from '../../../img/nazib4.jpg';
+import nazib7 from '../../../img/nazib7.jpg';
 import online from '../../../img/Online.png';
 import exam from '../../../img/Exam.png';
 import transport from '../../../img/Transport.png';
@@ -134,7 +135,7 @@ const Home = () => {
 		<div>
 			<HelmetTitle title={'Home'}></HelmetTitle>
 			<div className='container'>
-				<div className="row align-items-center mt-5">
+				<div className="row align-items-center mt-5 part1">
 					<div className="col-12 col-md-12 col-lg-6 justify-content-between">
 						<div class="wrapper justify-content-center">
 							<div className="row">
@@ -147,7 +148,7 @@ const Home = () => {
 											options={{
 												strings: [
 													"Cadet College Admission Test",
-													"Academin Coaching for Class 5 & 7",
+													"Academic Coaching for Class 5 & 7",
 													"Junior School Certificate (JSC)",
 													"Secondary School Certificate (SSC)",
 												],
@@ -172,7 +173,7 @@ const Home = () => {
 							backgroundImage: `url("${logo}")`
 						}}>
 							<section class="glass p-5">
-								<div class="header">
+								<div class="header w-100">
 									<img className='w-100 mx-auto text-center img-fluid px-5' src={logo} />
 								</div>
 								<div class="quote">
@@ -192,10 +193,17 @@ const Home = () => {
 							<img src={nazib1} className='img-fluid' alt="" />
 						</div>
 						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
-							<p className='fs-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum iure modi sint amet, cumque nobis, est adipisci repellat fugiat minima consequatur a assumenda distinctio architecto at ipsum. Repellat, illo quibusdam?</p>
+							<p className='fs-4'>SSC Special Batch of English Version for Science Group. <br />
+
+								Subjects Taken by Nazib Sir: <span className='fw-bold' style={{ color: "#f6861f" }}>
+									General Math, Higher Math, Physics, Chemistry, Biology, ICT. <br />
+								</span>
+
+								<span className='fw-bold' style={{ color: "#f6861f" }}>Bangla, English, BGS </span> Class are taken by
+								Masum Sir and Mamun Sir. <br /></p>
 						</div>
 						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
-							<p className='fs-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum iure modi sint amet, cumque nobis, est adipisci repellat fugiat minima consequatur a assumenda distinctio architecto at ipsum. Repellat, illo quibusdam?</p>
+							<p className='fs-4'>To ensure the education quality, <span className='fw-bold' style={{ color: "#f6861f" }}>weekly assignment</span> on basic notes are taken to monitor Progress.</p>
 						</div>
 						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
 							<img src={nazib2} className='img-fluid' alt="" />
@@ -203,8 +211,20 @@ const Home = () => {
 						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
 							<img src={nazib3} className='img-fluid' alt="" />
 						</div>
+						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+							<p className='fs-4'>We ensure the quality of education. We also make sure to complete the syllabus in the class lecture so that the <span className='fw-bold' style={{ color: "#f6861f" }}>students do not need any house tutor.</span></p>
+						</div>
+						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+							<p className='fs-4'>During the teenage life, students cherish various dreams about their future. And one of these dreams is the dream of studying in <span className='fw-bold' style={{ color: "#f6861f" }}>cadet college.</span> Nazib's Teaching Home is with you to fulfill this dream.</p>
+						</div>
 						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
 							<img src={nazib4} className='img-fluid' alt="" />
+						</div>
+						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
+							<img src={nazib7} className='img-fluid' alt="" />
+						</div>
+						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+							<p className='fs-4'>There is no compromise in ensuring the overall facilities of the students. So Najib's Teaching Home offers <span className='fw-bold' style={{ color: "#f6861f" }}>free transportation facilities</span> to students who can beat the distance in the way of best preparation.</p>
 						</div>
 					</div>
 				</div>
