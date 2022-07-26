@@ -54,13 +54,6 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<div class="footer-copyright">
-					<div class="footer-copyright-wrapper">
-						<p class="footer-copyright-text">
-							<p class="footer-copyright-link"> ©2022. | Designed & Developed By: Fahim Shahriar Sajid. | All rights reserved. </p>
-						</p>
-					</div>
-				</div>
 			</footer>
 		</div>
 	);

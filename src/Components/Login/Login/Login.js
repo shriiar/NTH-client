@@ -118,7 +118,7 @@ const Login = () => {
 							</div>
 							<button className='form-link bg-transparent border-0 mb-3' onClick={resetPassword}>Reset Password</button>
 
-							<input className='form-submit button-48 w-75 mx-auto' type="submit" required value="Login" />
+							<input className='form-submit button-87 w-75 mx-auto' type="submit" required value="Login" />
 						</form>
 					</div>
 					<ToastContainer />

@@ -116,7 +116,7 @@ const AddTasks = () => {
 								<label htmlFor='date'>Date</label>
 								<input type="text" readOnly value={formattedDate} name="date" />
 							</div>
-							<input className='form-submit button-33 w-75 mx-auto mt-4' type="submit" required value="Submit" />
+							<input className='form-submit button-87 w-75 mx-auto mt-4' type="submit" required value="Submit" />
 						</form>
 					</div>
 					<ToastContainer />

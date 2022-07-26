@@ -31,11 +31,13 @@ const UpdateStudent = () => {
 		const className = event.target.class.value;
 		const batch = event.target.batch.value;
 		const group = event.target.group.value;
+		const phone = event.target.phone.value;
+		const adress = event.target.adress.value;
 
 		// console.log(name, father, mother, className, batch, group);
 
-		const updatedUser = { name, father, mother, className, batch, group, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: student[0]?.due, payMonth: student[0]?.payMonth, payYear: student[0]?.payYear };
-		// console.log(updatedUser);
+		const updatedUser = { name, father, mother, className, batch, group, phone: phone, adress: adress, img: student[0]?.img, paid: student[0]?.paid, lastPaid: student[0]?.lastPaid, due: student[0]?.due, payMonth: student[0]?.payMonth, payYear: student[0]?.payYear };
+		console.log(updatedUser);
 
 		// Send updated data to the server for student info update
 		fetch(`${process.env.REACT_APP_URL}/students/${email}`, {
@@ -50,6 +52,7 @@ const UpdateStudent = () => {
 				// console.log(data);
 				toast.success(`${name} your info is update`)
 			})
+		event.target.reset();
 	}
 	return (
 		<div>
@@ -74,6 +77,14 @@ const UpdateStudent = () => {
 							<div className="input-group w-75 mx-auto">
 								<label htmlFor='father'>Mother's name</label>
 								<input type="mother" name="mother" required />
+							</div>
+							<div className="input-group w-75 mx-auto">
+								<label htmlFor='phone'>Phone No.</label>
+								<input type="text" name="phone" required />
+							</div>
+							<div className="input-group w-75 mx-auto">
+								<label htmlFor='adress'>Adress</label>
+								<input type="text" name="adress" required />
 							</div>
 							<div className="input-group">
 								<label for="class">Class: </label>
@@ -101,7 +112,7 @@ const UpdateStudent = () => {
 									<option value="commerce">Commerce</option>
 								</select>
 							</div>
-							<input className='form-submit button-33 w-50 mx-auto mt-4' type="submit" required value="Update" />
+							<input className='form-submit button-87 w-50 mx-auto mt-4' type="submit" required value="Update" />
 						</form>
 					</div>
 					<ToastContainer />
