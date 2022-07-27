@@ -11,6 +11,7 @@
 
 ::placeholder{
 	color: #f58320;
+	font-weight: 700;
 }
 
 /* .form-container{
@@ -163,4 +164,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.pass-bg{
+	background-color: #012f46;
+	color: #f58320;
+	border-radius: 15px;
 }

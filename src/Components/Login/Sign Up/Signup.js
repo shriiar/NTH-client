@@ -258,7 +258,7 @@ const Signup = () => {
 				<div className='col-lg-5 col-md-12 col-sm-12 order-2 order-sm-2 order-md-2 order-lg-1 card-signup'>
 					<div className='form-container'>
 						<div>
-							<h2 className='form-title mb-5 text-center'>Sign Up</h2>
+							<h2 className='form-title mb-5 text-center pass-bg w-50 mx-auto p-3'>Sign Up</h2>
 							<form onSubmit={eventSubmit}>
 								<div className="input-group">
 									<input placeholder='Your Name' ref={nameRef} type="name" name="name" required />
@@ -306,8 +306,8 @@ const Signup = () => {
 								<div className="input-group">
 									<input placeholder='Your Email' ref={emailRef} type="email" name="email" required />
 								</div>
+								<p className='my-5 pass-bg p-2 fw-bold'>Password must be Minimum 8 characters, at least one uppercase letter, one lowercase letter and one digit, No Special character</p>
 								<div className="input-group">
-									<label className='mb-5' for="password">Password must be Minimum 8 characters, at least one uppercase letter, one lowercase letter and one digit, No Special character</label>
 									<input placeholder='Password' ref={passwordRef} type="password" name="password" />
 								</div>
 								<div className="input-group">
@@ -317,8 +317,8 @@ const Signup = () => {
 							</form>
 							<h6 className="text-danger my-3"> {errorMsg}</h6>
 							<h6 className="text-danger my-3"> {errorMessage}</h6>
-							<p className='my-3 fs-5' style={{ color: "#f58320" }}>
-								Already have an account? <Link className='form-link' to='/login'>Login</Link>
+							<p className='my-3 fs-5 text-white'>
+								Already have an account? <Link style={{ color: "#f58320" }} className='form-link fw-bold' to='/login'>Login</Link>
 							</p>
 						</div>
 					</div>
