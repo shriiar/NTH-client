@@ -26,9 +26,9 @@ const ExpandedNotice = () => {
 	return (
 		<div class="center-notice px-5">
 			<div class="card w-100 h-100">
-				<h2>{notice[0]?.title}</h2>
+				<h2 style={{color: "#f6861f"}}>{notice[0]?.title}</h2>
 				<hr />
-				<div className='text-start d-flex flex-column justify-content-center h-100'>
+				<div className='text-start d-flex flex-column justify-content-center h-100 my-auto fw-bold' style={{color: "#09476e"}}>
 					<p className='fs-4'>{notice[0]?.description}</p>
 					<p className='fs-5'>{notice[0]?.date}</p>
 				</div>

@@ -86,7 +86,7 @@ const AddNotice = () => {
 									<option value="commerce">Commerce</option>
 								</select>
 							</div>
-							<input className='form-submit button-33 w-25 mx-auto' type="submit" required value="Add Notice" />
+							<input className='form-submit button-87 w-75 mx-auto' type="submit" required value="Add Notice" />
 						</form>
 					</div>
 					<ToastContainer />

@@ -118,3 +118,7 @@ background-color: rgb(233, 233, 233);
 .part2 img, .part1 img{
 	border-radius: 15px;
 }
+
+.swiper-button-prev, .swiper-button-next{
+	color: white;
+}

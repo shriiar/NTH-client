@@ -54,7 +54,7 @@ const SetExams = () => {
 				<div class="container-add">
 					<div class="left-add">
 						<div class="login">Set Quiz</div>
-						<img src={addImg} className='img-fluid' alt="" />
+						<img src={addImg} className='img-fluid w-100' alt="" />
 					</div>
 
 					<div class="right-add d-flex align-items-center justify-content-center">

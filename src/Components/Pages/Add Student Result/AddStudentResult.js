@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import { format } from 'date-fns';
 import { useParams } from 'react-router-dom';
 

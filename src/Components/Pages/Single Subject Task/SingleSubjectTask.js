@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const SingleSubjectTask = (props) => {
 	const [modalShow, setModalShow] = useState(false);
@@ -33,18 +33,18 @@ const SingleSubjectTask = (props) => {
 			>
 				<Modal.Header closeButton>
 					<Modal.Title id="contained-modal-title-vcenter">
-						{subject}
+						{subject.toUpperCase()}
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<h4>{batch}</h4>
-					<h4>Group {group}</h4>
-					<p>
-						Topic: <span className='text-danger'>{name}</span>
-					</p>
+					<h4>Batch: {batch.toUpperCase()}</h4>
+					<h4>Group: {group.toUpperCase()}</h4>
+					<h4>
+						Topic: <span className='text-danger'>{name.toUpperCase()}</span>
+					</h4>
 				</Modal.Body>
 				<Modal.Footer>
-					<button onClick={() => deleteTask()} className='mb-3'>Delete {name}</button>
+					<button onClick={() => deleteTask()} className='mb-3 button-87'>Delete {name}</button>
 				</Modal.Footer>
 			</Modal>
 		);
@@ -56,13 +56,14 @@ const SingleSubjectTask = (props) => {
 			<h1>{name}</h1>
 			<h3>{subject}</h3>
 			<h4>{date}</h4>
-			<Button variant="primary" onClick={() => setModalShow(true)}>
-				Delete Notice
-			</Button>
+			<button className='button-87 mx-auto' variant="primary" onClick={() => setModalShow(true)}>
+				Delete Record
+			</button>
 			<MyVerticallyCenteredModal
 				show={modalShow}
 				onHide={() => setModalShow(false)}
 			/>
+			<ToastContainer/>
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import './UpdateResult.css';
 
@@ -84,7 +84,7 @@ const UpdateResult = () => {
 			<HelmetTitle title='Update Result'></HelmetTitle>
 			<div style={{ margin: "0 0 400px 0" }} class="page-add">
 				<div class="container-add">
-					<div class="left-add">
+					<div class="left-add w-100">
 						<div class="login">Update Obtained Mark</div>
 						<img src={addImg} className='img-fluid' alt="" />
 					</div>
@@ -110,7 +110,7 @@ const UpdateResult = () => {
 			</div>
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
-					<div class="left-add">
+					<div class="left-add w-100">
 						<div class="login">Update Highest Mark</div>
 						<img src={addImg} className='img-fluid' alt="" />
 					</div>

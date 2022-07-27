@@ -38,6 +38,21 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import HelmetTitle from '../HelmetTitle/HelmetTitle';
 import SingleHomeImages from '../Single Home Images/SingleHomeImages';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
+import Flip from 'react-reveal/Flip';
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+// import required modules
+import { EffectCoverflow, Pagination, EffectFlip, Navigation } from "swiper";
+import { EffectCards } from "swiper";
 
 
 
@@ -142,15 +157,11 @@ const Home = () => {
 								<div className="col-12 fs-2 mt-5">
 									<h1 style={{ margin: '50px 0 0 0' }} className='text-start'>Welcome To</h1>
 									<h1 className='text-start' style={{ fontSize: "50px" }}>Nazib Teaching Home</h1>
-									<h2 className='fs-4 text-start'>Helping Students To Reach Their Potential</h2>
-									<div style={{ color: "#f08126" }} className='text-start'>Prepare Yourself For
+									<div style={{ color: "#f08126" }} className='text-start'>
 										<Typewriter
 											options={{
 												strings: [
-													"Cadet College Admission Test",
-													"Academic Coaching for Class 5 & 7",
-													"Junior School Certificate (JSC)",
-													"Secondary School Certificate (SSC)",
+													"Helping Students To Reach Their Potential",
 												],
 												autoStart: true,
 												loop: true,
@@ -162,8 +173,10 @@ const Home = () => {
 							</div>
 						</div>
 					</div>
-					<div data-aos='fade-bottom' className="col-12 col-md-12 col-lg-6 mt-5 p-0">
-						<img style={{ width: "600px" }} src="https://i.ibb.co/MV4jG1t/nazib5.jpg" className='img-fluid' alt="" />
+					<div className="col-12 col-md-12 col-lg-6 mt-5 p-0">
+						<Zoom bottom>
+							<img style={{ width: "600px" }} src="https://i.ibb.co/MV4jG1t/nazib5.jpg" className='img-fluid' alt="" />
+						</Zoom>
 					</div>
 				</div>
 
@@ -177,7 +190,7 @@ const Home = () => {
 									<img className='w-100 mx-auto text-center img-fluid px-5' src={logo} />
 								</div>
 								<div class="quote">
-									<p>Nazib's Teaching Home</p>
+									<p></p>
 								</div>
 							</section>
 						</div>
@@ -189,10 +202,12 @@ const Home = () => {
 			<div className='part2'>
 				<div className="container">
 					<div style={{ margin: "100px 0" }} className="row align-items-center">
-						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
-							<img src={nazib1} className='img-fluid' alt="" />
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
+							<Zoom bottom>
+								<img src={nazib1} className='img-fluid' alt="" />
+							</Zoom>
 						</div>
-						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							<p className='fs-4'>SSC Special Batch of English Version for Science Group. <br />
 
 								Subjects Taken by Nazib Sir: <span className='fw-bold' style={{ color: "#f6861f" }}>
@@ -202,28 +217,36 @@ const Home = () => {
 								<span className='fw-bold' style={{ color: "#f6861f" }}>Bangla, English, BGS </span> Class are taken by
 								Masum Sir and Mamun Sir. <br /></p>
 						</div>
-						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							<p className='fs-4'>To ensure the education quality, <span className='fw-bold' style={{ color: "#f6861f" }}>weekly assignment</span> on basic notes are taken to monitor Progress.</p>
 						</div>
-						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
-							<img src={nazib2} className='img-fluid' alt="" />
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
+							<Zoom bottom>
+								<img src={nazib2} className='img-fluid' alt="" />
+							</Zoom>
 						</div>
-						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
-							<img src={nazib3} className='img-fluid' alt="" />
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
+							<Zoom bottom>
+								<img src={nazib3} className='img-fluid' alt="" />
+							</Zoom>
 						</div>
-						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							<p className='fs-4'>We ensure the quality of education. We also make sure to complete the syllabus in the class lecture so that the <span className='fw-bold' style={{ color: "#f6861f" }}>students do not need any house tutor.</span></p>
 						</div>
-						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							<p className='fs-4'>During the teenage life, students cherish various dreams about their future. And one of these dreams is the dream of studying in <span className='fw-bold' style={{ color: "#f6861f" }}>cadet college.</span> Nazib's Teaching Home is with you to fulfill this dream.</p>
 						</div>
-						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
-							<img src={nazib4} className='img-fluid' alt="" />
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
+							<Zoom bottom>
+								<img src={nazib4} className='img-fluid' alt="" />
+							</Zoom>
 						</div>
-						<div data-aos='fade-right' className="col-12 col-md-6 col-lg-6 mb-5">
-							<img src={nazib7} className='img-fluid' alt="" />
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
+							<Zoom bottom>
+								<img src={nazib7} className='img-fluid' alt="" />
+							</Zoom>
 						</div>
-						<div data-aos='fade-left' className="col-12 col-md-6 col-lg-6 mb-5">
+						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							<p className='fs-4'>There is no compromise in ensuring the overall facilities of the students. So Najib's Teaching Home offers <span className='fw-bold' style={{ color: "#f6861f" }}>free transportation facilities</span> to students who can beat the distance in the way of best preparation.</p>
 						</div>
 					</div>
@@ -234,7 +257,7 @@ const Home = () => {
 				<h1>What We Offer?</h1>
 				<section class="hero-section h-100">
 					<div class="card-grid-Manage">
-						<button data-aos='fade-right' class="card-blur bg-transparent">
+						<button class="card-blur bg-transparent">
 							<div class="card__background" style={{
 								backgroundImage: `url(${online})`
 							}}>
@@ -244,7 +267,7 @@ const Home = () => {
 								<h3 class="card__heading">Class Records</h3>
 							</div>
 						</button>
-						<button data-aos='fade-right' class="card-blur bg-transparent">
+						<button class="card-blur bg-transparent">
 							<div class="card__background" style={{
 								backgroundImage: `url(${exam})`
 							}}>
@@ -254,7 +277,7 @@ const Home = () => {
 								<h3 class="card__heading">Online Quiz</h3>
 							</div>
 						</button>
-						<button data-aos='fade-right' class="card-blur bg-transparent">
+						<button class="card-blur bg-transparent">
 							<div class="card__background" style={{
 								backgroundImage: `url(${transport})`
 							}}>
@@ -264,7 +287,7 @@ const Home = () => {
 								<h3 class="card__heading">Easy Transport</h3>
 							</div>
 						</button>
-						<button data-aos='fade-right' class="card-blur bg-transparent">
+						<button class="card-blur bg-transparent">
 							<div class="card__background" style={{
 								backgroundImage: `url(${competitive})`
 							}}>
@@ -285,43 +308,37 @@ const Home = () => {
 			<div className="part4">
 				<div className='container mx-auto p-5' style={{ margin: "100px 0" }}>
 					<h1>Lets Hear From Some of Our Students</h1>
-					<section className='container carousel'>
-						<Carousel interval={null}>
-							<Carousel.Item>
-								<video class="mt-3 w-100" src={vid1} loop controls></video>
-								<Carousel.Caption>
-									<h3></h3>
-									<p></p>
-								</Carousel.Caption>
-							</Carousel.Item>
-							<Carousel.Item>
-								<video class="mt-3 w-100" src={vid2} loop controls></video>
-								<Carousel.Caption>
-									<h3></h3>
-									<p></p>
-								</Carousel.Caption>
-							</Carousel.Item>
-							<Carousel.Item>
-								<video class="mt-3 w-100" src={vid3} loop controls></video>
-								<Carousel.Caption>
-									<h3></h3>
-									<p></p>
-								</Carousel.Caption>
-							</Carousel.Item>
-						</Carousel>
-					</section>
+					<div className="container">
+						<Swiper
+							effect={"flip"}
+							grabCursor={true}
+							pagination={true}
+							navigation={true}
+							modules={[EffectFlip, Pagination, Navigation]}
+							className="mySwiper"
+						>
+							<SwiperSlide>
+								<video class="mt-3 w-100 part-6" src={vid1} loop controls></video>
+							</SwiperSlide>
+							<SwiperSlide>
+								<video class="mt-3 w-100 part-6" src={vid2} loop controls></video>
+							</SwiperSlide>
+							<SwiperSlide>
+								<video class="mt-3 w-100 part-6" src={vid3} loop controls></video>
+							</SwiperSlide>
+						</Swiper>
+					</div>
 				</div>
 			</div>
 
-			<div className="container">
+			<div>
 				<h1 className='my-5'>Inside Nazib Teaching Home</h1>
-				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 align-items-center justify-content-center">
+				<div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 align-items-center justify-content-center">
 					{
 						images.map(item => <SingleHomeImages key={item._id} item={item}></SingleHomeImages>)
 					}
 				</div>
 			</div>
-
 
 		</div>
 	);

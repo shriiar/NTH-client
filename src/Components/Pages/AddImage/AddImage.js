@@ -119,7 +119,7 @@ const AddImage = () => {
 				<div class="container-add">
 					<div class="left-add">
 						<div class="login">Add Image</div>
-						<img src={addImg} className='img-fluid' alt="" />
+						<img src={addImg} className='img-fluid w-100' alt="" />
 					</div>
 
 					<div class="right-add-id d-flex align-items-center justify-content-center">

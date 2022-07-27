@@ -13,6 +13,18 @@ const AddTasks = () => {
 	const EventSubmit = (event) => {
 		event.preventDefault();
 
+		let newLink = '', newFormLink = event.target.vidUrl.value;
+		let id1 = 0;
+
+		for (let i = 0; i < newFormLink.length; i++) {
+			if (id1 === 0 && newFormLink[i] === '"') {
+				id1 = 1;
+				// console.log('GG');
+			}
+			else if (id1 === 1 && newFormLink[i] !== '"') newLink += newFormLink[i];
+			else if (id1 === 1 && newFormLink[i] === '"') break;
+		}
+
 		const myArray = event.target.subject.value.split(" ");
 		let subjectName = '';
 		for (let i = 0; i < myArray.length; i++) {
@@ -22,7 +34,7 @@ const AddTasks = () => {
 		subjectName = subjectName.toLowerCase();
 
 		const newItem = {
-			subject: event.target.subject.value, name: event.target.name.value, subjectCode: subjectName, videoUrl: event.target.vidUrl.value,
+			subject: event.target.subject.value, name: event.target.name.value, subjectCode: subjectName, videoUrl: newLink,
 			className: event.target.class.value, batch: event.target.batch.value, group: event.target.group.value, date: event.target.date.value
 		};
 
@@ -44,7 +56,7 @@ const AddTasks = () => {
 					toast.error(`This Video already exist`);
 				}
 			})
-		event.target.reset();
+		// event.target.reset();
 	};
 	return (
 		<div>
@@ -53,7 +65,7 @@ const AddTasks = () => {
 				<div class="container-add">
 					<div class="left-add">
 						<div class="login">Add Task</div>
-						<img src={addImg} className='img-fluid' alt="" />
+						<img src={addImg} className='img-fluid w-100' alt="" />
 					</div>
 
 					<div class="right-add d-flex align-items-center justify-content-center">

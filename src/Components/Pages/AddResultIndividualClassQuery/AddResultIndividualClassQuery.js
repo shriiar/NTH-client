@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import './AddResultIndividualClassQuery.css';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import { ToastContainer } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ const AddResultIndividualClassQuery = () => {
 				<div class="container-add">
 					<div class="left-add">
 						<div class="login">Select Catagories</div>
-						<img src={addImg} className='img-fluid' alt="" />
+						<img src={addImg} className='img-fluid w-100' alt="" />
 					</div>
 
 					<div class="right-add d-flex align-items-center justify-content-center">

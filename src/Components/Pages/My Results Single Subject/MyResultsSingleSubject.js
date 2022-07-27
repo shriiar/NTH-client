@@ -3,12 +3,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import MyIndividualResult from '../My Individual Result/MyIndividualResult';
+import empty from '../../../img/empty.jpg';
 
 const MyResultsSingleSubject = () => {
 
 	const [user] = useAuthState(auth);
 	const [result, setResult] = useState([]);
 	const [student, setStudent] = useState([]);
+	const [searchText, setSearchText] = useState('');
 
 	const { subject } = useParams();
 	// console.log(student, subject);
@@ -33,15 +35,36 @@ const MyResultsSingleSubject = () => {
 			}
 		})
 			.then(res => res.json())
-			.then(data => setResult(data))
-	}, [student])
+			.then(data => {
+				// console.log(data);
+				const match = data.filter(item => (item.topic.toLowerCase().includes(searchText.toLowerCase())));
+				setResult(match);
+			})
+	}, [searchText, student])
 
-	// console.log(result);
+	console.log(result);
+
+	const textChange = (event) => { // getting search result
+		console.log(event.target.value);
+		setSearchText(event.target.value);
+	}
+
 	return (
-		<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+		<div>
+			<div className=''>
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+			</div>
 			{
-				result.map(res => <MyIndividualResult key={res._id} res={res}></MyIndividualResult>)
+				result.length === 0 && <div>
+					<h1 className='mt-5'>No Results Published yet</h1>
+					<img src={empty} className='img-fluid' width='700px' alt="" style={{ margin: "0 0 0 0" }} />
+				</div>
 			}
+			<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+				{
+					result.map(res => <MyIndividualResult key={res._id} res={res}></MyIndividualResult>)
+				}
+			</div>
 		</div>
 	);
 };

@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import './InsertID.css';
 
 const InsertID = () => {
@@ -44,7 +44,7 @@ const InsertID = () => {
 				<div class="container-add">
 					<div class="left-add">
 						<div class="login">Add Student ID</div>
-						<img src={addImg} className='img-fluid' alt="" />
+						<img src={addImg} className='img-fluid w-100' alt="" />
 					</div>
 
 					<div class="right-add-id d-flex align-items-center justify-content-center">

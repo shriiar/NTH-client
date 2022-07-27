@@ -1,6 +1,6 @@
 import React from 'react';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
-import addImg from '../../../img/undraw_Add_files_re_v09g.png';
+import addImg from '../../../img/updateStudent.png';
 import './AddPinnedPost.css';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -36,7 +36,7 @@ const AddPinnedPost = () => {
 				<div class="container-add">
 					<div class="left-add">
 						<div class="login">Add Pinned Post</div>
-						<img src={addImg} className='img-fluid' alt="" />
+						<img src={addImg} className='img-fluid w-100' alt="" />
 					</div>
 
 					<div class="right-add-id d-flex align-items-center justify-content-center">
