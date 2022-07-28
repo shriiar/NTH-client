@@ -32,7 +32,7 @@ const Manage = () => {
 			<div className='row'>
 				<div className='col-sm-12 col-md-4 col-lg-4 sidebar'>
 					<section class="hero-section">
-						<div data-aos='fade-right' class="card-grid-Manage">
+						<div data-aos="zoom-in" class="card-grid-Manage">
 							<button class="card-blur bg-transparent" onClick={() => goTo('/manage/manageUsers')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${one})`
@@ -43,7 +43,7 @@ const Manage = () => {
 									<h3 class="card__heading">Manage All Students</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/taskRecords')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/taskRecords')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${two})`
 								}}>
@@ -52,7 +52,7 @@ const Manage = () => {
 									<h3 class="card__heading">All Tasks</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/Notice')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/Notice')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${three})`
 								}}>
@@ -62,7 +62,7 @@ const Manage = () => {
 									<h3 class="card__heading">All Notices</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/examsResults')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/examsResults')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${five})`
 								}}>
@@ -71,7 +71,7 @@ const Manage = () => {
 									<h3 class="card__heading">Exams & Results</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/checkPayment')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/checkPayment')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${four})`
 								}}>
@@ -80,7 +80,7 @@ const Manage = () => {
 									<h3 class="card__heading">All Payments</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/studentID')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/studentID')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${six})`
 								}}>
@@ -89,7 +89,7 @@ const Manage = () => {
 									<h3 class="card__heading">Student ID</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/adminImage')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/adminImage')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${seven})`
 								}}>
@@ -98,7 +98,7 @@ const Manage = () => {
 									<h3 class="card__heading">Add & Manage Images</h3>
 								</div>
 							</button>
-							<button class="card-blur bg-transparent" data-aos='fade-right' onClick={() => goTo('/manage/pinnedPosts')}>
+							<button class="card-blur bg-transparent" data-aos="zoom-in" onClick={() => goTo('/manage/pinnedPosts')}>
 								<div class="card__background" style={{
 									backgroundImage: `url(${eight})`
 								}}>

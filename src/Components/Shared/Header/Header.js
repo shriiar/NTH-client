@@ -290,6 +290,7 @@ const Header = () => {
 						</div>
 					</div>
 				</nav>
+				<DueMessage></DueMessage>
 			</div>
 		</>
 	);
