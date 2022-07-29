@@ -6,6 +6,7 @@ import empty from '../../../img/empty.jpg';
 const MAllExams = () => {
 
 	const [exams, setExams] = useState([]);
+	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_URL}/exams/admin`, {
@@ -15,13 +16,25 @@ const MAllExams = () => {
 			}
 		})
 			.then(res => res.json())
-			.then(data => setExams(data))
-	}, [])
+			.then(data => {
+				console.log(data);
+				const match = data.filter(item => (item.name.toLowerCase().includes(searchText.toLowerCase())) || item.topic.toLowerCase().includes(searchText.toLowerCase()));
+				setExams(match);
+			})
+	}, [searchText])
 
 	console.log(exams);
+
+	const textChange = (event) => { // getting search result
+		setSearchText(event.target.value);
+	}
+
 	return (
 		<div>
 			<HelmetTitle title={'Manage Exams'}></HelmetTitle>
+			<div className='mx-auto w-75'>
+				<input id='input-text' onChange={textChange} className='my-5 text-dark' type="text" placeholder='Search..' />
+			</div>
 			{
 				exams.length === 0 && <div>
 					<h1 className='mt-5'>No Quiz Taken</h1>

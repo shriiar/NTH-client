@@ -86,7 +86,7 @@ function App() {
 	return (
 		<div className="App">
 			<Header></Header>
-			{/* <DueMessage></DueMessage> */}
+			<DueMessage></DueMessage>
 			<ShowPinnedPost></ShowPinnedPost>
 			<Routes>
 				<Route path='/subjects' element={<RequireAuth>

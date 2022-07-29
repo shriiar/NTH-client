@@ -4,6 +4,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import HelmetTitle from '../../Shared/HelmetTitle/HelmetTitle';
 import addImg from '../../../img/updateStudent.png';
 import './InsertID.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const InsertID = () => {
 	const [date, setDate] = useState(new Date());
@@ -17,7 +21,7 @@ const InsertID = () => {
 		};
 
 		console.log(newItem);
-		const url = `${process.env.REACT_APP_URL}/studentID`;
+		const url = `${process.env.REACT_APP_URL}/${process.env.REACT_APP_GG}`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {
@@ -53,7 +57,7 @@ const InsertID = () => {
 								<label htmlFor='name'>Insert Student ID</label>
 								<input type="text" name="nameID" required />
 							</div>
-							<input className='form-submit button-33 w-75 mx-auto mt-4' type="submit" required value="Submit" />
+							<input className='form-submit button-87 w-75 mx-auto mt-4' type="submit" required value="Submit" />
 						</form>
 					</div>
 					<ToastContainer />

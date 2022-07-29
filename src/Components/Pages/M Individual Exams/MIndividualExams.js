@@ -35,29 +35,29 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Batch {batch}</h4>
-                    <h4>Group {group}</h4>
-                    <h5>{name}</h5>
-                    <h5>{topic}</h5>
+                    <h4>Batch: {batch.toUpperCase()}</h4>
+                    <h4>Group: {group.toUpperCase()}</h4>
+                    <h5>{name.toUpperCase()}</h5>
+                    <h5 className='text-danger'>{topic.toUpperCase()}</h5>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => deleteExam()}>Delete Quiz</Button>
+                    <button className='button-87' onClick={() => deleteExam()}>Delete Quiz</button>
                 </Modal.Footer>
             </Modal>
         );
     }
     return (
-        <div className='p-3'>
-            <div className='d-flex flex-column align-items-center justify-content-center'>
-                <h1>Class {className}</h1>
-                <h2>Batch {batch}</h2>
-                <h3>Group {group}</h3>
-                <h4>{name}</h4>
-                <h4>Quiz on <span className='text-danger'>{topic}</span></h4>
+        <div className='p-5'>
+            <div className='card h-100 w-100 d-flex flex-column align-items-center justify-content-center'>
+                <h1>Class: {className}</h1>
+                <h2>Batch: {batch.toUpperCase()}</h2>
+                <h3>Group: {group.toUpperCase()}</h3>
+                <h4>{name.toUpperCase()}</h4>
+                <h4>Quiz on <span className='text-danger'>{topic.toUpperCase()}</span></h4>
                 <h4>{date}</h4>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
+                <button className='button-87' variant="primary" onClick={() => setModalShow(true)}>
                     Delete Quiz
-                </Button>
+                </button>
             </div>
             <ToastContainer></ToastContainer>
 

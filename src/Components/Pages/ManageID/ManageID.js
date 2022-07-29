@@ -1,4 +1,8 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import SingleID from '../SingleID/SingleID';
 import './ManageID.css';
 
@@ -8,7 +12,7 @@ const ManageID = () => {
 	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
-		fetch(`${process.env.REACT_APP_URL}/studentID`, {
+		fetch(`${process.env.REACT_APP_URL}/${process.env.REACT_APP_GG}`, {
 			method: 'GET',
 			headers: {
 				'authorization': `Bearer ${sessionStorage.getItem('accessToken')}`
@@ -16,12 +20,11 @@ const ManageID = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
 				const match = data.filter(item => item.nameID.toLowerCase().includes(searchText.toLowerCase()));
 				setID(match);
 			})
 	}, [searchText])
-	console.log(ID);
+	// console.log(ID);
 
 	const textChange = (event) => { // getting search result
 		// console.log(event.target.value);

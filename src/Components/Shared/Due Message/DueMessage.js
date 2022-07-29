@@ -55,16 +55,22 @@ const DueMessage = () => {
 	// console.log(student[0], newDate, monthLimit);
 
 	return (
-		<div className='w-100'>
+		<div>
 			{
-				((student[0]?.due === 1 && user) && (newDate >= 15 && newDate <= monthLimit) && student[0]?.role !== 'admin') && <p className='text-danger button-85 fw-bold fs-5 my-4'>
-					You have a due of this month. If you already paid please contact NTH support. <br /> Thank you for being with us.
-				</p>
-			}
-			{
-				(student[0]?.due === 2 && user && student[0]?.role !== 'admin') && <p className='text-danger button-85 fw-bold fs-5 my-4'>
-					Seems like you have'nt paid last month. <br />You will lose access from {myArray[0]} 14.
-				</p>
+				user && <>
+					<div style={{ margin: "100px 0 0 0" }} className='fixed-top px-5'>
+						{
+							((student[0]?.due === 1 && user) && (newDate >= 15 && newDate <= monthLimit) && student[0]?.role !== 'admin') && <p className='my-4 button-87 fw-bold w-100 pinnedPost container mx-auto px-5'>
+								You have a due of this month. If you already paid please contact NTH support. <br /> Thank you for being with us.
+							</p>
+						}
+						{
+							(student[0]?.due === 2 && user && student[0]?.role !== 'admin') && <p className='my-4 button-87 fw-bold w-100 pinnedPost container mx-auto px-5'>
+								Seems like you have'nt paid last month. <br />You will lose access from {myArray[0]} 14.
+							</p>
+						}
+					</div>
+				</>
 			}
 		</div>
 	);
