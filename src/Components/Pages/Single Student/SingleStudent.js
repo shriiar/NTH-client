@@ -28,7 +28,7 @@ const SingleStudent = (props) => {
 			.then(data => {
 				if (data.deletedCount > 0) {
 					const remaining = allStudents.filter(item => item._id !== _id);
-					toast.success('Successfully Deleted');
+					toast.success('Profile Successfully Deleted');
 					setAllStudents(remaining);
 				}
 			})
@@ -40,7 +40,7 @@ const SingleStudent = (props) => {
 			.then(res => res.json())
 			.then(data => {
 				if (data.deletedCount > 0) {
-					toast.success('Successfully Deleted');
+					toast.success('All Results Successfully Deleted');
 				}
 			})
 
@@ -51,7 +51,7 @@ const SingleStudent = (props) => {
 			.then(res => res.json())
 			.then(data => {
 				if (data.deletedCount > 0) {
-					toast.success('Successfully Deleted');
+					toast.success('Student ID Successfully Deleted');
 				}
 			})
 	}
