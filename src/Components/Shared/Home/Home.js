@@ -69,6 +69,12 @@ const Home = () => {
 	const formattedDate = format(date, 'PP');
 	const navigate = useNavigate();
 
+	const token = sessionStorage.getItem('accessToken');
+	if (user && token === null) {
+		signOut(auth);
+		navigate('/login');
+	}
+
 	let myArray = formattedDate.split(' ');
 
 	let newDate = myArray[1][0], newMonth = myArray[0], newYear = parseInt(myArray[2]);
@@ -175,7 +181,7 @@ const Home = () => {
 					</div>
 					<div className="col-12 col-md-12 col-lg-6 mt-5 p-0">
 						{/* <Zoom bottom> */}
-							<img data-aos="zoom-in" style={{ width: "600px" }} src="https://i.ibb.co/MV4jG1t/nazib5.jpg" className='img-fluid' alt="" />
+						<img data-aos="zoom-in" style={{ width: "600px" }} src="https://i.ibb.co/MV4jG1t/nazib5.jpg" className='img-fluid' alt="" />
 						{/* </Zoom> */}
 					</div>
 				</div>
@@ -204,7 +210,7 @@ const Home = () => {
 					<div style={{ margin: "100px 0" }} className="row align-items-center">
 						<div className="col-12 col-md-6 col-lg-6 my-5">
 							{/* <Zoom bottom> */}
-								<img data-aos="zoom-in" src={nazib1} className='img-fluid' alt="" />
+							<img data-aos="zoom-in" src={nazib1} className='img-fluid' alt="" />
 							{/* </Zoom> */}
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">
@@ -222,12 +228,12 @@ const Home = () => {
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							{/* <Zoom bottom> */}
-								<img data-aos="zoom-in" src={nazib2} className='img-fluid' alt="" />
+							<img data-aos="zoom-in" src={nazib2} className='img-fluid' alt="" />
 							{/* </Zoom> */}
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							{/* <Zoom bottom> */}
-								<img data-aos="zoom-in" src={nazib3} className='img-fluid' alt="" />
+							<img data-aos="zoom-in" src={nazib3} className='img-fluid' alt="" />
 							{/* </Zoom> */}
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">
@@ -238,12 +244,12 @@ const Home = () => {
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							{/* <Zoom bottom> */}
-								<img data-aos="zoom-in" src={nazib4} className='img-fluid' alt="" />
+							<img data-aos="zoom-in" src={nazib4} className='img-fluid' alt="" />
 							{/* </Zoom> */}
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">
 							{/* <Zoom bottom> */}
-								<img data-aos="zoom-in" src={nazib7} className='img-fluid' alt="" />
+							<img data-aos="zoom-in" src={nazib7} className='img-fluid' alt="" />
 							{/* </Zoom> */}
 						</div>
 						<div className="col-12 col-md-6 col-lg-6 mb-5">

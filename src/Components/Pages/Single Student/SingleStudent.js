@@ -10,13 +10,17 @@ const SingleStudent = (props) => {
 	const [modalShow, setModalShow] = useState(false);
 
 	const { allStudents, setAllStudents } = props;
+	const [results, setResults] = useState([]);
+	const [ID, setID] = useState([]);
 	const { name, father, mother, className, batch, group, email, _id, img, userId } = props.student;
 	const updateStudent = () => {
 		navigate(`/updateStudent/${email}/${_id}`);
 	}
 
+	console.log(userId);
+
 	const deleteStudent = () => {
-		const url = `${process.env.REACT_APP_URL}/students?className=${className}&batch=${batch}&group=${group}&name=${name}&father=${father}&mother=${mother}&email=${email}`;
+		const url = `${process.env.REACT_APP_URL}/students?id=${_id}`;
 		fetch(url, {
 			method: 'DELETE'
 		})
@@ -26,6 +30,28 @@ const SingleStudent = (props) => {
 					const remaining = allStudents.filter(item => item._id !== _id);
 					toast.success('Successfully Deleted');
 					setAllStudents(remaining);
+				}
+			})
+
+		const url1 = `${process.env.REACT_APP_URL}/resultsEmail?email=${email}`;
+		fetch(url1, {
+			method: 'DELETE'
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data.deletedCount > 0) {
+					toast.success('Successfully Deleted');
+				}
+			})
+
+		const url2 = `${process.env.REACT_APP_URL}/nameID?nameID=${userId}`;
+		fetch(url2, {
+			method: 'DELETE'
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data.deletedCount > 0) {
+					toast.success('Successfully Deleted');
 				}
 			})
 	}
@@ -43,6 +69,10 @@ const SingleStudent = (props) => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
+					<h3>Class: <span className='text-danger'>{className}</span></h3>
+					<h3>Batch: <span className='text-danger'>{batch.toUpperCase()}</span></h3>
+					<h3>Group: <span className='text-danger'>{group.toUpperCase()}</span></h3>
+					<h3>Group: <span ID='text-danger'>{userId.toUpperCase()}</span></h3>
 				</Modal.Body>
 				<Modal.Footer>
 					<button className='button-87' onClick={() => deleteStudent()}>Delete Profile</button>

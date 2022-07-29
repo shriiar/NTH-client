@@ -85,18 +85,6 @@ const CheckPayment = () => {
 							<h3 class="card__heading">Class 9 English Science</h3>
 						</div>
 					</button>
-					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "9", batch: "bangla", group: "commerce" })}>
-						<div class="card__background"></div>
-						<div class="card__content d-flex flex-column">
-							<h3 class="card__heading">Class 9 Bangla Commerce</h3>
-						</div>
-					</button>
-					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "9", batch: "english", group: "commerce" })}>
-						<div class="card__background"></div>
-						<div class="card__content d-flex flex-column">
-							<h3 class="card__heading">Class 9 English Commerce</h3>
-						</div>
-					</button>
 					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "10", batch: "bangla", group: "science" })}>
 						<div class="card__background"></div>
 						<div class="card__content d-flex flex-column">
@@ -107,18 +95,6 @@ const CheckPayment = () => {
 						<div class="card__background"></div>
 						<div class="card__content d-flex flex-column">
 							<h3 class="card__heading">Class 10 English Science</h3>
-						</div>
-					</button>
-					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "10", batch: "bangla", group: "commerce" })}>
-						<div class="card__background"></div>
-						<div class="card__content d-flex flex-column">
-							<h3 class="card__heading">Class 10 Bangla Commerce</h3>
-						</div>
-					</button>
-					<button className="card-blur-class bg-transparent" onClick={() => goToClass({ className: "10", batch: "english", group: "commerce" })}>
-						<div class="card__background"></div>
-						<div class="card__content d-flex flex-column">
-							<h3 class="card__heading">Class 10 English Commerce</h3>
 						</div>
 					</button>
 				</div>

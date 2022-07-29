@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const MIndividualExams = ({ exam, exams, setExams }) => {
 
     const [modalShow, setModalShow] = useState(false);
-    const { className, batch, group, name, topic, date, _id } = exam;
+    const { className, batch, group, name, topic, date, mark, _id } = exam;
 
     const deleteExam = () => {
         const url = `${process.env.REACT_APP_URL}/exams?id=${_id}`;
@@ -31,14 +31,15 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Class {className}
+                        <h3>Class {className}</h3>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <h4>Batch: {batch.toUpperCase()}</h4>
                     <h4>Group: {group.toUpperCase()}</h4>
                     <h5>{name.toUpperCase()}</h5>
-                    <h5 className='text-danger'>{topic.toUpperCase()}</h5>
+                    <h5>Topic: <span className='text-danger'>{topic.toUpperCase()}</span></h5>
+                    <h5>Total Marks: <span className='text-danger'>{mark?.toUpperCase()}</span></h5>
                 </Modal.Body>
                 <Modal.Footer>
                     <button className='button-87' onClick={() => deleteExam()}>Delete Quiz</button>
@@ -54,6 +55,7 @@ const MIndividualExams = ({ exam, exams, setExams }) => {
                 <h3>Group: {group.toUpperCase()}</h3>
                 <h4>{name.toUpperCase()}</h4>
                 <h4>Quiz on <span className='text-danger'>{topic.toUpperCase()}</span></h4>
+                <h4>Total Marks: <span className='text-danger'>{mark?.toUpperCase()}</span></h4>
                 <h4>{date}</h4>
                 <button className='button-87' variant="primary" onClick={() => setModalShow(true)}>
                     Delete Quiz

@@ -59,7 +59,7 @@ const UpdateStudent = () => {
 			<HelmetTitle title='Update Student'></HelmetTitle>
 			<div style={{ margin: "0 0 1050px 0" }} class="page-add">
 				<div class="container-add">
-					<div class="left-add w-100">
+					<div class="left-add w-100 h-100">
 						<div class="login">Update Student Profile</div>
 						<img src={addImg} className='img-fluid' alt="" />
 					</div>
@@ -109,7 +109,6 @@ const UpdateStudent = () => {
 								<select name="group" type='group'>
 									<option value="under9">No Group Yet</option>
 									<option value="science">Science</option>
-									<option value="commerce">Commerce</option>
 								</select>
 							</div>
 							<input className='form-submit button-87 w-50 mx-auto mt-4' type="submit" required value="Update" />

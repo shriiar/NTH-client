@@ -26,13 +26,14 @@ const SetExams = () => {
 		const exam = {
 			name: event.target.subject.value,
 			topic: event.target.topic.value,
+			mark: event.target.mark.value,
 			formLink: newLink,
 			date: event.target.date.value,
 			className: event.target.className.value,
 			batch: event.target.batch.value,
 			group: event.target.group.value,
 		}
-		// console.log(exam);
+		console.log(exam);
 		let toastText = `Class ${exam.className} Batch ${exam.batch} Group ${exam.group}`
 
 		fetch(`${process.env.REACT_APP_URL}/exams`, {
@@ -44,8 +45,9 @@ const SetExams = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				toast(`MCQ Exam Added for ${toastText}`)
+				toast.success(`MCQ Exam Added for ${toastText}`)
 			});
+		event.target.reset();
 	};
 	return (
 		<div>
@@ -59,7 +61,7 @@ const SetExams = () => {
 
 					<div class="right-add d-flex align-items-center justify-content-center">
 						<form className='w-100' onSubmit={EventSubmit}>
-						<div className="input-group">
+							<div className="input-group">
 								<label for="subject">Subject: </label>
 								<select name="subject" type="subject">
 									<option value="Bangla">Bangla</option>
@@ -82,6 +84,10 @@ const SetExams = () => {
 							<div className="input-group mb-0 w-75 mx-auto">
 								<label htmlFor='topic'>Topic</label>
 								<input type="topic" name="topic" required />
+							</div>
+							<div className="input-group mb-0 w-75 mx-auto">
+								<label htmlFor='mark'>Total Mark</label>
+								<input type="text" name="mark" required />
 							</div>
 							<div className="input-group mb-0 w-75 mx-auto">
 								<label htmlFor='formLink'>Google Form Link</label>
@@ -114,10 +120,9 @@ const SetExams = () => {
 								<select name="group" type='group'>
 									<option value="under9">No Group Yet</option>
 									<option value="science">Science</option>
-									<option value="commerce">Commerce</option>
 								</select>
 							</div>
-							<input className='form-submit button-33 w-25 mx-auto' type="submit" required value="Set Quiz" />
+							<input className='form-submit button-87 w-25 mx-auto' type="submit" required value="Set Quiz" />
 						</form>
 					</div>
 					<ToastContainer />

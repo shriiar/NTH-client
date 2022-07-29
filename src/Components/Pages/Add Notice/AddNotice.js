@@ -83,7 +83,6 @@ const AddNotice = () => {
 								<select name="group" type='group'>
 									<option value="under9">No Group Yet</option>
 									<option value="science">Science</option>
-									<option value="commerce">Commerce</option>
 								</select>
 							</div>
 							<input className='form-submit button-87 w-75 mx-auto' type="submit" required value="Add Notice" />

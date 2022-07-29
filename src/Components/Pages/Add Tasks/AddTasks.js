@@ -121,7 +121,6 @@ const AddTasks = () => {
 								<select name="group" type='group'>
 									<option value="under9">No Group Yet</option>
 									<option value="science">Science</option>
-									<option value="commerce">Commerce</option>
 								</select>
 							</div>
 							<div className="input-group w-75 mx-auto">
